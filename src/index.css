@@ -16,7 +16,7 @@
   margin: 0;
   box-sizing: border-box;
   height: auto;
-  font-family: "Noto_Sans";
+  font-family: "Noto_Sans", sans-serif;
 }
 body {
   background-color: #dfe3e6;
