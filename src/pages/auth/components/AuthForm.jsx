@@ -2,6 +2,7 @@ import { FormButton } from "../../../components/FormButton";
 import { FormInput } from "../../../components/FormInput";
 import LoginIllustration from "../../../assets/images/login.png";
 import SignupIllustration from "../../../assets/images/signup.png";
+import { Link } from "react-router-dom";
 export const AuthForm = ({ type }) => {
   return (
     <div
@@ -24,9 +25,11 @@ export const AuthForm = ({ type }) => {
                 attributeName="Image by storyset on Freepik"
               />
             </div>
-            <button className="w-1/3 md:w-1/2 active:bg-[#DBDBDB] duration-50 border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
-              Sign in
-            </button>
+            <Link to={"/"}>
+              <button className="w-1/3 md:w-1/2 active:bg-[#DBDBDB] duration-50 border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
+                Sign in
+              </button>
+            </Link>
           </>
         ) : (
           <>
@@ -42,13 +45,16 @@ export const AuthForm = ({ type }) => {
                 attributeName="Image by storyset on Freepik"
               />
             </div>
-            <button className="w-1/3 md:w-1/2 active:bg-[#C4C4C4] duration-50  border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
-              {" "}
-              Sign Up
-            </button>
+            <Link to={"/signup"}>
+              <button className="w-1/3 md:w-1/2 active:bg-[#C4C4C4] duration-50  border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
+                {" "}
+                Sign Up
+              </button>
+            </Link>
           </>
         )}
       </div>
+
       <div className="w-full lg:w-3/5 md:w-3/5 h-full flex flex-col items-center py-10 space-y-6 rounded-r-lg p-5 bg-lost-white">
         {type === "signup" ? (
           <>
@@ -65,25 +71,31 @@ export const AuthForm = ({ type }) => {
                 <div className=" flex flex-col md:flex-row lg:flex-row items-center w-full space-y-4 md:space-x-4 lg:space-y-0 md:space-y-0 lg:space-x-4">
                   <FormInput
                     containerClassName="w-full md:w-[45%] lg:w-[45%]"
+                    name={"firstName"}
                     placeholder={"First Name"}
                   />
                   <FormInput
                     containerClassName="w-full md:w-[45%] lg:w-[45%]"
+                    name={"lastName"}
                     placeholder={"Last Name"}
                   />
                 </div>
                 <FormInput
                   containerClassName="w-full"
+                  s
+                  name={"emailAddress"}
                   type={"email"}
                   placeholder={"Email Address"}
                 />
                 <FormInput
                   containerClassName="w-full"
+                  name={"password"}
                   type="password"
                   placeholder={"Password"}
                 />
                 <FormInput
                   containerClassName="w-full"
+                  name={"confirmPassword"}
                   type="password"
                   placeholder={"Confirm Password"}
                 />
@@ -91,6 +103,11 @@ export const AuthForm = ({ type }) => {
               <FormButton className="w-full md:w-[50%] lg:w-[50%]">
                 Sign Up
               </FormButton>
+              <Link to={"/"}>
+                <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">
+                  Already have an account? Sign in
+                </button>
+              </Link>
             </form>
           </>
         ) : (
@@ -107,11 +124,13 @@ export const AuthForm = ({ type }) => {
               <div className="flex w-full flex-col items-center space-y-4">
                 <FormInput
                   containerClassName="w-full md:w-[60%] lg:w-[60%]"
+                  name={"emailAddress"}
                   type={"email"}
                   placeholder={"Email Address"}
                 />
                 <FormInput
                   containerClassName="w-full md:w-[60%] lg:w-[60%]"
+                  name={"password"}
                   type="password"
                   placeholder={"Password"}
                 />
@@ -120,6 +139,11 @@ export const AuthForm = ({ type }) => {
               <FormButton className="w-full md:w-1/3 lg:w-1/3">
                 Sign In
               </FormButton>
+              <Link to={"/signup"}>
+                <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">
+                  Don't have an account? Sign up
+                </button>
+              </Link>
             </form>
             <span className="text-lost-accent-dark text-sm cursor-pointer hover:underline mt-10">
               Forgot Password ?
