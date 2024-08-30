@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "SUSE";
+  src: url("./assets/fonts/SUSE/SUSE-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: "Noto_Sans";
+  src: url("./assets/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf");
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  height: auto;
+  font-family: "Noto_Sans";
+}
+body {
+  background-color: #dfe3e6;
+}
+#root {
+  height: 100vh;
+}
+h1 {
+  font-family: "SUSE";
+}
