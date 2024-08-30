@@ -7,7 +7,7 @@ export const AuthForm = ({ type }) => {
     <div
       className={`${
         type === "signup" ? "flex-row-reverse" : ""
-      } flex w-full h-full md:w-3/4 lg:w-3/4 md:h-[80%] lg:h-[80%] items-center shadow-md `}
+      } flex w-full h-full md:full lg:w-3/4 md:w-full md:h-[60%] lg:h-[80%] items-center shadow-md `}
     >
       <div className="w-2/5 hidden md:block lg:block h-full rounded-l-lg flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue">
         {type === "signup" ? (
@@ -24,7 +24,7 @@ export const AuthForm = ({ type }) => {
                 attributeName="Image by storyset on Freepik"
               />
             </div>
-            <button className="w-1/3  active:bg-[#DBDBDB] duration-50 border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
+            <button className="w-1/3 md:w-1/2 active:bg-[#DBDBDB] duration-50 border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
               Sign in
             </button>
           </>
@@ -42,7 +42,7 @@ export const AuthForm = ({ type }) => {
                 attributeName="Image by storyset on Freepik"
               />
             </div>
-            <button className="w-1/3 active:bg-[#C4C4C4] duration-50  border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
+            <button className="w-1/3 md:w-1/2 active:bg-[#C4C4C4] duration-50  border-lost-white border-[1px] rounded-lg py-2 px-3 text-lost-white">
               {" "}
               Sign Up
             </button>

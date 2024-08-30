@@ -4,7 +4,7 @@ import { Signup } from "./pages/auth/signup";
 function App() {
   return (
     <>
-      <Login />
+      <Signup />
     </>
   );
 }
