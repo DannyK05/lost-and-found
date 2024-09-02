@@ -1,8 +1,12 @@
+import Layout from "../../layout";
+
 export default function HomePage() {
   return (
     <>
-      {/* Write your code here, just like you do when writing html*/}
-      <h1>Home Page</h1>
+      <Layout>
+        <h1>Home Page</h1>
+        {/* Write your code here, just like you do when writing html*/}
+      </Layout>
     </>
   );
 }

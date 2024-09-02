@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Login } from "./pages/auth/login";
 import { Signup } from "./pages/auth/signup";
-import { ErrorPage } from "./pages/auth/components/route-handling/ErrorPage";
-import { LoadingPage } from "./pages/auth/components/route-handling/LoadingPage";
+import { ErrorPage } from "./components/route-handling/ErrorPage";
+import { LoadingPage } from "./components/route-handling/LoadingPage";
 import HomePage from "./pages/home";
 import LostItemsPage from "./pages/lost-items";
 import ViewItemsPage from "./pages/view-items";
