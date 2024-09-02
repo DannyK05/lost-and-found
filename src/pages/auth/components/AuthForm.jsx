@@ -1,5 +1,5 @@
-import { FormButton } from "../../../components/FormButton";
-import { FormInput } from "../../../components/FormInput";
+import { FormButton } from "../../../components/form/FormButton";
+import { FormInput } from "../../../components/form/FormInput";
 import LoginIllustration from "../../../assets/images/login.png";
 import SignupIllustration from "../../../assets/images/signup.png";
 import { Link } from "react-router-dom";
@@ -59,12 +59,13 @@ export const AuthForm = ({ type }) => {
         {type === "signup" ? (
           <>
             <img
-              className="md:hidden lg:hidden w-2/3"
+              className="md:hidden lg:hidden w-1/3"
               src={SignupIllustration}
               attributeName="Image by storyset on Freepik"
             />
             <h1 className="text-2xl text-lost-blue mb-6 font-bold">
-              Sign Up with Us
+              Sign Up with Lost<span className="text-lost-accent-light">&</span>
+              Found Hub
             </h1>
             <form className="flex w-[60%] flex-col items-center space-y-4">
               <div className="flex w-full flex-col items-center space-y-4">
@@ -113,12 +114,13 @@ export const AuthForm = ({ type }) => {
         ) : (
           <>
             <img
-              className="md:hidden lg:hidden w-2/3"
+              className="md:hidden lg:hidden w-1/3"
               src={LoginIllustration}
               attributeName="Image by storyset on Freepik"
             />
             <h1 className="text-2xl text-lost-blue mb-6 font-bold">
-              Sign In to Lost&Found Hub
+              Sign In to Lost<span className="text-lost-accent-light">&</span>
+              Found Hub
             </h1>
             <form className="flex w-full flex-col items-center mb-10 space-y-10">
               <div className="flex w-full flex-col items-center space-y-4">

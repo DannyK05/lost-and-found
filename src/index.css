@@ -27,3 +27,19 @@ body {
 h1 {
   font-family: "SUSE";
 }
+
+nav svg.ionicon:hover {
+  fill: #fecc50;
+}
+.active-nav {
+  display: flex;
+  align-items: center;
+}
+.active-nav::before {
+  content: "(";
+  margin-right: 2px;
+}
+.active-nav::after {
+  content: ")";
+  margin-left: 2px;
+}
