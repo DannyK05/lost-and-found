@@ -21,7 +21,14 @@ export default function Card({
     setIsVisible(!isVisible);
   };
   return (
-    <div className=" w-[47%] lg:w-[24%] md:w-[24%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4">
+    <div
+      onMouseLeave={() => {
+        if (isVisible === true) {
+          toggleDetails();
+        }
+      }}
+      className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
+    >
       <span className="absolute rotate-[-40deg] uppercase top-6 left-0 border-lost-blue border-[1px] bg-white text-lost-blue rounded-lg p-1">
         {type === "lost" ? "Lost" : "Found"}
       </span>
@@ -73,14 +80,14 @@ export default function Card({
       <div className="w-full flex flex-col lg:flex-row lg:space-y-0 md:flex-row md:space-y-0 items-center space-y-2 lg:justify-between md:justify-between">
         <button
           onClick={toggleDetails}
-          className=" flex items-center space-x-2  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 pt-3 pb-2"
+          className=" w-4/5 flex items-center space-x-2 md:w-2/5 lg:w-2/5  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 pt-3 pb-2"
         >
           <p>Details</p>
           <span>
             <InfoIcon />
           </span>
         </button>{" "}
-        <button className=" flex items-center space-x-2 bg-lost-blue text-white border-2 shadow-lg rounded-lg px-4 pt-3 pb-2">
+        <button className=" w-4/5 flex items-center md:w-[45%] lg:w-[45%] space-x-2 bg-lost-blue text-white border-2 shadow-lg rounded-lg px-4 pt-3 pb-2">
           <p>{type == "lost" ? "Found Item" : "Claim Item"}</p>{" "}
           <span>
             {" "}
