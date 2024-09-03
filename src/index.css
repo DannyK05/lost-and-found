@@ -43,3 +43,8 @@ nav svg.ionicon:hover {
   content: ")";
   margin-left: 2px;
 }
+
+.card_container .card:first-of-type {
+  margin-left: 8px;
+  margin-top: 8px;
+}
