@@ -11,7 +11,7 @@ export default function Layout({ children }) {
   };
   return (
     <main className="w-full h-[100vh]">
-      <nav className="flex items-center fixed w-full bg-lost-blue pt-4 pb-6 px-4 justify-between md:justify-normal lg: justify-normal">
+      <nav className="z-[1000] flex items-center fixed w-full bg-lost-blue pt-4 pb-6 px-4 justify-between md:justify-normal lg: justify-normal">
         <h1 className="text-2xl w-1/5 text-white font-bold">
           Lost<span className="text-lost-accent-light">&</span>Found Hub
         </h1>
@@ -96,7 +96,7 @@ export default function Layout({ children }) {
           </span>
         )}
       </nav>
-      <div className="pt-[78px]">{children}</div>
+      <div className="pt-[110px] lg:pt-[78px] md:pt-[78px]">{children}</div>
     </main>
   );
 }
