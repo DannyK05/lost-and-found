@@ -1,20 +1,21 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./helper";
+import { TLoginDto, TRegisterDto } from "../types/auth";
 
-const authApi = createApi({
-  reducerPath: "authApi",
+export const authApi = createApi({
+  reducerPath: "api",
   baseQuery: baseQuery,
-  enpoints: (builder) => ({
-    login: builder.mutation({
+  endpoints: (builder) => ({
+    login: builder.mutation<any, TLoginDto>({
       query: (body) => ({
-        url: "auth/login",
+        url: "/auth/login",
         method: "POST",
         body,
       }),
     }),
-    register: builder.mutation({
+    register: builder.mutation<void, TRegisterDto>({
       query: (body) => ({
-        url: "auth/register",
+        url: "/auth/register",
         method: "POST",
         body,
       }),
@@ -22,4 +23,4 @@ const authApi = createApi({
   }),
 });
 
-e;
+export const { useLoginMutation, useRegisterMutation } = authApi;
