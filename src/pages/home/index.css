@@ -3,7 +3,7 @@
 
 
 body {
-  padding-bottom: 120vw;
+  padding-bottom: 90vw;
 }
 
 .top-part {
@@ -225,7 +225,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2vw;
+  padding: 3.3vw 2vw;
   background-color: rgba(170, 202, 253, 0.84);
   border-radius: 10px;
   max-width: 27vw;
@@ -243,9 +243,7 @@ body {
 }
 
 .story{
-  display: flex;
-  flex-direction: column;
-  font-size: 1.28vw;
+  font-size: 1.1vw;
 }
 
 .arrow-div {
@@ -253,7 +251,7 @@ body {
   width: 4vw;
   justify-content: baseline;
   position: absolute;
-  top: 17.745vw;
+  top: 13.49vw;
 }
 
 #story-arrrow {
