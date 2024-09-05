@@ -125,10 +125,8 @@ export default function HomePage() {
             <div className="each-story-div">
               <p className="story-title">I Lost an Item</p>
               <p className="story">
-                Allows users to submit a form to report an <br/> 
-                <span>item they have lost. This feature lets users <br/></span>
-                <span>provide details and upload images of the <br/></span>
-                <span>lost item to facilitate its recovery.</span>
+                Allows users to submit a form to report an item they have lost. 
+                This feature lets users provide details and upload images of the lost item to facilitate its recovery.
               </p>
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
@@ -136,20 +134,15 @@ export default function HomePage() {
             <div className="each-story-div" id="middle-story">
               <p className="story-title">I Found an Item </p>
               <p className="story">
-              Enables users to report items they have <br />
-              <span> found. This function allows them to describe<br /> </span>
-              <span>the item and its location, helping to connect<br /></span>   
-              <span> the found item with its rightful owner.</span>
+              Enables users to report items they have found. 
+              This function allows them to describe the item and its location, helping to connect the found item with its rightful owner.
               </p>
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
             
             <div className="each-story-div">
               <p className="story-title">Search for Lost Item</p>
-              <p className="story">Provides a search bar for users to look up <br />
-              <span> lost or found items. you can enter keywords or <br /> </span>
-              <span> filters to find specific items reported on the <br /></span> 
-              <span> platform.</span>
+              <p className="story">Provides a search bar for users to look up lost or found items. you can enter keywords or filters to find specific items reported on the platform.
               </p>
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
@@ -184,7 +177,7 @@ export default function HomePage() {
               </div>
 
               <div className="each-how-div">
-                <p className="how-tit">Help item get <span>to owner <b></b></span> </p>
+                <p className="how-tit">Help item get <span>to owner <br /></span> </p>
                 <div className="how-icon-topdiv">
                   <div className="how-iconbg-div"><img src={Ownerbg} alt="" className="how-iconbg" /></div>
                   <div className="how-icon-div"><img src={Owner} alt="" className="how-icon"/></div>
