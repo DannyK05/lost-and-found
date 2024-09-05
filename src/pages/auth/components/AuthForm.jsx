@@ -3,7 +3,40 @@ import { FormInput } from "../../../components/form/FormInput";
 import LoginIllustration from "../../../assets/images/login.png";
 import SignupIllustration from "../../../assets/images/signup.png";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema, signupFormSchema } from "../../../data/formSchema";
+import { useLoginMutation, useRegisterMutation } from "../../../store/api/auth";
 export const AuthForm = ({ type }) => {
+  const selectedSchema = type == "signup" ? signupFormSchema : loginFormSchema;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(selectedSchema) });
+  const [login, { isLoading }] = useLoginMutation({});
+  const [signup, { isLoadingRegister }] = useRegisterMutation();
+
+  const handleSignup = async (data) => {
+    try {
+      const response = await signup({ data }).unwrap();
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+    // console.log(data);
+  };
+
+  const handleLogin = async (data) => {
+    try {
+      const response = await login({ data }).unwrap();
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div
       className={`${
@@ -12,6 +45,7 @@ export const AuthForm = ({ type }) => {
     >
       <div className="w-2/5 hidden md:block lg:block h-full rounded-l-lg flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue">
         {type === "signup" ? (
+          // Sign up page render
           <>
             <div className="flex flex-col items-center text-lost-white space-y-4">
               <span className="text-lost-accent-light text-sm">
@@ -32,6 +66,7 @@ export const AuthForm = ({ type }) => {
             </Link>
           </>
         ) : (
+          // Login page render
           <>
             <div className="flex flex-col items-center space-y-4">
               <h1 className="text-2xl font-bold">Hello Friend 🙋‍♂️</h1>
@@ -57,6 +92,7 @@ export const AuthForm = ({ type }) => {
 
       <div className="w-full lg:w-3/5 md:w-3/5 h-full flex flex-col items-center py-10 space-y-6 rounded-r-lg p-5 bg-lost-white">
         {type === "signup" ? (
+          //Signup page render
           <>
             <img
               className="md:hidden lg:hidden w-1/3"
@@ -67,39 +103,65 @@ export const AuthForm = ({ type }) => {
               Sign Up with Lost<span className="text-lost-accent-light">&</span>
               Found Hub
             </h1>
-            <form className="flex w-[60%] flex-col items-center space-y-4">
+            <form
+              onSubmit={handleSubmit(handleSignup)}
+              className="flex w-[60%] flex-col items-center space-y-4"
+            >
               <div className="flex w-full flex-col items-center space-y-4">
                 <div className=" flex flex-col md:flex-row lg:flex-row items-center w-full space-y-4 md:space-x-4 lg:space-y-0 md:space-y-0 lg:space-x-4">
                   <FormInput
                     containerClassName="w-full md:w-[45%] lg:w-[45%]"
-                    name={"firstName"}
+                    {...register("firstName")}
                     placeholder={"First Name"}
                   />
+                  {errors.firstName?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.firstName.message}
+                    </span>
+                  )}
                   <FormInput
                     containerClassName="w-full md:w-[45%] lg:w-[45%]"
-                    name={"lastName"}
+                    {...register("lastName")}
                     placeholder={"Last Name"}
                   />
+                  {errors.lastName?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.lastName.message}
+                    </span>
+                  )}
                 </div>
                 <FormInput
                   containerClassName="w-full"
-                  s
-                  name={"emailAddress"}
-                  type={"email"}
+                  {...register("email")}
                   placeholder={"Email Address"}
                 />
+                {errors.email?.message && (
+                  <span className="text-red-500 text-xs">
+                    {errors.email.message}
+                  </span>
+                )}
                 <FormInput
                   containerClassName="w-full"
-                  name={"password"}
+                  {...register("password")}
                   type="password"
                   placeholder={"Password"}
                 />
+                {errors.password?.message && (
+                  <span className="text-red-500 text-xs">
+                    {errors.password.message}
+                  </span>
+                )}
                 <FormInput
                   containerClassName="w-full"
-                  name={"confirmPassword"}
+                  {...register("confirmPassword")}
                   type="password"
                   placeholder={"Confirm Password"}
                 />
+                {errors.confirmPassword?.message && (
+                  <span className="text-red-500 text-xs">
+                    {errors.confirmPassword.message}
+                  </span>
+                )}
               </div>
               <FormButton className="w-full md:w-[50%] lg:w-[50%]">
                 Sign Up
@@ -112,6 +174,7 @@ export const AuthForm = ({ type }) => {
             </form>
           </>
         ) : (
+          //Login page render
           <>
             <img
               className="md:hidden lg:hidden w-1/3"
@@ -122,20 +185,33 @@ export const AuthForm = ({ type }) => {
               Sign In to Lost<span className="text-lost-accent-light">&</span>
               Found Hub
             </h1>
-            <form className="flex w-full flex-col items-center mb-10 space-y-10">
+            <form
+              onSubmit={handleSubmit(handleLogin)}
+              className="flex w-full flex-col items-center mb-10 space-y-10"
+            >
               <div className="flex w-full flex-col items-center space-y-4">
                 <FormInput
                   containerClassName="w-full md:w-[60%] lg:w-[60%]"
-                  name={"emailAddress"}
-                  type={"email"}
+                  {...register("email")}
+                  type="email"
                   placeholder={"Email Address"}
                 />
+                {errors.email?.message && (
+                  <span className="text-red-500 text-xs">
+                    {errors.email.message}
+                  </span>
+                )}
                 <FormInput
                   containerClassName="w-full md:w-[60%] lg:w-[60%]"
-                  name={"password"}
+                  {...register("password")}
                   type="password"
                   placeholder={"Password"}
                 />
+                {errors.password?.message && (
+                  <span className="text-red-500 text-xs">
+                    {errors.password.message}
+                  </span>
+                )}
               </div>
 
               <FormButton className="w-full md:w-1/3 lg:w-1/3">
