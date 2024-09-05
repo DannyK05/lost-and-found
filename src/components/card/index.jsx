@@ -29,7 +29,7 @@ export default function Card({
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      <span className="absolute rotate-[-40deg] uppercase top-6 left-0 border-lost-blue border-[1px] bg-white text-lost-blue rounded-lg p-1">
+      <span className="absolute rotate-[-40deg] uppercase top-6 left-0 border-lost-blue border-[1px] bg-white text-lost-blue rounded-lg py-1 px-2">
         {type === "lost" ? "Lost" : "Found"}
       </span>
       <img
