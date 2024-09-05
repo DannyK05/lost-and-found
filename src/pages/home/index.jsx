@@ -6,14 +6,20 @@ import MagnifyingGlass from "../../assets/images/magnifying-glass.png"
 import Megaphone from "../../assets/images/megaphone.webp"
 import People from "../../assets/images/people.webp"
 import Statistics from "../../assets/images/statistics.webp"
-import Maglens from "../../assets/images/mag-lensbg.svg"
+import Maglens from "../../assets/images/mag-lens.svg"
+import Maglensbg from "../../assets/images/mag-lensbg.svg"
+import Msgbg from "../../assets/images/msg-bg.svg"
+import Msg from "../../assets/images/msg.svg"
+import Ownerbg from "../../assets/images/ownerbg.svg"
+import Owner from "../../assets/images/owner.svg"
+
 
 
 export default function HomePage() {
   return (
     <>
       <Layout>
-        <div className="top-part">
+        <section className="top-part">
           <div id="detailed-info">
             <div id="info">
               <div id="title-div"><p id="bold-title">Lost<span id="qtn">&</span>Found Hub</p></div>
@@ -25,8 +31,8 @@ export default function HomePage() {
                   worried owners.</span>
                 </p>
               </div>
-              
             </div>
+
             <div className="outer">
               <div className="each">
                 <div className="img-div"><img src={Megaphone} alt="A picture of a megaphone representing report an item" className="img"/></div>
@@ -52,7 +58,6 @@ export default function HomePage() {
               </div>
               
             </div>
-          
           </div>
         
           <div className="stat-container">
@@ -74,21 +79,25 @@ export default function HomePage() {
             </div>
           </div>
         
-        </div>
+        </section>
       
-        <div className="about-tit-div">
-          <div className="line" id="line-l"> </div>
-          <p className="about-tit">About Lost&Found Hub</p>
-          <div className="line" id="line-r"> </div>
-        </div>
 
-        <div id="ab-dit">
-          <p id="ab">We help reunite missing stuffs to owner by using an information on the stuff.
-            Search out <br/> <span>database for more than 1000 stuffs to find your lost items</span>
-        </p>
-        </div>
+        <section className="abt-laf">
+          <div className="about-how-tit-div">
+            <div className="line" id="line-l"> </div>
+            <p className="about-how-tit">About Lost&Found Hub</p>
+            <div className="line" id="line-r"> </div>
+          </div>
 
-        <div className="web-info-topdiv">
+          <div id="ab-dit">
+            <p id="ab">We help reunite missing stuffs to owner by using an information on the stuff.
+              Search out <br/> <span>database for more than 1000 stuffs to find your lost items</span>
+            </p>
+          </div>
+        </section>
+       
+
+        <section className="web-info-topdiv">
           <div className="web-info-div">
             <div id="bold-div">
               <p id="bold">We simplify the search for lost stuffs</p>
@@ -109,9 +118,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="story-topdiv">
+        <section className="story-topdiv">
           <div className="each-story-topdiv">
             <div className="each-story-div">
               <p className="story-title">I Lost an Item</p>
@@ -124,58 +133,82 @@ export default function HomePage() {
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
             
-            <div className="each-story-div">
-              <p className="story-title">I Lost an Item</p>
+            <div className="each-story-div" id="middle-story">
+              <p className="story-title">I Found an Item </p>
               <p className="story">
-                Allows users to submit a form to report an <br/> 
-                <span>item they have lost. This feature lets users <br/></span>
-                <span>provide details and upload images of the <br/></span>
-                <span>lost item to facilitate its recovery.</span>
+              Enables users to report items they have <br />
+              <span> found. This function allows them to describe<br /> </span>
+              <span>the item and its location, helping to connect<br /></span>   
+              <span> the found item with its rightful owner.</span>
               </p>
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
             
             <div className="each-story-div">
-              <p className="story-title">I Lost an Item</p>
-              <p className="story">
-                Allows users to submit a form to report an <br/> 
-                <span>item they have lost. This feature lets users <br/></span>
-                <span>provide details and upload images of the <br/></span>
-                <span>lost item to facilitate its recovery.</span>
+              <p className="story-title">Search for Lost Item</p>
+              <p className="story">Provides a search bar for users to look up <br />
+              <span> lost or found items. you can enter keywords or <br /> </span>
+              <span> filters to find specific items reported on the <br /></span> 
+              <span> platform.</span>
               </p>
               <div className="arrow-div"><img src={Arrow} alt="" id="story-arrrow"/></div>
             </div>
           </div>
-        </div>
+        </section>
 
-        .<div className="about-how-tit-div">
-          <div className="line" id="line-r"> </div>
-          <p className="about-how-tit">​How It Works</p>
-          <div className="line" id="line-l"> </div>
-        </div>
-
-        <div className="how-top-div">
-          <div className="each-how-div">
-            <p className="how-tit">View the announcement</p>
-            <div className="how-icon-div"><img src={Maglens} alt="" className="how-icon"/></div>
-            <p className="how-details">if you've lost and found an item, check out lost and found items ads</p>
+        <section className="ahtd">
+          <div className="about-how-tit-div">
+            <div className="line" id="line-r"> </div>
+            <p className="about-how-tit">​How It Works</p>
+            <div className="line" id="line-l"> </div>
           </div>
 
-          
-          <div className="each-how-div">
-            <p className="how-tit">View the announcement</p>
-            <div className="how-icon-div"><img src={Maglens} alt="" className="how-icon"/></div>
-            <p className="how-details">if you've lost and found an item, check out lost and found items ads</p>
+          <div className="how-topdiv">
+            <div className="each-top-div">
+              <div className="each-how-div">
+                <p className="how-tit">View the <span>announcement <br /> </span></p>
+                <div className="how-icon-topdiv">
+                  <div className="how-iconbg-div"><img src={Maglensbg} alt="" className="how-iconbg" /></div>
+                  <div className="how-icon-div"><img src={Maglens} alt="" className="how-icon"/></div>
+                </div>
+                <p className="how-details">if you've lost and found an item, <br /> <span>check out lost and found items<br /></span>   <span>ads</span> </p>
+              </div>
+              
+              <div className="each-how-div" id="middle-how">
+                <p className="how-tit">Create an <span>annoucement <br /></span> </p>
+                <div className="how-icon-topdiv">
+                  <div className="how-iconbg-div"><img src={Msgbg} alt="" className="how-iconbg" /></div>
+                  <div className="how-icon-div"><img src={Msg} alt="" className="how-icon"/></div>
+                </div>
+                <p className="how-details">create an announcement about <br /> <span>a found or lost item and publihs<br /></span>  <span>it on the site</span> </p>
+              </div>
+
+              <div className="each-how-div">
+                <p className="how-tit">Help item get <span>to owner <b></b></span> </p>
+                <div className="how-icon-topdiv">
+                  <div className="how-iconbg-div"><img src={Ownerbg} alt="" className="how-iconbg" /></div>
+                  <div className="how-icon-div"><img src={Owner} alt="" className="how-icon"/></div>
+                </div>
+                <p className="how-details">contact the person who <br /> <span>found/lost item so that it can be<br /> </span> <span>given to the person</span></p>
+              </div>
+
+            </div>
           </div>
+        </section>
 
-          <div className="each-how-div">
-            <p className="how-tit">View the announcement</p>
-            <div className="how-icon-div"><img src={Maglens} alt="" className="how-icon"/></div>
-            <p className="how-details">if you've lost and found an item, check out lost and found items ads</p>
+        <section className="register-topdiv">
+          <div className="register-div">
+            <div className="qtnn-div">
+              <p className="qtnn">
+                Did you know that 1 in 3 personal items goes missing at some point? <br />
+                <span>With our campus Lost and Found system, you can significantly improve</span>  <br />
+                <span>the chances of recovering your valuable belongings and reuniting them</span>  <br />
+                <span>with their rightful owners.</span> 
+              </p>
+            </div>
+            <div className="button-div"><button id="button">Register Your Item</button></div>
           </div>
-
-        </div>
-
+        </section>
 
       </Layout>
     </>

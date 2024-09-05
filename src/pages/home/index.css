@@ -3,7 +3,7 @@
 
 
 body {
-  padding-bottom: 300px;
+  padding-bottom: 120vw;
 }
 
 .top-part {
@@ -24,7 +24,7 @@ body {
 
 #bold-title {
   color: white;
-  font-size: 4vw;
+  font-size: 5vw;
   font-weight: bold;
   font-family: "suse";
 }
@@ -40,13 +40,12 @@ body {
   align-items: center;
 }
 
-
 #details{
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
-  font-size: 2vw;
+  font-size: 1.7vw;
 }
 
 .outer {
@@ -58,13 +57,14 @@ body {
   width: 60vw;
   padding: 0.7vw 1.5vw;
   border-radius: 10px;
+  margin-top: 2vw;
 }
 
 .each {
   display: flex;
   flex-direction: column;
   width: 8vw;
-  padding: 0.2vw 1.7vw;
+  padding: 0.5vw 5.5vw;
   background-color: white;
   align-items: center;
   border-radius: 10px;
@@ -82,13 +82,15 @@ body {
 .e-text {
   color: rgb(170, 202, 253);
   text-wrap: nowrap;
-  font-size: 1.2vw;
+  font-size: 1vw;
 }
 
 .stat-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 5vw;
+  margin-bottom: 2vw;
 }
 
 .stat{
@@ -117,10 +119,15 @@ body {
   font-size: 1.1vw;
 }
 
+.abt-laf {
+  margin-top: 3vw;
+}
+
 .about-how-tit-div{
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 2vw;
 }
 
 .about-how-tit {
@@ -167,9 +174,10 @@ body {
 .web-info-div {
   display: flex;
   flex-direction: column;
-  background-color: rgba(232, 230, 230, 0.84);
   padding: 2vw;
+  background-color: rgba(205, 209, 211, 0.795);
   border-radius: 10px;
+  margin-top: 3vw;
 }
 
 #bold-div {
@@ -190,7 +198,7 @@ body {
 }
 
 #bold-info {
-  font-size: 1.3vw;
+  font-size: 1.2vw;
 }
 
 .people-pics-div {
@@ -205,11 +213,11 @@ body {
 .story-topdiv {
   display: flex;
   justify-content: center;
+  margin-top: 3vw;
 }
 
 .each-story-topdiv {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -220,16 +228,23 @@ body {
   padding: 2vw;
   background-color: rgba(170, 202, 253, 0.84);
   border-radius: 10px;
+  max-width: 27vw;
+  position: relative;
+}
+
+#middle-story {
+  margin: 2vw;
 }
 
 .story-title {
   font-weight: bold;
+  font-size: 1.6vw;
+  text-wrap: nowrap;
 }
 
 .story{
   display: flex;
   flex-direction: column;
-  align-items: center;
   font-size: 1.28vw;
 }
 
@@ -237,15 +252,26 @@ body {
   display: flex;
   width: 4vw;
   justify-content: baseline;
+  position: absolute;
+  top: 17.745vw;
 }
 
 #story-arrrow {
   width: 100%;
 }
 
-.how-top-div {
+.ahtd {
+  margin: 3vw;
+}
+
+.how-topdiv{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+.each-top-div {
+  display: flex;
+  justify-content: center;
 }
 
 .each-how-div {
@@ -253,12 +279,91 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
+#middle-how {
+  margin: 0 9vw;
+}
+
 .how-tit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1.3vw;
   font-weight: bold;
 }
 
+.how-icon-topdiv {
+  display: flex;
+  position: relative;
+  margin: 1vw 0;
+}
+
+.how-iconbg-div {
+  display: flex;
+  height: 9vw;
+}
+
+.how-iconbg {
+  width: 100%;
+}
+
 .how-icon-div {
   display: flex;
-  width: 300px;
+  width: 1vw;
+}
+
+.how-icon{
+  display: flex;
+  width: 3vw;
+  position: absolute;
+  object-fit: contain;
+  object-position: center;
+  z-index: 5;
+  top: 35%;
+  right: 40%;
+}
+
+.how-details {
+  display: flex;
+  font-size: 1.1vw;
+  flex-direction: column;
+  align-items: center;
+  text-wrap: nowrap
+}
+
+.register-topdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.register-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(205, 209, 211, 0.795);
+  padding: 2vw 2vw;
+  border-radius: 10px;
+  margin-top: 3vw;
+}
+
+.qtnn-div {
+  margin-right: 10vw;
+}
+
+.qtnn {
+  font-size: 1vw;
+}
+
+#button {
+  background-color: rgb(0, 87, 225);
+  color: white;
+  padding: 1vw 2vw;
+  font-size: 1vw;
+  text-wrap: nowrap;
+  border-radius: 10px;
+  transition: opacity 1ms;
+}
+
+#button:hover {
+  opacity: 70%;
 }
