@@ -2,13 +2,24 @@ import { FormButton } from "../../../components/form/FormButton";
 import { FormInput } from "../../../components/form/FormInput";
 import LoginIllustration from "../../../assets/images/login.png";
 import SignupIllustration from "../../../assets/images/signup.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginFormSchema, signupFormSchema } from "../../../data/formSchema";
 import { useLoginMutation, useRegisterMutation } from "../../../store/api/auth";
+import { useDispatch } from "react-redux";
+import { setToLocalStorage } from "../../../utilities/storage";
+import {
+  LOST_AND_FOUND_TOKEN,
+  LOST_AND_FOUND_USER,
+} from "../../../utilities/constant";
+import { setCredentials } from "../../../store/features/authSlice";
+import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
+import InfoIcon from "../../../assets/icons/InfoIcon";
+import { useState } from "react";
 export const AuthForm = ({ type }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const selectedSchema = type == "signup" ? signupFormSchema : loginFormSchema;
   const {
     register,
@@ -16,33 +27,74 @@ export const AuthForm = ({ type }) => {
     watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(selectedSchema) });
+  const [errorMessage, setErrorMessage] = useState();
   const [login, { isLoading }] = useLoginMutation({});
   const [signup, { isLoadingRegister }] = useRegisterMutation();
 
   const handleSignup = async (data) => {
     try {
-      const response = await signup({ data }).unwrap();
-      console.log(response);
+      const response = await signup(data).unwrap();
+      const token = response.data.accessToken;
+      const user = response.data.user;
+
+      setToLocalStorage(LOST_AND_FOUND_TOKEN, token);
+      setToLocalStorage(LOST_AND_FOUND_USER, user);
+
+      dispatch(setCredentials({ token, user }));
+      setTimeout(() => {
+        navigate("/home");
+      }, 500);
     } catch (err) {
-      console.log(err);
+      if (err && err.data.message) {
+        const error = err.data.message;
+        setErrorMessage(error);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 2000);
+      } else {
+        setErrorMessage(null);
+      }
     }
-    // console.log(data);
   };
 
   const handleLogin = async (data) => {
     try {
-      const response = await login({ data }).unwrap();
-      console.log(response);
+      const response = await login(data).unwrap();
+      const token = response.data.accessToken;
+      const user = response.data.user;
+
+      setToLocalStorage(LOST_AND_FOUND_TOKEN, token);
+      setToLocalStorage(LOST_AND_FOUND_USER, user);
+      dispatch(setCredentials({ token, user }));
+      setTimeout(() => {
+        navigate("/home");
+      }, 500);
     } catch (err) {
-      console.log(err);
+      if (err && err.data.message) {
+        const error = err.data.message;
+        setErrorMessage(error);
+        setTimeout(() => {
+          setErrorMessage(null);
+        }, 2000);
+      } else {
+        setErrorMessage(null);
+      }
     }
   };
   return (
     <div
       className={`${
         type === "signup" ? "flex-row-reverse" : ""
-      } flex w-full h-full md:full lg:w-3/4 md:w-full md:h-[60%] lg:h-[80%] items-center shadow-md `}
+      } flex  relative w-full h-full md:full lg:w-3/4 md:w-full md:h-[60%] lg:h-[80%] items-center shadow-md `}
     >
+      {errorMessage && (
+        <div className="absolute text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
+          <span>
+            <InfoIcon />{" "}
+          </span>{" "}
+          <span>{errorMessage}</span>
+        </div>
+      )}
       <div className="w-2/5 hidden md:block lg:block h-full rounded-l-lg flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue">
         {type === "signup" ? (
           // Sign up page render
@@ -163,8 +215,17 @@ export const AuthForm = ({ type }) => {
                   </span>
                 )}
               </div>
-              <FormButton className="w-full md:w-[50%] lg:w-[50%]">
-                Sign Up
+              <FormButton
+                disabled={isLoadingRegister}
+                className="w-full md:w-[50%] lg:w-[50%]"
+              >
+                {isLoadingRegister ? (
+                  <>
+                    <FormLoadingSpinner />
+                  </>
+                ) : (
+                  "Sign up"
+                )}
               </FormButton>
               <Link to={"/"}>
                 <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">
@@ -214,8 +275,17 @@ export const AuthForm = ({ type }) => {
                 )}
               </div>
 
-              <FormButton className="w-full md:w-1/3 lg:w-1/3">
-                Sign In
+              <FormButton
+                disabled={isLoading}
+                className="w-full md:w-1/3 lg:w-1/3"
+              >
+                {isLoading ? (
+                  <span className="fill-white w-full flex items-center justify-center">
+                    <FormLoadingSpinner />
+                  </span>
+                ) : (
+                  "Sign In"
+                )}
               </FormButton>
               <Link to={"/signup"}>
                 <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">

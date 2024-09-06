@@ -1,13 +1,26 @@
 import { useState } from "react";
 import ProfileIcon from "../assets/icons/ProfileIcon";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MenuIcon from "../assets/icons/MenuIcon";
 import CloseXIcon from "../assets/icons/CloseXIcon";
+import { removeFromLocalStorage } from "../utilities/storage";
+import {
+  LOST_AND_FOUND_TOKEN,
+  LOST_AND_FOUND_USER,
+} from "../utilities/constant";
 
 export default function Layout({ children }) {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
+  };
+  const handleLogout = () => {
+    removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
+    removeFromLocalStorage(LOST_AND_FOUND_USER);
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
   };
   return (
     <main className="w-full h-[100vh]">
@@ -73,6 +86,12 @@ export default function Layout({ children }) {
               <ProfileIcon />{" "}
             </span>
             <p>Shawn Carter</p>
+            <span
+              onClick={handleLogout}
+              className="text-lost-accent-light cursor-pointer active:underline"
+            >
+              Log out
+            </span>
           </div>
         </ul>
         <div className="flex items-center md:w-1/5 lg:w-1/5 justify-center">
@@ -81,6 +100,12 @@ export default function Layout({ children }) {
               <ProfileIcon />{" "}
             </span>
             <p>Shawn Carter</p>
+            <span
+              onClick={handleLogout}
+              className="text-lost-accent-light cursor-pointer active:underline"
+            >
+              Log out
+            </span>
           </div>
         </div>
         {isVisible ? (
