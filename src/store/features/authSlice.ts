@@ -1,8 +1,22 @@
-import { type PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  LOST_AND_FOUND_TOKEN,
+  LOST_AND_FOUND_USER,
+} from "../../utilities/constant";
+import { getFromLocalStorage } from "../../utilities/storage";
+import { TUser } from "../types/auth";
 
-const initialState = {
-  user: "",
-  token: "",
+type TAuthState = {
+  user: null | string | TUser;
+  token: null | string;
+};
+const initialState: TAuthState = {
+  user: getFromLocalStorage(LOST_AND_FOUND_USER)
+    ? JSON.parse(getFromLocalStorage(LOST_AND_FOUND_USER) || "{}")
+    : null,
+  token: getFromLocalStorage(LOST_AND_FOUND_TOKEN)
+    ? getFromLocalStorage(LOST_AND_FOUND_TOKEN)
+    : null,
 };
 export const authSlice = createSlice({
   name: "auth",
