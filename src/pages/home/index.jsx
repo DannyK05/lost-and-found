@@ -12,6 +12,7 @@ import Msgbg from "../../assets/images/msg-bg.svg";
 import Msg from "../../assets/images/msg.svg";
 import Ownerbg from "../../assets/images/ownerbg.svg";
 import Owner from "../../assets/images/owner.svg";
+import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -28,8 +29,7 @@ export default function HomePage() {
               <div id="details-div">
                 <p id="details">
                   Our website is designed to make it easier and faster to
-                  <br />
-                  <span> reconnect lost items with their rightful owners.</span>
+                  reconnect lost items with their rightful owners.
                 </p>
               </div>
             </div>
@@ -41,6 +41,8 @@ export default function HomePage() {
                     src={Megaphone}
                     alt="A picture of a megaphone representing report an item"
                     className="img"
+                    width={82}
+                    height={82}
                   />
                 </div>
                 <p className="e-text">Report an Item</p>
@@ -52,6 +54,8 @@ export default function HomePage() {
                     src={MagnifyingGlass}
                     alt="A picture of a megaphone representing report an item"
                     className="img"
+                    width={82}
+                    height={82}
                   />
                 </div>
                 <p className="e-text">Found Item</p>
@@ -63,6 +67,8 @@ export default function HomePage() {
                     src={Bell}
                     alt="A picture of a megaphone representing report an item"
                     className="img"
+                    width={82}
+                    height={82}
                   />
                 </div>
                 <p className="e-text">Notify owner</p>
@@ -74,6 +80,8 @@ export default function HomePage() {
                     src={Statistics}
                     alt="A picture of a megaphone representing report an item"
                     className="img"
+                    width={82}
+                    height={82}
                   />
                 </div>
                 <p className="e-text">Manage Reports</p>
@@ -86,22 +94,18 @@ export default function HomePage() {
               <div className="e-stat">
                 <p className="num">100+</p>
                 <p className="u-num">
-                  Items that were found using this <br /> <span>service</span>{" "}
+                  Items that were found using this service
                 </p>
               </div>
 
               <div className="e-stat">
                 <p className="num">150+</p>
-                <p className="u-num">
-                  New ads on the site <br /> <span>every day</span>{" "}
-                </p>
+                <p className="u-num">New ads on the site every day</p>
               </div>
 
               <div className="e-stat">
                 <p className="num">110+</p>
-                <p className="u-num">
-                  Items that were returned <br /> <span>to the owners</span>{" "}
-                </p>
+                <p className="u-num">Items that were returned to the owners</p>
               </div>
             </div>
           </div>
@@ -121,11 +125,8 @@ export default function HomePage() {
           <div id="ab-dit">
             <p id="ab">
               We help reunite lost items with their owners by utilizing details
-              found on the items. <br />{" "}
-              <span>
-                Browse our database of over 1,000 listings to find your missing
-                belongings.
-              </span>
+              found on the items. Browse our database of over 1,000 listings to
+              find your missing belongings.
             </p>
           </div>
         </section>
@@ -139,17 +140,21 @@ export default function HomePage() {
             <div className="info-pic-div">
               <div className="bold-info-div">
                 <p id="bold-info">
-                  Our website streamlines the process of reuniting <br />
-                  lost belongings with their concerned owners. With a
-                  user-friendly platform, <br />
-                  owners can quickly provide essential details about their{" "}
-                  <br />
-                  missing items
+                  Our website streamlines the process of reuniting lost
+                  belongings with their concerned owners. With a user-friendly
+                  platform, owners can quickly provide essential details about
+                  their missing items
                 </p>
               </div>
 
               <div className="people-pics-div">
-                <img src={People} alt="" id="people-pics" />
+                <img
+                  src={People}
+                  alt="people illustration"
+                  id="people-pics"
+                  width={273}
+                  height={175}
+                />
               </div>
             </div>
           </div>
@@ -166,7 +171,13 @@ export default function HomePage() {
                 the chances of reuniting with the lost item.
               </p>
               <div className="arrow-div">
-                <img src={Arrow} alt="" id="story-arrrow" />
+                <img
+                  src={Arrow}
+                  width={55}
+                  height={55}
+                  alt="arrow"
+                  id="story-arrrow"
+                />
               </div>
             </div>
 
@@ -178,7 +189,13 @@ export default function HomePage() {
                 with their rightful owners, making recovery easier and faster.
               </p>
               <div className="arrow-div">
-                <img src={Arrow} alt="" id="story-arrrow" />
+                <img
+                  src={Arrow}
+                  width={55}
+                  height={55}
+                  alt="arrow"
+                  id="story-arrrow"
+                />
               </div>
             </div>
 
@@ -190,7 +207,13 @@ export default function HomePage() {
                 find specific items reported on the platform.
               </p>
               <div className="arrow-div">
-                <img src={Arrow} alt="" id="story-arrrow" />
+                <img
+                  src={Arrow}
+                  width={55}
+                  height={55}
+                  alt="arrow-icon"
+                  id="story-arrrow"
+                />
               </div>
             </div>
           </div>
@@ -201,7 +224,7 @@ export default function HomePage() {
             <div className="line" id="line-r">
               {" "}
             </div>
-            <p className="about-how-tit">​How It Works</p>
+            <p className="about-how-tit">How It Works</p>
             <div className="line" id="line-l">
               {" "}
             </div>
@@ -210,77 +233,88 @@ export default function HomePage() {
           <div className="how-topdiv">
             <div className="each-top-div">
               <div className="each-how-div">
-                <p className="how-tit">
-                  View the{" "}
-                  <span>
-                    announcement <br />{" "}
-                  </span>
-                </p>
+                <p className="how-tit">View the announcement</p>
                 <div className="how-icon-topdiv">
                   <div className="how-iconbg-div">
-                    <img src={Maglensbg} alt="" className="how-iconbg" />
+                    <img
+                      src={Maglensbg}
+                      width={117}
+                      height={123}
+                      alt="megaphone-icon-bg"
+                      className="how-iconbg"
+                    />
                   </div>
                   <div className="how-icon-div">
-                    <img src={Maglens} alt="" className="how-icon" />
+                    <img
+                      src={Maglens}
+                      width={41}
+                      height={37}
+                      alt="megaphone-icon"
+                      className="how-icon"
+                    />
                   </div>
                 </div>
                 <p className="how-details">
-                  if you've lost and found an item, <br />{" "}
-                  <span>
-                    check out lost and found items
-                    <br />
-                  </span>{" "}
-                  <span>ads</span>{" "}
+                  if you've lost and found an item, check out lost and found
+                  items ads
                 </p>
               </div>
 
               <div className="each-how-div" id="middle-how">
-                <p className="how-tit">
-                  Create an{" "}
-                  <span>
-                    annoucement <br />
-                  </span>{" "}
-                </p>
+                <p className="how-tit">Create an annoucement</p>
                 <div className="how-icon-topdiv">
                   <div className="how-iconbg-div">
-                    <img src={Msgbg} alt="" className="how-iconbg" />
+                    <img
+                      src={Msgbg}
+                      width={117}
+                      height={123}
+                      alt="message-icon-bg"
+                      className="how-iconbg"
+                    />
                   </div>
                   <div className="how-icon-div">
-                    <img src={Msg} alt="" className="how-icon" />
+                    <img
+                      src={Msg}
+                      width={41}
+                      height={37}
+                      alt="message-icon"
+                      className="how-icon"
+                    />
                   </div>
                 </div>
                 <p className="how-details">
-                  Create an announcement about <br />{" "}
-                  <span>
-                    a found or lost item and list
-                    <br />
-                  </span>{" "}
-                  <span>it on the site</span>{" "}
+                  Create an announcement about a found or lost item and list it
+                  on the site{" "}
                 </p>
               </div>
 
               <div className="each-how-div">
                 <p className="how-tit">
-                  Help unite owners with{" "}
-                  <span>
-                    their missing stuffs <br />
-                  </span>{" "}
+                  Help unite owners with their missing stuffs
                 </p>
                 <div className="how-icon-topdiv">
                   <div className="how-iconbg-div">
-                    <img src={Ownerbg} alt="" className="how-iconbg" />
+                    <img
+                      src={Ownerbg}
+                      width={117}
+                      height={123}
+                      alt="owner-bg"
+                      className="how-iconbg"
+                    />
                   </div>
                   <div className="how-icon-div">
-                    <img src={Owner} alt="" className="how-icon" />
+                    <img
+                      src={Owner}
+                      width={41}
+                      height={37}
+                      alt="owner"
+                      className="how-icon"
+                    />
                   </div>
                 </div>
                 <p className="how-details">
-                  Contact the school's lost and <br />{" "}
-                  <span>
-                    {" "}
-                    found, to drop off or collect
-                    <br /> a misplaced item
-                  </span>{" "}
+                  Contact the school's lost and found, to drop off or collect a
+                  misplaced item
                 </p>
               </div>
             </div>
@@ -288,17 +322,16 @@ export default function HomePage() {
         </section>
 
         <section className="register-topdiv pb-4">
-          <div className="register-div w-3/5">
+          <div className="register-div">
             <div className="qtnn-div">
               <p className="qtnn">
                 Did you know 1 in 3 personal items goes missing at some point?
-                Our campus Lost and Found system helps boost your chances of
-                recovering valuable belongings and reuniting them with their
-                owners.{" "}
               </p>
             </div>
             <div className="button-div">
-              <button id="button">Register Your Item</button>
+              <button id="button">
+                <NavLink to={"/lost-items"}> Your Item</NavLink>
+              </button>
             </div>
           </div>
         </section>
