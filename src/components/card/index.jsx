@@ -29,7 +29,11 @@ export default function Card({
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      <span className="absolute rotate-[-40deg] uppercase top-6 left-0 border-lost-blue border-[1px] bg-white text-lost-blue rounded-lg py-1 px-2">
+      <span
+        className={` ${
+          type === "lost" ? "px-4" : ""
+        } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+      >
         {type === "lost" ? "Lost" : "Found"}
       </span>
       <img
@@ -40,29 +44,33 @@ export default function Card({
         height={168}
       />
       <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
-        <h1 className="text-lg font-bold text-lost-blue">{title}</h1>
-        <div className="flex items-center space-x-2">
-          <span className="text-lost-blue">
+        <h1 className="text-sm text-center lg:text-lg font-bold text-lost-blue">
+          {title}
+        </h1>
+        <div className="flex items-center text-xs lg:text-sm text-lost-blue space-x-2">
+          <span className="">
             <LocationIcon />
           </span>
           <span>{location}</span>
         </div>
       </div>
       {isVisible ? (
-        <p className="text-lost-blue">{description}</p>
+        <p className="text-lost-blue text-xs lg:text-sm">{description}</p>
       ) : (
         <div className="w-full">
           <div className="flex items-center space-x-2">
             <span className="text-lost-blue">
               <BagIcon />
             </span>
-            <p className="text-sm text-lost-blue font-semi-bold">{category}</p>
+            <p className="text-xs lg:text-sm text-lost-blue font-semi-bold">
+              {category}
+            </p>
           </div>
           <div className="flex items-center space-x-2">
             <span className="text-lost-blue">
               <KeyIcon />
             </span>
-            <p className="text-sm text-lost-blue font-semi-bold">
+            <p className="text-xs lg:text-sm text-lost-blue font-semi-bold">
               {uniqueIdentifier}
             </p>
           </div>
@@ -70,25 +78,35 @@ export default function Card({
             <span className="text-lost-blue">
               <CalendarIcon />
             </span>
-            <p className="text-sm fill-lost-blue text-lost-blue font-semi-bold">
+            <p className="text-xs lg:text-sm fill-lost-blue text-lost-blue font-semi-bold">
               {foundDate}
             </p>
           </div>
         </div>
       )}
 
-      <div className="w-full flex flex-col lg:flex-row lg:space-y-0 md:flex-row md:space-y-0 items-center space-y-2 lg:justify-between md:justify-between">
+      <div className="w-full flex lg:flex-row lg:space-y-0 md:flex-row md:space-y-0 items-center lg:justify-between md:justify-between">
         <button
           onClick={toggleDetails}
-          className=" w-4/5 flex items-center space-x-2 md:w-2/5 lg:w-2/5  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 pt-3 pb-2"
+          className={`${
+            isVisible ? "bg-lost-blue " : ""
+          } w-2/5 flex items-center justify-center space-x-2 md:w-[45%] lg:w-2/5  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 py-2`}
         >
-          <p>Details</p>
-          <span>
+          <p
+            className={`${
+              isVisible ? "text-white" : ""
+            } hidden md:block lg:block text-xs lg:text-sm`}
+          >
+            Details
+          </p>
+          <span className={`${isVisible ? "text-white " : ""}`}>
             <InfoIcon />
           </span>
         </button>{" "}
-        <button className=" w-4/5 flex items-center md:w-[45%] lg:w-[45%] space-x-2 bg-lost-blue text-white border-2 shadow-lg rounded-lg px-4 pt-3 pb-2">
-          <p>{type == "lost" ? "Found Item" : "Claim Item"}</p>{" "}
+        <button className=" w-4/5 flex items-center lg:pl-8 lg:py-3 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] space-x-1 md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg px-4 py-2">
+          <p className="text-xs lg:text-sm">
+            {type == "lost" ? "Found" : "Claim"}
+          </p>{" "}
           <span>
             {" "}
             <CheckIcon />{" "}

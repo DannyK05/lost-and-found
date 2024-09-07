@@ -8,15 +8,19 @@
 }
 
 @font-face {
-  font-family: "Noto_Sans";
-  src: url("./assets/fonts/Noto_Sans/NotoSans-VariableFont_wdth,wght.ttf");
+  font-family: "Ubuntu";
+  src: url("./assets/fonts/Ubuntu/Ubuntu-Regular.ttf");
+}
+@font-face {
+  font-family: "Orbitron";
+  src: url("./assets/fonts/Orbitron/Orbitron-VariableFont_wght.ttf");
 }
 
 * {
   margin: 0;
   box-sizing: border-box;
   height: auto;
-  font-family: "Noto_Sans", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 body {
   background-color: #dfe3e6;
@@ -31,19 +35,11 @@ h1 {
 nav svg.ionicon:hover {
   fill: #fecc50;
 }
-.active-nav {
-  display: flex;
-  align-items: center;
+ul li a.active-nav {
+  font-family: "Orbitron";
+  transition: 500ms;
+  padding-bottom: 1px;
 }
-.active-nav::before {
-  content: "(";
-  margin-right: 2px;
-}
-.active-nav::after {
-  content: ")";
-  margin-left: 2px;
-}
-
 .card_container .card:first-of-type {
   margin-left: 8px;
   margin-top: 8px;
