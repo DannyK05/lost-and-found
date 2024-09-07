@@ -29,7 +29,11 @@ export default function Card({
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      <span className="absolute rotate-[-40deg] uppercase top-6 left-0 border-lost-blue border-[1px] bg-white text-lost-blue rounded-lg py-1 px-2">
+      <span
+        className={` ${
+          type === "lost" ? "px-4" : ""
+        } absolute rotate-[-40deg] uppercase top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+      >
         {type === "lost" ? "Lost" : "Found"}
       </span>
       <img
@@ -41,8 +45,8 @@ export default function Card({
       />
       <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
         <h1 className="text-lg font-bold text-lost-blue">{title}</h1>
-        <div className="flex items-center space-x-2">
-          <span className="text-lost-blue">
+        <div className="flex items-center  text-lost-blue space-x-2">
+          <span className="">
             <LocationIcon />
           </span>
           <span>{location}</span>

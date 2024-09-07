@@ -1,10 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
-
-
-body {
-  padding-bottom: 90vw;
-}
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap");
 
 .top-part {
   background-color: rgb(1, 0, 102);
@@ -14,13 +9,13 @@ body {
 #detailed-info {
   display: flex;
   flex-direction: column;
-} 
+}
 
 #info {
   display: flex;
   flex-direction: column;
   align-items: center;
-} 
+}
 
 #bold-title {
   color: white;
@@ -34,13 +29,14 @@ body {
   color: rgb(254, 204, 80);
 }
 
-#detailed-info{
+#detailed-info {
+  padding-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#details{
+#details {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,7 +76,7 @@ body {
 }
 
 .e-text {
-  color: rgb(170, 202, 253);
+  color: rgb(87, 129, 196);
   text-wrap: nowrap;
   font-size: 1vw;
 }
@@ -93,13 +89,13 @@ body {
   margin-bottom: 2vw;
 }
 
-.stat{
+.stat {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 10vw;
 }
 
-.e-stat{
+.e-stat {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +119,7 @@ body {
   margin-top: 3vw;
 }
 
-.about-how-tit-div{
+.about-how-tit-div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -242,7 +238,7 @@ body {
   text-wrap: nowrap;
 }
 
-.story{
+.story {
   font-size: 1.1vw;
 }
 
@@ -262,7 +258,7 @@ body {
   margin: 3vw;
 }
 
-.how-topdiv{
+.how-topdiv {
   display: flex;
   justify-content: center;
 }
@@ -310,7 +306,7 @@ body {
   width: 1vw;
 }
 
-.how-icon{
+.how-icon {
   display: flex;
   width: 3vw;
   position: absolute;
@@ -326,7 +322,7 @@ body {
   font-size: 1.1vw;
   flex-direction: column;
   align-items: center;
-  text-wrap: nowrap
+  text-wrap: nowrap;
 }
 
 .register-topdiv {

@@ -108,6 +108,7 @@ export const AuthForm = ({ type }) => {
               <img
                 className="w-2/3"
                 src={LoginIllustration}
+                alt="Login Illustration"
                 attributeName="Image by storyset on Freepik"
               />
             </div>
@@ -129,6 +130,7 @@ export const AuthForm = ({ type }) => {
               <img
                 className="w-2/3"
                 src={SignupIllustration}
+                alt="Signup Illustration"
                 attributeName="Image by storyset on Freepik"
               />
             </div>

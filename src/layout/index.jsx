@@ -24,14 +24,15 @@ export default function Layout({ children }) {
   };
   return (
     <main className="w-full h-[100vh]">
-      <nav className="z-[1000] flex items-center fixed w-full bg-lost-blue pt-4 pb-6 px-4 justify-between md:justify-normal lg: justify-normal">
+      <nav className="z-[1000] flex items-center fixed w-full bg-[#010066] pt-4 pb-6 px-4 justify-between md:justify-between lg:justify-between">
         <h1 className="text-2xl w-1/4 text-white font-bold">
           Lost<span className="text-lost-accent-light">&</span>Found Hub
         </h1>
+        <hr className=" hidden lg:block border-lost-accent-light border-[1px] absolute  z-[10000] top-11 left-[20%] w-[15%]" />
         <ul
           className={`${
             isVisible ? "" : "hidden"
-          } px-8 py-2 z-10 md:p-0 md:flex lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto md:w-3/5 lg:3/5 lg:flex-row md:flex-row md:static lg:static bg-lost-blue top-10 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white items:end md:items-center lg:items-center  md:text-sm`}
+          } px-6 py-4 z-10  md:pl-4 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto md:w-2/5 lg:w-2/5 lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-10 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
         >
           <span
             onClick={toggleVisibility}
@@ -57,7 +58,7 @@ export default function Layout({ children }) {
             }
           >
             <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
-              Report Lost Items
+              Lost Items
             </li>
           </NavLink>
           <NavLink
@@ -67,7 +68,7 @@ export default function Layout({ children }) {
             }
           >
             <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
-              View Items
+              Found Items
             </li>
           </NavLink>
           <NavLink
@@ -80,8 +81,8 @@ export default function Layout({ children }) {
               About Us
             </li>
           </NavLink>
-
-          <div className="md:hidden lg:hidden flex items-center text-white active:text-lost-accent-light active:fill-lost-accent-light lg:hover:text-lost-accent-light lg:hover:fill-lost-accent-light space-x-2">
+          {/* The profile box in mobile */}
+          <div className="md:hidden space-y-2 flex-col lg:hidden flex items-center text-white active:text-lost-accent-light active:fill-lost-accent-light lg:hover:text-lost-accent-light lg:hover:fill-lost-accent-light space-x-2">
             <span className="cursor-pointer  fill-white">
               <ProfileIcon />{" "}
             </span>
@@ -94,19 +95,19 @@ export default function Layout({ children }) {
             </span>
           </div>
         </ul>
-        <div className="flex items-center md:w-1/5 lg:w-1/5 justify-center">
-          <div className="hidden md:flex lg:flex items-center text-white hover:text-lost-accent-light hover:fill-lost-accent-light text-sm space-x-2">
+        <div className=" hidden flex  items-center md:w-1/5 lg:w-1/5 md:flex-row lg:flex-row md:flex lg:flex  lg:space-x-4 md:space-x-2">
+          <div className=" md:flex lg:flex items-center text-white hover:text-lost-accent-light hover:fill-lost-accent-light text-sm space-x-2">
             <span className="cursor-pointer fill-white">
               <ProfileIcon />{" "}
             </span>
             <p>Shawn Carter</p>
-            <span
-              onClick={handleLogout}
-              className="text-lost-accent-light cursor-pointer active:underline"
-            >
-              Log out
-            </span>
           </div>
+          <span
+            onClick={handleLogout}
+            className="text-lost-accent-light text-sm cursor-pointer active:underline"
+          >
+            Log out
+          </span>
         </div>
         {isVisible ? (
           <></>
@@ -121,7 +122,7 @@ export default function Layout({ children }) {
           </span>
         )}
       </nav>
-      <div className="pt-[110px] lg:pt-[78px] md:pt-[78px]">{children}</div>
+      <div className="pt-[110px] lg:pt-[90px] md:pt-[78px]">{children}</div>
     </main>
   );
 }
