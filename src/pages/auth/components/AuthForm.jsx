@@ -29,7 +29,7 @@ export const AuthForm = ({ type }) => {
   } = useForm({ resolver: zodResolver(selectedSchema) });
   const [errorMessage, setErrorMessage] = useState();
   const [login, { isLoading }] = useLoginMutation({});
-  const [signup, { isLoadingRegister }] = useRegisterMutation();
+  const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
 
   const handleSignup = async (data) => {
     try {
