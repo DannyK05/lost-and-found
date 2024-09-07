@@ -76,7 +76,7 @@
 }
 
 .e-text {
-  color: rgb(87, 129, 196);
+  color: rgb(56, 114, 207);
   text-wrap: nowrap;
   font-size: 1vw;
 }
@@ -360,4 +360,7 @@
 
 #button:hover {
   opacity: 70%;
+}
+
+@media (max-width: 480px) {
 }

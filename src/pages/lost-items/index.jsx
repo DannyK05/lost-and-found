@@ -108,7 +108,9 @@ export default function LostItemsPage() {
   return (
     <>
       <Layout>
-        <h1>Lost Items</h1>
+        <h1 className="text-center text-lg lg:text-xl mt-4 text-[#010066]">
+          Lost Items
+        </h1>
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
           {" "}
           {foundItems ? (
@@ -132,12 +134,14 @@ export default function LostItemsPage() {
           )}
         </div>
         <button
+          aria-label="List lost item"
+          role="toggle form"
           onClick={toggleSidebarVisibility}
           onMouseEnter={toggleTagVisibility}
           onMouseLeave={toggleTagVisibility}
           className={`flex ${
             isTagVisible ? "bg-lost-blue" : ""
-          } items-center space-x-2 transition-50 p-2 fixed z-[10000] right-0 bottom-[120px] `}
+          } items-center space-x-2 transition-50 p-2 fixed z-[100] right-0 bottom-[120px] `}
         >
           <span className="text-white p-2 bg-lost-blue rounded-full rotate-45 ">
             <CloseXIcon />

@@ -25,14 +25,14 @@ export default function Layout({ children }) {
   return (
     <main className="w-full h-[100vh]">
       <nav className="z-[1000] flex items-center fixed w-full bg-[#010066] pt-4 pb-6 px-4 justify-between md:justify-between lg:justify-between">
-        <h1 className="text-2xl w-1/4 text-white font-bold">
+        <h1 className="text-md w-1/2 md:w-auto lg:text-2xl lg:w-1/4 text-white font-bold">
           Lost<span className="text-lost-accent-light">&</span>Found Hub
         </h1>
-        <hr className=" hidden lg:block border-lost-accent-light border-[1px] absolute  z-[10000] top-11 left-[20%] w-[15%]" />
+        <hr className=" hidden  lg:block border-lost-accent-light border-[1px] absolute  z-[10000] top-11 left-[20%] w-[15%]" />
         <ul
           className={`${
-            isVisible ? "" : "hidden"
-          } px-6 py-4 z-10  md:pl-4 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto md:w-2/5 lg:w-2/5 lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-10 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
+            isVisible ? "z-[100000] border-0" : "hidden"
+          } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-2/5 lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
         >
           <span
             onClick={toggleVisibility}
@@ -41,55 +41,80 @@ export default function Layout({ children }) {
             <CloseXIcon />
           </span>
 
-          <NavLink
-            to={"/home"}
-            className={({ isActive }) =>
-              `${isActive ? "text-lost-accent-light active-nav" : ""}`
-            }
-          >
-            <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
+          <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
+            <NavLink
+              to={"/home"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-lost-accent-light active-nav text-sm lg:text-lg"
+                    : ""
+                }`
+              }
+            >
+              {" "}
               Home
-            </li>
-          </NavLink>
-          <NavLink
-            to={"/lost-items"}
-            className={({ isActive }) =>
-              `${isActive ? "text-lost-accent-light active-nav" : ""}`
-            }
-          >
-            <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
+            </NavLink>
+          </li>
+
+          <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
+            <NavLink
+              to={"/lost-items"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-lost-accent-light active-nav text-sm lg:text-lg"
+                    : ""
+                }`
+              }
+            >
               Lost Items
-            </li>
-          </NavLink>
-          <NavLink
-            to={"/view-items"}
-            className={({ isActive }) =>
-              `${isActive ? "text-lost-accent-light active-nav" : ""}`
-            }
-          >
-            <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
+            </NavLink>
+          </li>
+
+          <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
+            <NavLink
+              to={"/view-items"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-lost-accent-light active-nav text-sm lg:text-lg"
+                    : ""
+                }`
+              }
+            >
+              {" "}
               Found Items
-            </li>
-          </NavLink>
-          <NavLink
-            to={"/about-us"}
-            className={({ isActive }) =>
-              `${isActive ? "text-lost-accent-light active-nav" : ""}`
-            }
-          >
-            <li className="active:text-lost-accent-light lg:hover:text-lost-accent-light">
+            </NavLink>
+          </li>
+
+          <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
+            <NavLink
+              to={"/about-us"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-lost-accent-light active-nav text-sm lg:text-lg"
+                    : ""
+                }`
+              }
+            >
+              {" "}
               About Us
-            </li>
-          </NavLink>
+            </NavLink>
+          </li>
+
           {/* The profile box in mobile */}
-          <div className="md:hidden space-y-2 flex-col lg:hidden flex items-center text-white active:text-lost-accent-light active:fill-lost-accent-light lg:hover:text-lost-accent-light lg:hover:fill-lost-accent-light space-x-2">
-            <span className="cursor-pointer  fill-white">
-              <ProfileIcon />{" "}
-            </span>
-            <p>Shawn Carter</p>
+          <div className="md:hidden lg:hidden flex-col flex space-y-4 items-start text-white active:text-lost-accent-light active:fill-lost-accent-light lg:hover:text-lost-accent-light lg:hover:fill-lost-accent-light">
+            <div className=" flex space-x-2  items-center">
+              <span className="cursor-pointer  fill-white">
+                <ProfileIcon />{" "}
+              </span>
+              <p className="cursor-pointer text-xs ">Shawn Carter</p>
+            </div>
             <span
               onClick={handleLogout}
-              className="text-lost-accent-light cursor-pointer active:underline"
+              className="text-lost-accent-light text-sm cursor-pointer active:underline"
             >
               Log out
             </span>
@@ -109,20 +134,15 @@ export default function Layout({ children }) {
             Log out
           </span>
         </div>
-        {isVisible ? (
-          <></>
-        ) : (
-          <span
-            onClick={toggleVisibility}
-            className={`${
-              isVisible ? "hidden" : ""
-            } md:hidden lg:hidden cursor-pointer text-white`}
-          >
-            <MenuIcon />{" "}
-          </span>
-        )}
+
+        <span
+          onClick={toggleVisibility}
+          className={` md:hidden lg:hidden cursor-pointer text-white`}
+        >
+          <MenuIcon />{" "}
+        </span>
       </nav>
-      <div className="pt-[110px] lg:pt-[90px] md:pt-[78px]">{children}</div>
+      <div className="pt-[75px] lg:pt-[90px] md:pt-[110px]">{children}</div>
     </main>
   );
 }

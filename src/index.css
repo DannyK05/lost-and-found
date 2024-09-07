@@ -35,9 +35,8 @@ h1 {
 nav svg.ionicon:hover {
   fill: #fecc50;
 }
-ul a.active-nav li {
+ul li a.active-nav {
   font-family: "Orbitron";
-  font-size: medium;
   transition: 500ms;
   padding-bottom: 1px;
 }

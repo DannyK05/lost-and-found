@@ -106,7 +106,8 @@ export const AuthForm = ({ type }) => {
               <h1 className="text-2xl font-bold">Welcome back 👋</h1>
               <p className="text-sm">Log into your account</p>
               <img
-                className="w-2/3"
+                width={219}
+                height={219}
                 src={LoginIllustration}
                 alt="Login Illustration"
                 attributeName="Image by storyset on Freepik"
@@ -128,7 +129,8 @@ export const AuthForm = ({ type }) => {
               </span>
               <p className="text-sm">Sign up with us</p>
               <img
-                className="w-2/3"
+                width={219}
+                height={219}
                 src={SignupIllustration}
                 alt="Signup Illustration"
                 attributeName="Image by storyset on Freepik"
@@ -230,7 +232,7 @@ export const AuthForm = ({ type }) => {
                 )}
               </FormButton>
               <Link to={"/"}>
-                <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">
+                <button className="text-lost-blue text-sm md:hidden lg:hidden">
                   Already have an account? Sign in
                 </button>
               </Link>
@@ -290,12 +292,12 @@ export const AuthForm = ({ type }) => {
                 )}
               </FormButton>
               <Link to={"/signup"}>
-                <button className="text-lost-accent-dark text-sm md:hidden lg:hidden">
+                <button className="text-lost-blue text-sm md:hidden lg:hidden">
                   Don't have an account? Sign up
                 </button>
               </Link>
             </form>
-            <span className="text-lost-accent-dark text-sm cursor-pointer hover:underline mt-10">
+            <span className="text-lost-blue text-sm cursor-pointer hover:underline mt-10">
               Forgot Password ?
             </span>
           </>
