@@ -21,11 +21,10 @@
   color: white;
   font-size: 5vw;
   font-weight: bold;
-  font-family: "suse";
+  font-family: "SUSE";
 }
 
 #qtn {
-  font-family: "Noto_Sans", sans-serif;
   color: rgb(254, 204, 80);
 }
 
@@ -36,12 +35,19 @@
   align-items: center;
 }
 
+#details-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #details {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   font-size: 1.7vw;
+  width: 50%;
+  text-align: center;
 }
 
 .outer {
@@ -69,10 +75,6 @@
 .img-div {
   display: flex;
   width: 6vw;
-}
-
-.img {
-  width: 100%;
 }
 
 .e-text {
@@ -160,6 +162,7 @@
   font-size: 1.3vw;
   flex-direction: column;
   align-items: center;
+  width: 50%;
 }
 
 .web-info-topdiv {
@@ -174,6 +177,7 @@
   background-color: rgba(205, 209, 211, 0.795);
   border-radius: 10px;
   margin-top: 3vw;
+  width: 70%;
 }
 
 #bold-div {
@@ -195,6 +199,7 @@
 
 #bold-info {
   font-size: 1.2vw;
+  width: 80%;
 }
 
 .people-pics-div {
@@ -226,6 +231,7 @@
   border-radius: 10px;
   max-width: 27vw;
   position: relative;
+  height: 40vh;
 }
 
 #middle-story {
@@ -247,7 +253,7 @@
   width: 4vw;
   justify-content: baseline;
   position: absolute;
-  top: 13.49vw;
+  top: 15.49vw;
 }
 
 #story-arrrow {
@@ -284,6 +290,7 @@
   align-items: center;
   font-size: 1.3vw;
   font-weight: bold;
+  width: 100%;
 }
 
 .how-icon-topdiv {
@@ -322,7 +329,7 @@
   font-size: 1.1vw;
   flex-direction: column;
   align-items: center;
-  text-wrap: nowrap;
+  width: 80%;
 }
 
 .register-topdiv {
@@ -363,4 +370,237 @@
 }
 
 @media (max-width: 480px) {
+  .top-part {
+    background-color: rgb(1, 0, 102);
+    padding-bottom: 50px;
+  }
+
+  #bold-title {
+    font-size: 1.2rem;
+  }
+
+  #detailed-info {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #details-div {
+    display: block;
+  }
+  #details {
+    font-size: 0.9rem;
+    padding: 4px 6px;
+    width: 100%;
+  }
+
+  .outer {
+    flex-wrap: wrap;
+    width: 100%;
+    border-radius: 0;
+    height: auto;
+    padding: 8px;
+  }
+
+  .each {
+    width: 48%;
+    padding: 0.4rem;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+
+  .img-div {
+    display: flex;
+    width: auto;
+  }
+
+  .e-text {
+    text-wrap: nowrap;
+    font-size: 0.7rem;
+  }
+
+  .stat {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10vw;
+  }
+
+  .e-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .num {
+    font-size: 1.8rem;
+  }
+
+  .u-num {
+    font-size: 0.6rem;
+  }
+
+  .abt-laf {
+    padding: 4px;
+  }
+
+  .about-how-tit {
+    font-size: 1rem;
+  }
+
+  #ab-dit {
+    display: flex;
+    justify-content: center;
+  }
+
+  #ab {
+    font-size: 0.6rem;
+    width: 80%;
+  }
+
+  #bold {
+    font-size: 0.8rem;
+  }
+
+  .info-pic-div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  #bold-info {
+    font-size: 0.6rem;
+    width: 100%;
+  }
+
+  .people-pics-div {
+    display: flex;
+    width: auto;
+  }
+
+  #people-pics {
+    width: 100%;
+  }
+
+  .each-story-topdiv {
+    flex-direction: column;
+  }
+
+  .each-story-div {
+    height: 120px;
+    width: 80%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #middle-story {
+    margin-bottom: 20px;
+  }
+
+  .story-title {
+    font-size: 1rem;
+  }
+
+  .story {
+    font-size: 0.6rem;
+  }
+
+  .arrow-div {
+    display: flex;
+    width: 15%;
+    position: absolute;
+    bottom: -65px;
+  }
+
+  #story-arrrow {
+    width: 100%;
+  }
+  .web-info-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .each-how-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #middle-how {
+    margin: 0 9vw;
+  }
+
+  .how-tit {
+    font-size: 0.5rem;
+  }
+
+  .how-iconbg-div {
+    display: flex;
+    height: 60px;
+  }
+
+  .how-iconbg {
+    width: 100%;
+  }
+
+  .how-icon-div {
+    width: auto;
+  }
+
+  .how-icon {
+    width: 50%;
+    top: 32%;
+    right: 28%;
+  }
+
+  .how-details {
+    font-size: 0.5rem;
+    width: 100%;
+  }
+
+  .register-topdiv {
+    display: flex;
+    justify-content: center;
+  }
+
+  .register-div {
+    width: 95%;
+  }
+
+  .qtnn-div {
+    margin-right: 10vw;
+  }
+
+  .qtnn {
+    font-size: 0.6rem;
+  }
+
+  #button {
+    background-color: rgb(0, 87, 225);
+    color: white;
+    padding: 8px;
+    font-size: 0.6rem;
+    text-wrap: nowrap;
+    border-radius: 10px;
+    transition: opacity 1ms;
+  }
+
+  #button:active {
+    opacity: 70%;
+  }
+  #button:hover {
+    opacity: 100%;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  .each-story-div {
+    height: 12vh;
+  }
+  .arrow-div {
+    top: 14.49vw;
+  }
 }
