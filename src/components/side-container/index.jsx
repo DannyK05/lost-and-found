@@ -5,7 +5,7 @@ export function SideContainer({ type, children, isVisible, toggleContainer }) {
     <div
       className={`${
         isVisible ? "scale-x-100" : "scale-x-0"
-      }  bg-white fixed transition-50 shadow-lg w-full md:w-[60%] lg:w-1/2 px-4 py-2 rounded-lg border-md top-[76px] h-[95vh] z-[10000] right-0`}
+      }  bg-white fixed transition-50 shadow-lg w-full md:w-[60%] lg:w-1/2 px-4 py-2 rounded-lg border-md top-[76px] lg:top-[0] md:top-[100px] lg:h-[100vh] h-[95vh] z-[10000] right-0`}
     >
       <div className="flex items-center space-x-8">
         <span
