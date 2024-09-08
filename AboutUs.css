@@ -59,6 +59,7 @@ section:nth-of-type(3) .oxo {
 .footerNav ul {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .footerNav ul li {
@@ -82,4 +83,43 @@ section:nth-of-type(3) .oxo {
     color: rgb(25, 25, 112);
     justify-content: center;
     display: flex;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .axo, .oxa {
+        padding: 20px;
+    }
+    
+    .footerNav ul li {
+        margin: 10px;
+        font-size: 1em;
+    }
+    
+    .oxo {
+        padding: 50px; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .axo, .oxa {
+        padding: 15px;
+    }
+    
+    .footerNav ul {
+        flex-direction: column;
+    }
+
+    .footerNav ul li {
+        margin: 5px 0;
+        font-size: 0.9em;
+    }
+
+    .oxo {
+        padding: 30px;
+    }
 }
