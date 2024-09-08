@@ -33,7 +33,6 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-
             <div className="outer">
               <div className="each">
                 <div className="img-div">
@@ -289,9 +288,7 @@ export default function HomePage() {
               </div>
 
               <div className="each-how-div">
-                <p className="how-tit">
-                  Help unite owners with their missing stuffs
-                </p>
+                <p className="how-tit">Help unite owners with their stuffs</p>
                 <div className="how-icon-topdiv">
                   <div className="how-iconbg-div">
                     <img
