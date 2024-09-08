@@ -376,7 +376,7 @@
   }
 
   #bold-title {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
   }
 
   #detailed-info {
@@ -427,9 +427,7 @@
   }
 
   .e-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
 
   .num {
@@ -490,11 +488,11 @@
     height: 120px;
     width: 80%;
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 21px;
   }
 
   #middle-story {
-    margin-bottom: 20px;
+    margin-bottom: 31px;
   }
 
   .story-title {
@@ -534,7 +532,7 @@
   }
 
   .how-tit {
-    font-size: 0.5rem;
+    font-size: 0.6rem;
   }
 
   .how-iconbg-div {
@@ -557,7 +555,7 @@
   }
 
   .how-details {
-    font-size: 0.5rem;
+    font-size: 0.55rem;
     width: 100%;
   }
 

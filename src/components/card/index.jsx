@@ -103,7 +103,7 @@ export default function Card({
             <InfoIcon />
           </span>
         </button>{" "}
-        <button className=" w-4/5 flex items-center lg:pl-8 lg:py-3 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] space-x-1 md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg px-4 py-2">
+        <button className=" w-4/5 flex items-center lg:pl-8 lg:py-3 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] space-x-1 md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg pl-8 py-2">
           <p className="text-xs lg:text-sm">
             {type == "lost" ? "Found" : "Claim"}
           </p>{" "}
