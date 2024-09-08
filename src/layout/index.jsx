@@ -8,8 +8,15 @@ import {
   LOST_AND_FOUND_TOKEN,
   LOST_AND_FOUND_USER,
 } from "../utilities/constant";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../store/selector";
 
 export default function Layout({ children }) {
+  const currentUser = useSelector(selectCurrentUser);
+  const firstName = currentUser ? currentUser.firstName : "Shawn";
+  const lastName = currentUser ? currentUser.lastName : "Carter";
+
+  const name = firstName + " " + lastName;
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
@@ -110,7 +117,7 @@ export default function Layout({ children }) {
               <span className="cursor-pointer  fill-white">
                 <ProfileIcon />{" "}
               </span>
-              <p className="cursor-pointer text-xs ">Shawn Carter</p>
+              <p className="cursor-pointer text-xs ">{name}</p>
             </div>
             <span
               onClick={handleLogout}
@@ -125,7 +132,7 @@ export default function Layout({ children }) {
             <span className="cursor-pointer fill-white">
               <ProfileIcon />{" "}
             </span>
-            <p>Shawn Carter</p>
+            <p>{name}</p>
           </div>
           <span
             onClick={handleLogout}

@@ -224,9 +224,9 @@ export const AuthForm = ({ type }) => {
                 className="w-full md:w-[50%] lg:w-[50%]"
               >
                 {isLoadingRegister ? (
-                  <>
+                  <span className="fill-white w-full flex items-center justify-center">
                     <FormLoadingSpinner />
-                  </>
+                  </span>
                 ) : (
                   "Sign up"
                 )}
