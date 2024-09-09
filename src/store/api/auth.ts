@@ -8,7 +8,7 @@ import {
 } from "../types/auth";
 
 export const authApi = createApi({
-  reducerPath: "api",
+  reducerPath: "authApi",
   baseQuery: baseQuery,
   endpoints: (builder) => ({
     login: builder.mutation<TLoginResponse, TLoginDto>({

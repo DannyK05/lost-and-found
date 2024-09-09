@@ -1,7 +1,9 @@
 import { FormButton } from "../../../components/form/FormButton";
 import { FormInput } from "../../../components/form/FormInput";
+import { useRegisterMutation } from "../../../store/api/found";
 
 export default function FoundItemForm() {
+  const [register, { isLoading }] = useRegisterMutation();
   return (
     <form className="flex flex-col items-center space-y-4 py-2">
       <label className="w-4/5">

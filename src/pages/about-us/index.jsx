@@ -224,54 +224,57 @@ export default function AboutUsPage() {
         <section>
           <div className="axa">Our team</div>
           <div className="oxo">
-            <ul className="flex py-2 md:p-2 lg:p-2 items-center flex-wrap space-x-5 space-y-4 ">
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+            <ul className="flex py-2 md:p-2 lg:px-2 lg:py-4 items-center flex-wrap space-x-5 space-y-4 ">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Adejuwon Simisola
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-xl md:text-xl ">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl ">
                 Votu-Sakpere Jesse
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-xl md:text-xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Alao Daniel
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Ijinleifeoluwa Daniel Fadare
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Emmanuel Victor
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Ojo Oluwatobi Daniel
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Adesiyan Ebunoluwa Sharon
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-xl md:text-xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Ibikunle David Sinmisoluwa
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Ajadi Aishat Omobolanle
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Badmos Maryam
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Abubakar Temitope
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Abioye Oluwatomisin Covenant
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-xl md:text-xl">
-                Olasoji Favour
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
+                Olasoji Favour Anuoluwapo
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-xl lg:text-2xl md:text-2xl">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Akintola William
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Olubanjo Oluwakolade Daniel
               </li>
-              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-md lg:text-lg md:text-lg">
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Abubakar Temitope Modupeoluwa
+              </li>
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
+                Aro Kehinde Hassan
               </li>
             </ul>
           </div>
