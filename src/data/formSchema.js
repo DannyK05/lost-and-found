@@ -23,6 +23,10 @@ export const signupFormSchema = z.object({
       "Must be OAU student email"
     )
     .email("This is not a valid email address"),
+  phoneNumber: z
+    .string()
+    .min(1, { message: "Required" })
+    .max(11, { message: "phone not valid" }),
   password: z.string().min(1, { message: "Required" }),
   confirmPassword: z.string().min(1, { message: "Required" }),
 });
