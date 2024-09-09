@@ -1,6 +1,6 @@
 import { TApiResponse } from "./constant";
 
-export type TRegisterFoundItemsDto = {
+export type TRegisterLostItemsDto = {
   title: string;
   category: string;
   description: string;
@@ -12,4 +12,4 @@ export type TRegisterFoundItemsDto = {
   color: string;
 };
 
-export type TRegisterFoundItemsResponse = TApiResponse<{}>;
+export type TRegisterLostItemsResponse = TApiResponse<{}>;

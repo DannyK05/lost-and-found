@@ -5,6 +5,8 @@ import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import LostItemForm from "./components/LostItemForm";
+import { useGetAllLostItemsMutation } from "../../store/api/lost";
+import { useClaimItemMutation } from "../../store/api/found";
 const foundItems = [
   {
     id: 1,
@@ -96,6 +98,9 @@ const foundItems = [
   },
 ];
 export default function LostItemsPage() {
+  const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
+  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
+
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);

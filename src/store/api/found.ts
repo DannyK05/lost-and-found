@@ -1,18 +1,19 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { baseQuery } from "./helper";
-import { TItem, TRegisterFoundItemsDto } from "../types/found";
+import { TRegisterFoundItemsDto } from "../types/found";
+import { TItem } from "../types/constant";
 export const foundApi = createApi({
   reducerPath: "foundApi",
   baseQuery: baseQuery,
   endpoints: (builder) => ({
-    register: builder.mutation<any, TRegisterFoundItemsDto>({
+    registerFoundItems: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (body) => ({
         url: "items/found/register",
         method: "POST",
         body,
       }),
     }),
-    getFoundItemsById: builder.query<TItem, string>({
+    getFoundItemsById: builder.mutation<TItem, string>({
       query: (itemId) => ({
         url: `items/found/${itemId}`,
         method: "GET",
@@ -30,7 +31,7 @@ export const foundApi = createApi({
         method: "GET",
       }),
     }),
-    deleteFoundItemById: builder.query<any, TRegisterFoundItemsDto>({
+    deleteFoundItemById: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (itemId) => ({
         url: `items/found/${itemId}/delete`,
         method: "DELETE",
@@ -49,8 +50,8 @@ export const foundApi = createApi({
 export const {
   useGetAllFoundItemsMutation,
   useClaimItemMutation,
-  useDeleteFoundItemByIdQuery,
+  useDeleteFoundItemByIdMutation,
   useGetAllUserFoundItemsMutation,
-  useRegisterMutation,
-  useGetFoundItemsByIdQuery,
+  useRegisterFoundItemsMutation,
+  useGetFoundItemsByIdMutation,
 } = foundApi;

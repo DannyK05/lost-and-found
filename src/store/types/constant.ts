@@ -5,3 +5,16 @@ export type TApiResponse<T> = {
   message: string;
   data: T;
 };
+
+export type TItem = {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  foundAt: string;
+  foundDate: string;
+  uniqueIdentifier: string;
+  itemBrand: string;
+  image: string;
+  color: string;
+};
