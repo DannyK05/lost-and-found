@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Matemaise";
+  src: url("../../assets/fonts/Ga_Maamli/GaMaamli-Regular.ttf");
+}
+.axa {
+  background-color: #0057e1;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+  margin: 0 0 10px 0;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.oxo {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  margin: 10px 0 0 0;
+  color: #191970;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.oxo ul li {
+  font-family: "Matemaise";
+}
+.oxo ul li:first-of-type {
+  margin-left: 16px;
+  margin-top: 8px;
+}
+.footerNav ul li a {
+  text-decoration: none;
+  color: rgb(25, 25, 112);
+}
+
+.footerNav ul li a:hover {
+  color: #ff6347;
+  transition: color 0.3s ease;
+}
+
+.footerBottom {
+  color: rgb(25, 25, 112);
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  padding: 8px auto;
+  font-size: large;
+}
+
+@media screen and (max-width: 768px) {
+  .axo,
+  .oxa {
+    padding: 20px;
+  }
+
+  .footerNav ul li {
+    margin: 10px;
+    font-size: 1em;
+  }
+
+  .oxo {
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .axo,
+  .oxa {
+    padding: 15px;
+  }
+
+  .oxo {
+    padding: 30px;
+  }
+}
