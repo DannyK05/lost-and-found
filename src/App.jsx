@@ -7,6 +7,7 @@ import HomePage from "./pages/home";
 import LostItemsPage from "./pages/lost-items";
 import ViewItemsPage from "./pages/view-items";
 import AboutUsPage from "./pages/about-us";
+import Records from "./pages/records";
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +44,12 @@ function App() {
     {
       path: "/view-items",
       element: <ViewItemsPage />,
+      errorElement: <ErrorPage />,
+      loader: LoadingPage,
+    },
+    {
+      path: "/records",
+      element: <Records />,
       errorElement: <ErrorPage />,
       loader: LoadingPage,
     },

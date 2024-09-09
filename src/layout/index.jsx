@@ -39,7 +39,7 @@ export default function Layout({ children }) {
         <ul
           className={`${
             isVisible ? "z-[100000] border-0" : "hidden"
-          } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-2/5 lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
+          } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[41%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
         >
           <span
             onClick={toggleVisibility}
@@ -92,6 +92,22 @@ export default function Layout({ children }) {
             >
               {" "}
               Found Items
+            </NavLink>
+          </li>
+
+          <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
+            <NavLink
+              to={"/records"}
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "text-lost-accent-light active-nav text-sm lg:text-lg"
+                    : ""
+                }`
+              }
+            >
+              {" "}
+              Records
             </NavLink>
           </li>
 
