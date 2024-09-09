@@ -9,6 +9,7 @@ export type TRegisterDto = {
   firstName: string;
   lastName: string;
   email: string;
+  phoneNumber: string;
   password: string;
   confirmPassword: string;
 };
@@ -20,6 +21,7 @@ export type TRegisterResponse = TApiResponse<{
     email: string;
     firstName: string;
     id: number;
+    phoneNumber: string;
     lastName: string;
     password: string;
     updatedAt: string;
@@ -32,6 +34,7 @@ export type TLoginResponse = TApiResponse<{
     email: string;
     firstName: string;
     id: number;
+    phoneNumber: string;
     lastName: string;
     password: string;
     updatedAt: string;

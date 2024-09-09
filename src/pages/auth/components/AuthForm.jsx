@@ -186,38 +186,56 @@ export const AuthForm = ({ type }) => {
                     </span>
                   )}
                 </div>
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("email")}
-                  placeholder={"Email Address"}
-                />
-                {errors.email?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.email.message}
-                  </span>
-                )}
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("password")}
-                  type="password"
-                  placeholder={"Password"}
-                />
-                {errors.password?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.password.message}
-                  </span>
-                )}
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("confirmPassword")}
-                  type="password"
-                  placeholder={"Confirm Password"}
-                />
-                {errors.confirmPassword?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.confirmPassword.message}
-                  </span>
-                )}
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("email")}
+                    placeholder={"Email Address"}
+                  />
+                  {errors.email?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("phoneNumber")}
+                    placeholder={"Phone Number"}
+                  />
+                  {errors.email?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.phoneNumber.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("password")}
+                    type="password"
+                    placeholder={"Password"}
+                  />
+                  {errors.password?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.password.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("confirmPassword")}
+                    type="password"
+                    placeholder={"Confirm Password"}
+                  />
+                  {errors.confirmPassword?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.confirmPassword.message}
+                    </span>
+                  )}
+                </div>
               </div>
               <FormButton
                 disabled={isLoadingRegister}
