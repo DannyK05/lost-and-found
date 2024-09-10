@@ -15,20 +15,20 @@ export const lostApi = createApi({
       }),
       invalidatesTags: ["AllLostItems", "UserLostItems"],
     }),
-    getLostItemsById: builder.mutation<TItem, string>({
+    getLostItemsById: builder.query<TItem, string>({
       query: (itemId) => ({
         url: `items/lost/${itemId}`,
         method: "GET",
       }),
     }),
-    getAllUserLostItems: builder.mutation<any, TRegisterLostItemsDto>({
+    getAllUserLostItems: builder.query<any, TRegisterLostItemsDto>({
       query: () => ({
         url: "items/lost",
         method: "GET",
       }),
       providesTags: ["UserLostItems"],
     }),
-    getAllLostItems: builder.mutation<any, any>({
+    getAllLostItems: builder.query<any, any>({
       query: () => ({
         url: "items/lost/all",
         method: "GET",
@@ -42,13 +42,22 @@ export const lostApi = createApi({
       }),
       invalidatesTags: ["AllLostItems", "UserLostItems"],
     }),
+    claimLostItem: builder.mutation<any, TRegisterLostItemsDto>({
+      query: (itemId) => ({
+        url: "items/claim",
+        method: "POST",
+        itemId,
+      }),
+      invalidatesTags: ["AllLostItems", "UserLostItems"],
+    }),
   }),
 });
 
 export const {
-  useGetAllLostItemsMutation,
+  useGetAllLostItemsQuery,
   useDeleteLostItemByIdMutation,
-  useGetAllUserLostItemsMutation,
+  useGetAllUserLostItemsQuery,
   useRegisterLostItemsMutation,
-  useGetLostItemsByIdMutation,
+  useGetLostItemsByIdQuery,
+  useClaimLostItemMutation,
 } = lostApi;

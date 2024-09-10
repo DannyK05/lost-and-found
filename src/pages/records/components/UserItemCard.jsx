@@ -30,6 +30,7 @@ export default function UserItemCard({
     useDeleteFoundItemByIdMutation();
   const [deleteLostItem, { isLoading: loadingDeleteLost }] =
     useDeleteLostItemByIdMutation();
+  const isLoading = type === "found" ? loadingDeleteFound : loadingDeleteLost;
   const handleDeleteFoundItems = async (id) => {
     try {
       const response = await deleteFoundItem(id);
@@ -132,10 +133,12 @@ export default function UserItemCard({
           </span>
         </button>{" "}
         <button
-          onClick={console.log("still in development")}
+          onClick={
+            type === "found" ? handleDeleteFoundItems : handleDeleteLostItems
+          }
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
-          {loadingDeleteFound ? (
+          {isLoading ? (
             <span className="fill-white w-full flex items-center justify-center">
               <FormLoadingSpinner />
             </span>

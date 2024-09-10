@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery, baseQueryWithReauth } from "./helper";
+import { baseQueryWithReauth } from "./helper";
 import { TRegisterFoundItemsDto } from "../types/found";
 import { TItem } from "../types/constant";
 export const foundApi = createApi({
@@ -15,20 +15,20 @@ export const foundApi = createApi({
       }),
       invalidatesTags: ["AllFoundItems"],
     }),
-    getFoundItemsById: builder.mutation<TItem, string>({
+    getFoundItemsById: builder.query<TItem, string>({
       query: (itemId) => ({
         url: `items/found/${itemId}`,
         method: "GET",
       }),
     }),
-    getAllUserFoundItems: builder.mutation<any, TRegisterFoundItemsDto>({
+    getAllUserFoundItems: builder.query<void, TRegisterFoundItemsDto>({
       query: () => ({
         url: "items/found",
         method: "GET",
       }),
       providesTags: ["UserFoundItems"],
     }),
-    getAllFoundItems: builder.mutation<any, any>({
+    getAllFoundItems: builder.query<void, any>({
       query: () => ({
         url: "items/found/all",
         method: "GET",
@@ -42,7 +42,7 @@ export const foundApi = createApi({
       }),
       invalidatesTags: ["AllFoundItems", "UserFoundItems"],
     }),
-    claimItem: builder.mutation<any, TRegisterFoundItemsDto>({
+    claimFoundItem: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (itemId) => ({
         url: "items/claim",
         method: "POST",
@@ -54,10 +54,10 @@ export const foundApi = createApi({
 });
 
 export const {
-  useGetAllFoundItemsMutation,
-  useClaimItemMutation,
+  useGetAllFoundItemsQuery,
+  useClaimFoundItemMutation,
   useDeleteFoundItemByIdMutation,
-  useGetAllUserFoundItemsMutation,
+  useGetAllUserFoundItemsQuery,
   useRegisterFoundItemsMutation,
-  useGetFoundItemsByIdMutation,
+  useGetFoundItemsByIdQuery,
 } = foundApi;
