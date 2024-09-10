@@ -1,10 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery } from "./helper";
+import { baseQuery, baseQueryWithReauth } from "./helper";
 import { TRegisterLostItemsDto } from "../types/lost";
 import { TItem } from "../types/constant";
 export const lostApi = createApi({
   reducerPath: "lostApi",
   baseQuery: baseQuery,
+  tagTypes: ["AllLostItems", "UserLostItems"],
   endpoints: (builder) => ({
     registerLostItems: builder.mutation<any, TRegisterLostItemsDto>({
       query: (body) => ({
@@ -12,6 +13,7 @@ export const lostApi = createApi({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["AllLostItems", "UserLostItems"],
     }),
     getLostItemsById: builder.mutation<TItem, string>({
       query: (itemId) => ({
@@ -24,18 +26,21 @@ export const lostApi = createApi({
         url: "items/lost",
         method: "GET",
       }),
+      providesTags: ["UserLostItems"],
     }),
     getAllLostItems: builder.mutation<any, any>({
       query: () => ({
         url: "items/lost/all",
         method: "GET",
       }),
+      providesTags: ["AllLostItems"],
     }),
     deleteLostItemById: builder.mutation<any, TRegisterLostItemsDto>({
       query: (itemId) => ({
         url: `items/lost/${itemId}/delete`,
         method: "DELETE",
       }),
+      invalidatesTags: ["AllLostItems", "UserLostItems"],
     }),
   }),
 });

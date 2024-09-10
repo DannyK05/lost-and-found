@@ -24,8 +24,10 @@ export default function LostItemForm() {
       console.log(response);
       console.log(data);
     } catch (err) {
+      console.log(err);
       if (err && err.data.message) {
         const error = err.data.message;
+
         setErrorMessage(error);
         setTimeout(() => {
           setErrorMessage(null);

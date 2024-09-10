@@ -1,10 +1,11 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery } from "./helper";
+import { baseQuery, baseQueryWithReauth } from "./helper";
 import { TRegisterFoundItemsDto } from "../types/found";
 import { TItem } from "../types/constant";
 export const foundApi = createApi({
   reducerPath: "foundApi",
-  baseQuery: baseQuery,
+  baseQuery: baseQueryWithReauth,
+  tagTypes: ["AllFoundItems", "UserFoundItems"],
   endpoints: (builder) => ({
     registerFoundItems: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (body) => ({
@@ -12,6 +13,7 @@ export const foundApi = createApi({
         method: "POST",
         body,
       }),
+      invalidatesTags: ["AllFoundItems"],
     }),
     getFoundItemsById: builder.mutation<TItem, string>({
       query: (itemId) => ({
@@ -24,18 +26,21 @@ export const foundApi = createApi({
         url: "items/found",
         method: "GET",
       }),
+      providesTags: ["UserFoundItems"],
     }),
     getAllFoundItems: builder.mutation<any, any>({
       query: () => ({
         url: "items/found/all",
         method: "GET",
       }),
+      providesTags: ["AllFoundItems"],
     }),
     deleteFoundItemById: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (itemId) => ({
         url: `items/found/${itemId}/delete`,
         method: "DELETE",
       }),
+      invalidatesTags: ["AllFoundItems", "UserFoundItems"],
     }),
     claimItem: builder.mutation<any, TRegisterFoundItemsDto>({
       query: (itemId) => ({
@@ -43,6 +48,7 @@ export const foundApi = createApi({
         method: "POST",
         itemId,
       }),
+      invalidatesTags: ["AllFoundItems", "UserFoundItems"],
     }),
   }),
 });
