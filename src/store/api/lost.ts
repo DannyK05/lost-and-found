@@ -1,10 +1,10 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery, baseQueryWithReauth } from "./helper";
+import { baseQueryWithReauth } from "./helper";
 import { TRegisterLostItemsDto } from "../types/lost";
 import { TItem } from "../types/constant";
 export const lostApi = createApi({
   reducerPath: "lostApi",
-  baseQuery: baseQuery,
+  baseQuery: baseQueryWithReauth,
   tagTypes: ["AllLostItems", "UserLostItems"],
   endpoints: (builder) => ({
     registerLostItems: builder.mutation<any, TRegisterLostItemsDto>({

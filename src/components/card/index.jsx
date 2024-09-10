@@ -22,6 +22,7 @@ export default function Card({
   color,
   itemBrand,
 }) {
+  const decodedDate = foundDate.split("T")[0];
   const [claimFoundItem, { isLoading: loadingFoundClaim }] =
     useClaimFoundItemMutation();
   const [claimLostItem, { isLoading: loadingLostClaim }] =
@@ -108,7 +109,7 @@ export default function Card({
               <CalendarIcon />
             </span>
             <p className="text-xs lg:text-sm fill-lost-blue text-lost-blue font-semi-bold">
-              {foundDate}
+              {decodedDate}
             </p>
           </div>
         </div>

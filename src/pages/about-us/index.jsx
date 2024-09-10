@@ -276,6 +276,9 @@ export default function AboutUsPage() {
               <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
                 Aro Kehinde Hassan
               </li>
+              <li className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl">
+                Yusuff Sodiq Kolawole
+              </li>
             </ul>
           </div>
         </section>

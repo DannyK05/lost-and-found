@@ -22,6 +22,7 @@ export default function UserItemCard({
   color,
   itemBrand,
 }) {
+  const decodedDate = foundDate.split("T")[0];
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
@@ -108,7 +109,7 @@ export default function UserItemCard({
               <CalendarIcon />
             </span>
             <p className="text-xs lg:text-sm fill-lost-blue text-lost-blue font-semi-bold">
-              {foundDate}
+              {decodedDate}
             </p>
           </div>
         </div>
