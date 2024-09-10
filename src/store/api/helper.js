@@ -22,7 +22,6 @@ export const baseQuery = fetchBaseQuery({
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }
-    headers.set("Content-Type", "application/json");
     return headers;
   },
 });
@@ -37,9 +36,9 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
       try {
         // Try refreshing token here if applicable, else redirect
         if (typeof window !== "undefined") {
-          // window.location.href = "/";
-          // removeFromLocalStorage(LOST_AND_FOUND_USER);
-          // removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
+          window.location.href = "/";
+          removeFromLocalStorage(LOST_AND_FOUND_USER);
+          removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
         }
       } finally {
         release();
@@ -58,9 +57,9 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
   ) {
     // Redirect for invalid token
     if (typeof window !== "undefined") {
-      // window.location.href = "/";
-      // removeFromLocalStorage(LOST_AND_FOUND_USER);
-      // removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
+      window.location.href = "/";
+      removeFromLocalStorage(LOST_AND_FOUND_USER);
+      removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
     }
   }
 

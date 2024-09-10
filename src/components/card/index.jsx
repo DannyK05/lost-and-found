@@ -5,7 +5,9 @@ import CalendarIcon from "../../assets/icons/CalendarIcon";
 import CheckIcon from "../../assets/icons/CheckIcon";
 import InfoIcon from "../../assets/icons/InfoIcon";
 import BagIcon from "../../assets/icons/BagIcon";
-import { useClaimItemMutation } from "../../store/api/found";
+import { useClaimFoundItemMutation } from "../../store/api/found";
+import { useClaimLostItemMutation } from "../../store/api/lost";
+import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
 export default function Card({
   type,
@@ -20,17 +22,29 @@ export default function Card({
   color,
   itemBrand,
 }) {
-  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
+  const decodedDate = foundDate.split("T")[0];
+  const [claimFoundItem, { isLoading: loadingFoundClaim }] =
+    useClaimFoundItemMutation();
+  const [claimLostItem, { isLoading: loadingLostClaim }] =
+    useClaimLostItemMutation();
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
   };
-  const handleClaim = async () => {
+  const handleFoundClaim = async () => {
     try {
-      const response = await claimItem(id);
+      const response = await claimFoundItem(id);
       console.log(response);
     } catch (err) {}
   };
+  const handleLostClaim = async () => {
+    try {
+      const response = await claimLostItem(id);
+      console.log(response);
+    } catch (err) {}
+  };
+  const handleClaim = type === "found" ? handleFoundClaim : handleLostClaim;
+  const isLoading = type === "found" ? loadingFoundClaim : loadingLostClaim;
   return (
     <div
       key={id}
@@ -95,7 +109,7 @@ export default function Card({
               <CalendarIcon />
             </span>
             <p className="text-xs lg:text-sm fill-lost-blue text-lost-blue font-semi-bold">
-              {foundDate}
+              {decodedDate}
             </p>
           </div>
         </div>
@@ -120,12 +134,12 @@ export default function Card({
           </span>
         </button>{" "}
         <button
-          onClick={console.log("In development")}
+          onClick={handleClaim}
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
-          {loadingClaim ? (
+          {isLoading ? (
             <span className="fill-white w-full flex items-center justify-center">
-              <FormLoadingSpinner />
+              <LoadingSpinner />
             </span>
           ) : (
             <div className="flex items-center space-x-1 lg:py-3">

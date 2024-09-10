@@ -5,110 +5,13 @@ import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import LostItemForm from "./components/LostItemForm";
-import { useGetAllLostItemsMutation } from "../../store/api/lost";
+import { useGetAllLostItemsQuery } from "../../store/api/lost";
 import NoItems from "../../assets/images/no-items.png";
-const lostItems = [
-  {
-    id: 1,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 2,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 3,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 4,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 5,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 6,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 7,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 8,
-    image: Phone,
-    name: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    lostAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    lostDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-];
+import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
+
 export default function LostItemsPage() {
-  // const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
-  // console.log(lostItems);
-  const isLoading = false;
+  const { data: lostItems, isLoading } = useGetAllLostItemsQuery();
+  console.log(lostItems);
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -135,13 +38,13 @@ export default function LostItemsPage() {
               </div>
             </div>
           ) : lostItems ? (
-            lostItems.map((item) => (
+            lostItems.data.allLostItemData.map((item) => (
               <Card
                 id={item.id}
                 type={"lost"}
-                image={item.image}
+                image={item.imageUrl}
                 description={item.description}
-                title={item.name}
+                title={item.title}
                 category={item.category}
                 location={item.lostAt}
                 uniqueIdentifier={item.uniqueIdentifier}

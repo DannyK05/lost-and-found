@@ -1,70 +1,71 @@
 import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
-import { useGetAllUserFoundItemsMutation } from "../../../store/api/found";
-import { useGetAllUserLostItemsMutation } from "../../../store/api/lost";
+import { useGetAllUserFoundItemsQuery } from "../../../store/api/found";
+import { useGetAllUserLostItemsQuery } from "../../../store/api/lost";
 import UserItemCard from "./UserItemCard";
 import Phone from "../../../assets/images/phone.jpg";
 import NoItems from "../../../assets/images/no-items.png";
 
-const foundItems = [
-  {
-    id: 1,
-    image: Phone,
-    title: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 2,
-    image: Phone,
-    title: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-];
-const lostItems = [
-  {
-    id: 1,
-    image: Phone,
-    title: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-  {
-    id: 2,
-    image: Phone,
-    title: "A Tecno Phone",
-    category: "Electronics",
-    description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
-    uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
-    color: "Brown",
-    itemBrand: "Tecno",
-  },
-];
+// const foundItems = [
+//   {
+//     id: 1,
+//     image: Phone,
+//     title: "A Tecno Phone",
+//     category: "Electronics",
+//     description: "A black tecno camon with brown pouch",
+//     foundAt: "Odlt",
+//     uniqueIdentifier: "Demonslayer Wallpaper",
+//     foundDate: "02/09/2024",
+//     color: "Brown",
+//     itemBrand: "Tecno",
+//   },
+//   {
+//     id: 2,
+//     image: Phone,
+//     title: "A Tecno Phone",
+//     category: "Electronics",
+//     description: "A black tecno camon with brown pouch",
+//     foundAt: "Odlt",
+//     uniqueIdentifier: "Demonslayer Wallpaper",
+//     foundDate: "02/09/2024",
+//     color: "Brown",
+//     itemBrand: "Tecno",
+//   },
+// ];
+// const lostItems = [
+//   {
+//     id: 1,
+//     image: Phone,
+//     title: "A Tecno Phone",
+//     category: "Electronics",
+//     description: "A black tecno camon with brown pouch",
+//     lostAt: "Odlt",
+//     uniqueIdentifier: "Demonslayer Wallpaper",
+//     lostDate: "02/09/2024",
+//     color: "Brown",
+//     itemBrand: "Tecno",
+//   },
+//   {
+//     id: 2,
+//     image: Phone,
+//     title: "A Tecno Phone",
+//     category: "Electronics",
+//     description: "A black tecno camon with brown pouch",
+//     lostAt: "Odlt",
+//     uniqueIdentifier: "Demonslayer Wallpaper",
+//     lostDate: "02/09/2024",
+//     color: "Brown",
+//     itemBrand: "Tecno",
+//   },
+// ];
 
 export default function ItemsListed() {
-  // const { data: lostItems, isLoading: loadingLostItems } =
-  //   useGetAllUserLostItemsMutation();
-  // const { data: foundItem, isLoading: loadingFoundItems } =
-  //   useGetAllUserFoundItemsMutation();
-  const loadingFoundItems = false;
-  const loadingLostItems = false;
+  const { data: lostItems, isLoading: loadingLostItems } =
+    useGetAllUserLostItemsQuery();
+  console.log(lostItems);
+  const { data: foundItems, isLoading: loadingFoundItems } =
+    useGetAllUserFoundItemsQuery();
+  console.log(foundItems);
+
   return (
     <div className="w-full border-b-1 border-lost-blue">
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
@@ -79,13 +80,13 @@ export default function ItemsListed() {
                 <p className="text-sm">Loading found items</p>
               </div>
             </div>
-          ) : foundItems && foundItems.length !== 0 ? (
-            foundItems.map((items) => {
+          ) : foundItems && foundItems.data.foundItems.length !== 0 ? (
+            foundItems.data.foundItems.map((items) => {
               return (
                 <UserItemCard
                   key={items.id}
                   title={items.title}
-                  image={items.image}
+                  image={items.imageUrl}
                   type={"found"}
                   category={items.category}
                   uniqueIdentifier={items.uniqueIdentifier}
@@ -102,7 +103,7 @@ export default function ItemsListed() {
             <div className=" w-full flex items-center justify-center">
               <div className="w-full flex items-center flex-col space-y-1">
                 <p>No items have been listed</p>
-                <img className="w-1/2" src={NoItems} alt="No items found" />
+                <img className="w-1/5" src={NoItems} alt="No items found" />
               </div>
             </div>
           )}
@@ -121,13 +122,13 @@ export default function ItemsListed() {
                 <p className="text-sm">Loading lost items</p>
               </div>
             </div>
-          ) : lostItems && lostItems.length !== 0 ? (
-            lostItems.map((items) => {
+          ) : lostItems && lostItems.data.lostItemslength !== 0 ? (
+            lostItems.data.lostItems.map((items) => {
               return (
                 <UserItemCard
                   key={items.id}
                   title={items.title}
-                  image={items.image}
+                  image={items.imageUrl}
                   type={"lost"}
                   category={items.category}
                   uniqueIdentifier={items.uniqueIdentifier}
@@ -144,7 +145,7 @@ export default function ItemsListed() {
             <div className=" w-full flex items-center justify-center">
               <div className="w-full flex items-center flex-col space-y-1">
                 <p>No items have been listed</p>
-                <img className="w-1/2" src={NoItems} alt="No items found" />
+                <img className="w-1/5" src={NoItems} alt="No items found" />
               </div>
             </div>
           )}

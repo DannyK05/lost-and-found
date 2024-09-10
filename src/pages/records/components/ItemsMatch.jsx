@@ -53,7 +53,7 @@ export default function ItemsMatch() {
               <UserItemCard
                 key={items.id}
                 title={items.title}
-                image={items.image}
+                image={items.imageUrl}
                 category={items.category}
                 uniqueIdentifier={items.uniqueIdentifier}
                 description={items.description}
@@ -69,7 +69,7 @@ export default function ItemsMatch() {
           <div className=" w-full py-2 flex items-center justify-center">
             <div className="w-full flex items-center flex-col space-y-1">
               <p>No Match Found</p>
-              <img className="w-1/3" src={NoItems} alt="No Match found" />
+              <img className="w-1/5" src={NoItems} alt="No Match found" />
             </div>
           </div>
         )}

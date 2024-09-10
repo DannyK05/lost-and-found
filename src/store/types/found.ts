@@ -12,4 +12,4 @@ export type TRegisterFoundItemsDto = {
   color: string;
 };
 
-export type TRegisterFoundItemsResponse = TApiResponse<{}>;
+export type TRegiste = TApiResponse<{}>;
