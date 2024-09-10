@@ -120,7 +120,7 @@ export default function Card({
           </span>
         </button>{" "}
         <button
-          onClick={handleClaim}
+          onClick={console.log("In development")}
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
           {loadingClaim ? (
