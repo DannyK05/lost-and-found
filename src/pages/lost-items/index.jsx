@@ -18,6 +18,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 3,
@@ -40,6 +42,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 4,
@@ -51,6 +54,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 5,
@@ -62,6 +66,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 6,
@@ -73,6 +78,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 7,
@@ -84,6 +90,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 8,
@@ -95,6 +102,7 @@ const lostItems = [
     uniqueIdentifier: "Demonslayer Wallpaper",
     lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
 ];
 export default function LostItemsPage() {
@@ -138,6 +146,8 @@ export default function LostItemsPage() {
                 location={item.lostAt}
                 uniqueIdentifier={item.uniqueIdentifier}
                 foundDate={item.lostDate}
+                color={item.color}
+                itemBrand={item.itemBrand}
               />
             ))
           ) : (

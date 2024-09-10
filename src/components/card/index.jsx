@@ -17,6 +17,8 @@ export default function Card({
   location,
   title,
   id,
+  color,
+  itemBrand,
 }) {
   const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
   const [isVisible, setIsVisible] = useState(false);
@@ -65,7 +67,11 @@ export default function Card({
         </div>
       </div>
       {isVisible ? (
-        <p className="text-lost-blue text-xs lg:text-sm">{description}</p>
+        <div className="text-lost-blue text-xs lg:text-sm">
+          <p className="">{description}</p>
+          {color && <p>Color: {color}</p>}
+          {itemBrand && <p>Brand: {itemBrand}</p>}
+        </div>
       ) : (
         <div className="w-full">
           <div className="flex items-center space-x-2">
@@ -115,7 +121,7 @@ export default function Card({
         </button>{" "}
         <button
           onClick={handleClaim}
-          className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg py-2"
+          className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
           {loadingClaim ? (
             <span className="fill-white w-full flex items-center justify-center">

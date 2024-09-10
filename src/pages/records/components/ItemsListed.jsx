@@ -65,12 +65,11 @@ export default function ItemsListed() {
   //   useGetAllUserFoundItemsMutation();
   const loadingFoundItems = false;
   const loadingLostItems = false;
-  console.log(foundItems);
   return (
     <div className="w-full border-b-1 border-lost-blue">
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Found Items</h1>
-        <div className="flex w-full items-center flex-wrap space-x-2">
+        <div className="flex w-full items-center pb-4 flex-wrap space-x-2">
           {loadingFoundItems ? (
             <div className=" w-full  flex items-center justify-center">
               <div className="flex w-full flex-col items-center space-y-2">
@@ -111,7 +110,7 @@ export default function ItemsListed() {
       </div>
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Lost Items</h1>
-        <div className="flex w-full items-center flex-wrap space-x-2">
+        <div className="flex w-full items-center flex-wrap pb-4 space-x-2">
           {" "}
           {loadingLostItems ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">

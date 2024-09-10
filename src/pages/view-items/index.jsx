@@ -9,119 +9,127 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 import NoItems from "../../assets/images/no-items.png";
 import Phone from "../../assets/images/phone.jpg";
 
-// const foundItems = [
-//   {
-//     id: 1,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 2,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 3,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 4,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 5,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 6,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 7,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-//   {
-//     id: 8,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//   },
-// ];
+const foundItems = [
+  {
+    id: 1,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 2,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 3,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 4,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 5,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 6,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 7,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+  {
+    id: 8,
+    image: Phone,
+    name: "A Tecno Phone",
+    category: "Electronics",
+    description: "A black tecno camon with brown pouch",
+    foundAt: "Odlt",
+    uniqueIdentifier: "Demonslayer Wallpaper",
+    foundDate: "02/09/2024",
+    color: "Brown",
+    itemBrand: "Tecno",
+  },
+];
 export default function ViewItemsPage() {
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
   };
-  const [getFound, { data: foundItems, isLoading }] =
-    useGetAllFoundItemsMutation({});
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getFound();
-        console.log(response);
-        // You might need to access the state or use a separate effect to log foundItems after it's updated
-      } catch (error) {
-        console.error("Failed to fetch data:", error);
-      }
-    };
+  // const [getFound, { data: foundItems, isLoading }] =
+  //   useGetAllFoundItemsMutation({});
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await getFound();
+  //       console.log(response);
+  //       // You might need to access the state or use a separate effect to log foundItems after it's updated
+  //     } catch (error) {
+  //       console.error("Failed to fetch data:", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []); // Empty array ensures this effect runs once on mount
+  //   fetchData();
+  // }, []); // Empty array ensures this effect runs once on mount
 
-  console.log("found items", foundItems);
-  // const isLoading = false;
+  // console.log("found items", foundItems);
+  const isLoading = false;
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -152,6 +160,8 @@ export default function ViewItemsPage() {
                 location={item.foundAt}
                 uniqueIdentifier={item.uniqueIdentifier}
                 foundDate={item.foundDate}
+                color={item.color}
+                itemBrand={item.itemBrand}
               />
             ))
           ) : (
