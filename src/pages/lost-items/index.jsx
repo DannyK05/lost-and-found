@@ -5,97 +5,110 @@ import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import LostItemForm from "./components/LostItemForm";
-const foundItems = [
+import { useGetAllLostItemsMutation } from "../../store/api/lost";
+import NoItems from "../../assets/images/no-items.png";
+const lostItems = [
   {
     id: 1,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 2,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 3,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 4,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 5,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 6,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 7,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
   {
     id: 8,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
+    itemBrand: "Tecno",
   },
 ];
 export default function LostItemsPage() {
+  // const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
+  // console.log(lostItems);
+  const isLoading = false;
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -112,24 +125,35 @@ export default function LostItemsPage() {
           Lost Items
         </h1>
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
-          {" "}
-          {foundItems ? (
-            foundItems.map((item) => (
+          {isLoading ? (
+            <div className=" w-full pt-[10%] flex items-center justify-center">
+              <div className="flex flex-col items-center space-y-2">
+                <span>
+                  <LoadingSpinner />
+                </span>
+                <p className="text-sm">Loading found items</p>
+              </div>
+            </div>
+          ) : lostItems ? (
+            lostItems.map((item) => (
               <Card
-                key={item.id}
+                id={item.id}
                 type={"lost"}
-                image={item.imageUrl}
+                image={item.image}
                 description={item.description}
                 title={item.name}
                 category={item.category}
-                location={item.foundAt}
+                location={item.lostAt}
                 uniqueIdentifier={item.uniqueIdentifier}
-                foundDate={item.foundDate}
+                foundDate={item.lostDate}
+                color={item.color}
+                itemBrand={item.itemBrand}
               />
             ))
           ) : (
-            <div className="flex items-center justify-center">
-              <p>No items found</p>
+            <div className=" w-full flex flex-col items-center ">
+              <p className="text-2xl">No items found</p>
+              <img src={NoItems} alt="No items found" />
             </div>
           )}
         </div>

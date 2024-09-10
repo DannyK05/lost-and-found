@@ -1,13 +1,6 @@
-export type TApiResponse<T> = {
-  isOK: boolean;
-  status: boolean;
-  statusCode: string;
-  message: string;
-  data: T;
-};
+import { TApiResponse } from "./constant";
 
-export type TItem = {
-  id: number;
+export type TRegisterLostItemsDto = {
   title: string;
   category: string;
   description: string;
@@ -18,3 +11,5 @@ export type TItem = {
   image: string;
   color: string;
 };
+
+export type TRegisterLostItemsResponse = TApiResponse<{}>;

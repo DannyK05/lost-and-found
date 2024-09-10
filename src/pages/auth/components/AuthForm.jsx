@@ -24,7 +24,6 @@ export const AuthForm = ({ type }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(selectedSchema) });
   const [errorMessage, setErrorMessage] = useState();
@@ -88,7 +87,7 @@ export const AuthForm = ({ type }) => {
       } flex  relative w-full h-full md:full lg:w-3/4 md:w-full md:h-[60%] lg:h-[80%] items-center shadow-md `}
     >
       {errorMessage && (
-        <div className="absolute text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
+        <div className="absolute py-2 text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
           <span>
             <InfoIcon />{" "}
           </span>{" "}
@@ -186,38 +185,56 @@ export const AuthForm = ({ type }) => {
                     </span>
                   )}
                 </div>
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("email")}
-                  placeholder={"Email Address"}
-                />
-                {errors.email?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.email.message}
-                  </span>
-                )}
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("password")}
-                  type="password"
-                  placeholder={"Password"}
-                />
-                {errors.password?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.password.message}
-                  </span>
-                )}
-                <FormInput
-                  containerClassName="w-full"
-                  {...register("confirmPassword")}
-                  type="password"
-                  placeholder={"Confirm Password"}
-                />
-                {errors.confirmPassword?.message && (
-                  <span className="text-red-500 text-xs">
-                    {errors.confirmPassword.message}
-                  </span>
-                )}
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("email")}
+                    placeholder={"Email Address"}
+                  />
+                  {errors.email?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.email.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("phoneNumber")}
+                    placeholder={"Phone Number"}
+                  />
+                  {errors.email?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.phoneNumber.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("password")}
+                    type="password"
+                    placeholder={"Password"}
+                  />
+                  {errors.password?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.password.message}
+                    </span>
+                  )}
+                </div>
+                <div className="w-full flex flex-col items-center space-y-1">
+                  <FormInput
+                    containerClassName="w-full"
+                    {...register("confirmPassword")}
+                    type="password"
+                    placeholder={"Confirm Password"}
+                  />
+                  {errors.confirmPassword?.message && (
+                    <span className="text-red-500 text-xs">
+                      {errors.confirmPassword.message}
+                    </span>
+                  )}
+                </div>
               </div>
               <FormButton
                 disabled={isLoadingRegister}

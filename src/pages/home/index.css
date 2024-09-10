@@ -204,7 +204,7 @@
 
 .people-pics-div {
   display: flex;
-  width: 20vw;
+  width: 40vw;
 }
 
 #people-pics {
@@ -407,6 +407,8 @@
     padding: 0.4rem;
     border-radius: 10px;
     margin-bottom: 4px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+      0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
   .img-div {

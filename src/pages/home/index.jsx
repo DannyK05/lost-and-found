@@ -1,17 +1,12 @@
 import Layout from "../../layout";
 import "./index.css";
-import Arrow from "../../assets/images/arrow.svg";
+
 import Bell from "../../assets/images/bell.webp";
 import MagnifyingGlass from "../../assets/images/magnifying-glass.png";
 import Megaphone from "../../assets/images/megaphone.webp";
-import People from "../../assets/images/people.webp";
+
 import Statistics from "../../assets/images/statistics.webp";
-import Maglens from "../../assets/images/mag-lens.svg";
-import Maglensbg from "../../assets/images/mag-lensbg.svg";
-import Msgbg from "../../assets/images/msg-bg.svg";
-import Msg from "../../assets/images/msg.svg";
-import Ownerbg from "../../assets/images/ownerbg.svg";
-import Owner from "../../assets/images/owner.svg";
+
 import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
@@ -110,7 +105,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="abt-laf">
+        {/* <section className="abt-laf">
           <div className="about-how-tit-div">
             <div className="line" id="line-l">
               {" "}
@@ -316,7 +311,7 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="register-topdiv pb-4">
           <div className="register-div">
