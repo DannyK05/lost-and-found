@@ -6,99 +6,101 @@ import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import LostItemForm from "./components/LostItemForm";
 import { useGetAllLostItemsMutation } from "../../store/api/lost";
-
-const foundItems = [
+import NoItems from "../../assets/images/no-items.png";
+const lostItems = [
   {
     id: 1,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 2,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 3,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 4,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 5,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 6,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 7,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
   {
     id: 8,
-    imageUrl: Phone,
+    image: Phone,
     name: "A Tecno Phone",
     category: "Electronics",
     description: "A black tecno camon with brown pouch",
-    foundAt: "Odlt",
+    lostAt: "Odlt",
     uniqueIdentifier: "Demonslayer Wallpaper",
-    foundDate: "02/09/2024",
+    lostDate: "02/09/2024",
     color: "Brown",
   },
 ];
 export default function LostItemsPage() {
-  const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
+  // const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
+  // console.log(lostItems);
+  const isLoading = false;
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -125,11 +127,11 @@ export default function LostItemsPage() {
               </div>
             </div>
           ) : lostItems ? (
-            lostItems.data.map((item) => (
+            lostItems.map((item) => (
               <Card
                 id={item.id}
                 type={"lost"}
-                image={item.imageUrl}
+                image={item.image}
                 description={item.description}
                 title={item.name}
                 category={item.category}
@@ -139,8 +141,9 @@ export default function LostItemsPage() {
               />
             ))
           ) : (
-            <div className=" w-full pt-[10%] flex items-center justify-center">
+            <div className=" w-full flex flex-col items-center ">
               <p className="text-2xl">No items found</p>
+              <img src={NoItems} alt="No items found" />
             </div>
           )}
         </div>

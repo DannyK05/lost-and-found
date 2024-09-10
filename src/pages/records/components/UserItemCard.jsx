@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BagIcon from "../../../assets/icons/BagIcon";
 import CalendarIcon from "../../../assets/icons/CalendarIcon";
 import CheckIcon from "../../../assets/icons/CheckIcon";
@@ -5,6 +6,9 @@ import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import InfoIcon from "../../../assets/icons/InfoIcon";
 import KeyIcon from "../../../assets/icons/KeyIcon";
 import LocationIcon from "../../../assets/icons/LocationIcon";
+import { useDeleteFoundItemByIdMutation } from "../../../store/api/found";
+import { useDeleteLostItemByIdMutation } from "../../../store/api/lost";
+
 export default function UserItemCard({
   type,
   image,
@@ -17,12 +21,26 @@ export default function UserItemCard({
   id,
   color,
   itemBrand,
-  deleteCard,
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
   };
+  const [deleteFoundItem, { isLoading: loadingDeleteFound }] =
+    useDeleteFoundItemByIdMutation();
+  const [deleteLostItem, { isLoading: loadingDeleteLost }] =
+    useDeleteLostItemByIdMutation();
+  const handleDeleteFoundItems = async (id) => {
+    try {
+      const response = await deleteFoundItem(id);
+    } catch (err) {}
+  };
+  const handleDeleteLostItems = async (id) => {
+    try {
+      const response = await deleteLostItem(id);
+    } catch (err) {}
+  };
+
   return (
     <div
       key={id}
@@ -33,13 +51,15 @@ export default function UserItemCard({
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      <span
-        className={` ${
-          type === "lost" ? "px-4" : ""
-        } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
-      >
-        {type === "lost" ? "Lost" : "Found"}
-      </span>
+      {type && (
+        <span
+          className={` ${
+            type === "lost" ? "px-4" : ""
+          } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+        >
+          {type === "lost" ? "Lost" : "Found"}
+        </span>
+      )}
       <img
         className="rounded-lg"
         src={image}
@@ -59,8 +79,8 @@ export default function UserItemCard({
         </div>
       </div>
       {isVisible ? (
-        <div>
-          <p className="text-lost-blue text-xs lg:text-sm">{description}</p>
+        <div className="text-lost-blue text-xs lg:text-sm">
+          <p className="">{description}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
         </div>
@@ -111,11 +131,8 @@ export default function UserItemCard({
             <InfoIcon />
           </span>
         </button>{" "}
-        <button
-          onClick={deleteCard}
-          className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg py-2"
-        >
-          {loadingClaim ? (
+        <button className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg py-2">
+          {loadingDeleteFound ? (
             <span className="fill-white w-full flex items-center justify-center">
               <FormLoadingSpinner />
             </span>

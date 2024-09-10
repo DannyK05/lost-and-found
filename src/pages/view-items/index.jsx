@@ -1,15 +1,18 @@
 import Card from "../../components/card";
 import Layout from "../../layout";
 import CloseXIcon from "../../assets/icons/CloseXIcon";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import FoundItemForm from "./components/FoundItemForm";
 import { useGetAllFoundItemsMutation } from "../../store/api/found";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
+import NoItems from "../../assets/images/no-items.png";
+import Phone from "../../assets/images/phone.jpg";
+
 // const foundItems = [
 //   {
 //     id: 1,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -20,7 +23,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 2,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -31,7 +34,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 3,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -42,7 +45,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 4,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -53,7 +56,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 5,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -64,7 +67,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 6,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -75,7 +78,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 7,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -86,7 +89,7 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 //   },
 //   {
 //     id: 8,
-//     imageUrl: Phone,
+//     image: Phone,
 //     name: "A Tecno Phone",
 //     category: "Electronics",
 //     description: "A black tecno camon with brown pouch",
@@ -101,8 +104,24 @@ export default function ViewItemsPage() {
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
   };
-  const { data: foundItems, isLoading } = useGetAllFoundItemsMutation();
+  const [getFound, { data: foundItems, isLoading }] =
+    useGetAllFoundItemsMutation({});
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getFound();
+        console.log(response);
+        // You might need to access the state or use a separate effect to log foundItems after it's updated
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+    };
+
+    fetchData();
+  }, []); // Empty array ensures this effect runs once on mount
+
   console.log("found items", foundItems);
+  // const isLoading = false;
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -122,11 +141,11 @@ export default function ViewItemsPage() {
               </div>
             </div>
           ) : foundItems ? (
-            foundItems.data.map((item) => (
+            foundItems.map((item) => (
               <Card
                 id={item.id}
                 type={"found"}
-                image={item.imageUrl}
+                image={item.image}
                 description={item.description}
                 title={item.name}
                 category={item.category}
@@ -136,8 +155,9 @@ export default function ViewItemsPage() {
               />
             ))
           ) : (
-            <div className=" w-full pt-[10%] flex items-center justify-center">
+            <div className=" w-full flex flex-col items-center ">
               <p className="text-2xl">No items found</p>
+              <img src={NoItems} alt="No items found" />
             </div>
           )}
         </div>
