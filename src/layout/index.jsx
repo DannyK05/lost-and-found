@@ -8,11 +8,13 @@ import {
   LOST_AND_FOUND_TOKEN,
   LOST_AND_FOUND_USER,
 } from "../utilities/constant";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentUser, selectCurrentUserToken } from "../store/selector";
 import { RouteGuard } from "../components/route-guard/RouteGuard";
+import { removeCredentials } from "../store/features/authSlice";
 
 export default function Layout({ children }) {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const firstName = currentUser ? currentUser.firstName : "Shawn";
   const lastName = currentUser ? currentUser.lastName : "Carter";
@@ -26,6 +28,8 @@ export default function Layout({ children }) {
   const handleLogout = () => {
     removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
     removeFromLocalStorage(LOST_AND_FOUND_USER);
+    dispatch(removeCredentials());
+
     setTimeout(() => {
       navigate("/");
     }, 500);
