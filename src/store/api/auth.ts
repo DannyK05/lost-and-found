@@ -1,5 +1,5 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery } from "./helper";
+import { baseQuery, baseQueryWithReauth } from "./helper";
 import {
   TLoginDto,
   TLoginResponse,
@@ -8,8 +8,8 @@ import {
 } from "../types/auth";
 
 export const authApi = createApi({
-  reducerPath: "api",
-  baseQuery: baseQuery,
+  reducerPath: "authApi",
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     login: builder.mutation<TLoginResponse, TLoginDto>({
       query: (body) => ({

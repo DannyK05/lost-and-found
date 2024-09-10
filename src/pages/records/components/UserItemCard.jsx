@@ -1,13 +1,15 @@
 import { useState } from "react";
-import LocationIcon from "../../assets/icons/LocationIcon";
-import KeyIcon from "../../assets/icons/KeyIcon";
-import CalendarIcon from "../../assets/icons/CalendarIcon";
-import CheckIcon from "../../assets/icons/CheckIcon";
-import InfoIcon from "../../assets/icons/InfoIcon";
-import BagIcon from "../../assets/icons/BagIcon";
-import { useClaimItemMutation } from "../../store/api/found";
+import BagIcon from "../../../assets/icons/BagIcon";
+import CalendarIcon from "../../../assets/icons/CalendarIcon";
+import CheckIcon from "../../../assets/icons/CheckIcon";
+import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
+import InfoIcon from "../../../assets/icons/InfoIcon";
+import KeyIcon from "../../../assets/icons/KeyIcon";
+import LocationIcon from "../../../assets/icons/LocationIcon";
+import { useDeleteFoundItemByIdMutation } from "../../../store/api/found";
+import { useDeleteLostItemByIdMutation } from "../../../store/api/lost";
 
-export default function Card({
+export default function UserItemCard({
   type,
   image,
   category,
@@ -20,17 +22,25 @@ export default function Card({
   color,
   itemBrand,
 }) {
-  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
   };
-  const handleClaim = async () => {
+  const [deleteFoundItem, { isLoading: loadingDeleteFound }] =
+    useDeleteFoundItemByIdMutation();
+  const [deleteLostItem, { isLoading: loadingDeleteLost }] =
+    useDeleteLostItemByIdMutation();
+  const handleDeleteFoundItems = async (id) => {
     try {
-      const response = await claimItem(id);
-      console.log(response);
+      const response = await deleteFoundItem(id);
     } catch (err) {}
   };
+  const handleDeleteLostItems = async (id) => {
+    try {
+      const response = await deleteLostItem(id);
+    } catch (err) {}
+  };
+
   return (
     <div
       key={id}
@@ -41,13 +51,15 @@ export default function Card({
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      <span
-        className={` ${
-          type === "lost" ? "px-4" : ""
-        } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
-      >
-        {type === "lost" ? "Lost" : "Found"}
-      </span>
+      {type && (
+        <span
+          className={` ${
+            type === "lost" ? "px-4" : ""
+          } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+        >
+          {type === "lost" ? "Lost" : "Found"}
+        </span>
+      )}
       <img
         className="rounded-lg"
         src={image}
@@ -120,19 +132,17 @@ export default function Card({
           </span>
         </button>{" "}
         <button
-          onClick={console.log("In development")}
+          onClick={console.log("still in development")}
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
-          {loadingClaim ? (
+          {loadingDeleteFound ? (
             <span className="fill-white w-full flex items-center justify-center">
               <FormLoadingSpinner />
             </span>
           ) : (
             <div className="flex items-center space-x-1 lg:py-3">
               {" "}
-              <p className="text-xs lg:text-sm">
-                {type == "lost" ? "Found" : "Claim"}
-              </p>{" "}
+              <p className="text-xs lg:text-sm">Delete</p>{" "}
               <span>
                 {" "}
                 <CheckIcon />{" "}

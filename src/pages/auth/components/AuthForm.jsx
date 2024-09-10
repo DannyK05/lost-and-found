@@ -24,7 +24,6 @@ export const AuthForm = ({ type }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ resolver: zodResolver(selectedSchema) });
   const [errorMessage, setErrorMessage] = useState();
@@ -88,7 +87,7 @@ export const AuthForm = ({ type }) => {
       } flex  relative w-full h-full md:full lg:w-3/4 md:w-full md:h-[60%] lg:h-[80%] items-center shadow-md `}
     >
       {errorMessage && (
-        <div className="absolute text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
+        <div className="absolute py-2 text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
           <span>
             <InfoIcon />{" "}
           </span>{" "}
