@@ -35,22 +35,26 @@ export const FoundItemFormSchema = z.object({
   title: z.string().min(1, { message: "Required" }),
   foundAt: z.string().min(1, { message: "Required" }),
   uniqueIdentifier: z.string(),
-  foundDate: z.date({ message: "Required" }),
+  foundDate: z.string({ message: "Required" }),
   category: z.string().min(1, { message: "Required" }),
   description: z
     .string()
     .min(1, { message: "Required" })
     .max(60, { message: "Limit of 60 characters" }),
+  itemBrand: z.string().optional(),
+  color: z.string().optional(),
 });
 
 export const LostItemFormSchema = z.object({
   title: z.string().min(1, { message: "Required" }),
   lostAt: z.string().min(1, { message: "Required" }),
   uniqueIdentifier: z.string(),
-  lostDate: z.date({ message: "Required" }),
+  lostDate: z.string({ message: "Required" }),
   category: z.string().min(1, { message: "Required" }),
   description: z
     .string()
     .min(1, { message: "Required" })
     .max(60, { message: "Limit of 60 characters" }),
+  itemBrand: z.string().optional(),
+  color: z.string().optional(),
 });

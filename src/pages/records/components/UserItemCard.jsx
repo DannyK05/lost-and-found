@@ -1,13 +1,11 @@
-import { useState } from "react";
-import LocationIcon from "../../assets/icons/LocationIcon";
-import KeyIcon from "../../assets/icons/KeyIcon";
-import CalendarIcon from "../../assets/icons/CalendarIcon";
-import CheckIcon from "../../assets/icons/CheckIcon";
-import InfoIcon from "../../assets/icons/InfoIcon";
-import BagIcon from "../../assets/icons/BagIcon";
-import { useClaimItemMutation } from "../../store/api/found";
-
-export default function Card({
+import BagIcon from "../../../assets/icons/BagIcon";
+import CalendarIcon from "../../../assets/icons/CalendarIcon";
+import CheckIcon from "../../../assets/icons/CheckIcon";
+import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
+import InfoIcon from "../../../assets/icons/InfoIcon";
+import KeyIcon from "../../../assets/icons/KeyIcon";
+import LocationIcon from "../../../assets/icons/LocationIcon";
+export default function UserItemCard({
   type,
   image,
   category,
@@ -17,17 +15,13 @@ export default function Card({
   location,
   title,
   id,
+  color,
+  itemBrand,
+  deleteCard,
 }) {
-  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
-  };
-  const handleClaim = async () => {
-    try {
-      const response = await claimItem(id);
-      console.log(response);
-    } catch (err) {}
   };
   return (
     <div
@@ -65,7 +59,11 @@ export default function Card({
         </div>
       </div>
       {isVisible ? (
-        <p className="text-lost-blue text-xs lg:text-sm">{description}</p>
+        <div>
+          <p className="text-lost-blue text-xs lg:text-sm">{description}</p>
+          {color && <p>Color: {color}</p>}
+          {itemBrand && <p>Brand: {itemBrand}</p>}
+        </div>
       ) : (
         <div className="w-full">
           <div className="flex items-center space-x-2">
@@ -114,7 +112,7 @@ export default function Card({
           </span>
         </button>{" "}
         <button
-          onClick={handleClaim}
+          onClick={deleteCard}
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg py-2"
         >
           {loadingClaim ? (
@@ -124,9 +122,7 @@ export default function Card({
           ) : (
             <div className="flex items-center space-x-1 lg:py-3">
               {" "}
-              <p className="text-xs lg:text-sm">
-                {type == "lost" ? "Found" : "Claim"}
-              </p>{" "}
+              <p className="text-xs lg:text-sm">Delete</p>{" "}
               <span>
                 {" "}
                 <CheckIcon />{" "}

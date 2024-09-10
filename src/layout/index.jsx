@@ -9,7 +9,7 @@ import {
   LOST_AND_FOUND_USER,
 } from "../utilities/constant";
 import { useSelector } from "react-redux";
-import { selectCurrentUser } from "../store/selector";
+import { selectCurrentUser, selectCurrentUserToken } from "../store/selector";
 
 export default function Layout({ children }) {
   const currentUser = useSelector(selectCurrentUser);

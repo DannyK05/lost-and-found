@@ -4,10 +4,7 @@ import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import FoundItemForm from "./components/FoundItemForm";
-import {
-  useClaimItemMutation,
-  useGetAllFoundItemsMutation,
-} from "../../store/api/found";
+import { useGetAllFoundItemsMutation } from "../../store/api/found";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 // const foundItems = [
 //   {
@@ -106,8 +103,6 @@ export default function ViewItemsPage() {
   };
   const { data: foundItems, isLoading } = useGetAllFoundItemsMutation();
   console.log("found items", foundItems);
-  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
-
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible(!isSidebarVisible);
@@ -129,7 +124,7 @@ export default function ViewItemsPage() {
           ) : foundItems ? (
             foundItems.data.map((item) => (
               <Card
-                key={item.id}
+                id={item.id}
                 type={"found"}
                 image={item.imageUrl}
                 description={item.description}

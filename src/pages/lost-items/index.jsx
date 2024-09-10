@@ -6,7 +6,7 @@ import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
 import LostItemForm from "./components/LostItemForm";
 import { useGetAllLostItemsMutation } from "../../store/api/lost";
-import { useClaimItemMutation } from "../../store/api/found";
+
 const foundItems = [
   {
     id: 1,
@@ -99,8 +99,6 @@ const foundItems = [
 ];
 export default function LostItemsPage() {
   const { data: lostItems, isLoading } = useGetAllLostItemsMutation();
-  const [claimItem, { isLoading: loadingClaim }] = useClaimItemMutation();
-
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -117,24 +115,32 @@ export default function LostItemsPage() {
           Lost Items
         </h1>
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
-          {" "}
-          {foundItems ? (
-            foundItems.map((item) => (
+          {isLoading ? (
+            <div className=" w-full pt-[10%] flex items-center justify-center">
+              <div className="flex flex-col items-center space-y-2">
+                <span>
+                  <LoadingSpinner />
+                </span>
+                <p className="text-sm">Loading found items</p>
+              </div>
+            </div>
+          ) : lostItems ? (
+            lostItems.data.map((item) => (
               <Card
-                key={item.id}
+                id={item.id}
                 type={"lost"}
                 image={item.imageUrl}
                 description={item.description}
                 title={item.name}
                 category={item.category}
-                location={item.foundAt}
+                location={item.lostAt}
                 uniqueIdentifier={item.uniqueIdentifier}
-                foundDate={item.foundDate}
+                foundDate={item.lostDate}
               />
             ))
           ) : (
-            <div className="flex items-center justify-center">
-              <p>No items found</p>
+            <div className=" w-full pt-[10%] flex items-center justify-center">
+              <p className="text-2xl">No items found</p>
             </div>
           )}
         </div>
