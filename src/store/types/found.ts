@@ -1,4 +1,4 @@
-import { TApiResponse } from "./constant";
+import { TApiResponse, TFoundItemResponse } from "./constant";
 
 export type TRegisterFoundItemsDto = {
   title: string;
@@ -12,4 +12,9 @@ export type TRegisterFoundItemsDto = {
   color: string;
 };
 
-export type TRegiste = TApiResponse<{}>;
+export type TGetAllFoundItemsResponse = TApiResponse<{
+  allFoundItemData: TFoundItemResponse[];
+}>;
+export type TGetAllUserFoundItemsResponse = TApiResponse<{
+  foundItems: TFoundItemResponse[];
+}>;

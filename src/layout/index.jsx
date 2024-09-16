@@ -87,7 +87,7 @@ export default function Layout({ children }) {
 
             <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
               <NavLink
-                to={"/view-items"}
+                to={"/found-items"}
                 className={({ isActive }) =>
                   `${
                     isActive

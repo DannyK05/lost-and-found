@@ -8,7 +8,7 @@ import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useState } from "react";
 
-export default function FoundItemForm() {
+export default function FoundItemForm({ toggleContainer }) {
   const [registerFoundItems, { isLoading }] = useRegisterFoundItemsMutation();
   const {
     register,
@@ -19,10 +19,21 @@ export default function FoundItemForm() {
 
   const SubmitForm = async (data) => {
     console.log(data);
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+    formData.append("title", data.title);
+    formData.append("foundAt", data.foundAt);
+    formData.append("uniqueIdentifier", data.uniqueIdentifier);
+    formData.append("itemBrand", data.itemBrand);
+    formData.append("color", data.color);
+    formData.append("foundDate", data.foundDate);
+    formData.append("category", data.category);
+    formData.append("description", data.description);
     try {
-      const response = await registerFoundItems(data).unwrap();
-      console.log(response);
-      console.log(data);
+      const response = await registerFoundItems(formData).unwrap();
+      setTimeout(() => {
+        toggleContainer();
+      }, 800);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
@@ -52,7 +63,7 @@ export default function FoundItemForm() {
       <label className="w-4/5">
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
-          {...register("image", { required: true })}
+          {...register("image")}
           className="border-inherit text-sm active:border-lost-blue w-full border-2 p-2"
           alt="submit"
           type="file"

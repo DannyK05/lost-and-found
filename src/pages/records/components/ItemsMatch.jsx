@@ -1,34 +1,8 @@
 import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import UserItemCard from "./UserItemCard";
-import Phone from "../../../assets/images/phone.jpg";
 import NoItems from "../../../assets/images/no-items.png";
 
-const matchedItems = [
-  // {
-  //   id: 1,
-  //   image: Phone,
-  //   title: "A Tecno Phone",
-  //   category: "Electronics",
-  //   description: "A black tecno camon with brown pouch",
-  //   lostAt: "Odlt",
-  //   uniqueIdentifier: "Demonslayer Wallpaper",
-  //   lostDate: "02/09/2024",
-  //   color: "Brown",
-  //   itemBrand: "Tecno",
-  // },
-  // {
-  //   id: 2,
-  //   image: Phone,
-  //   title: "A Tecno Phone",
-  //   category: "Electronics",
-  //   description: "A black tecno camon with brown pouch",
-  //   lostAt: "Odlt",
-  //   uniqueIdentifier: "Demonslayer Wallpaper",
-  //   lostDate: "02/09/2024",
-  //   color: "Brown",
-  //   itemBrand: "Tecno",
-  // },
-];
+const matchedItems = [];
 export default function ItemsMatch() {
   const loadingMatchedItems = false;
   return (
@@ -41,7 +15,7 @@ export default function ItemsMatch() {
         {loadingMatchedItems ? (
           <div className=" w-full pt-[10%] flex items-center justify-center">
             <div className="flex w-full flex-col items-center space-y-2">
-              <span className="bg-lost-blue">
+              <span className="bg-lost-blue p-2 rounded-full">
                 <LoadingSpinner />
               </span>
               <p className="text-sm">Loading lost items</p>
@@ -57,7 +31,7 @@ export default function ItemsMatch() {
                 category={items.category}
                 uniqueIdentifier={items.uniqueIdentifier}
                 description={items.description}
-                foundDate={items.lostDate}
+                date={items.lostDate}
                 location={items.lostAt}
                 id={items.id}
                 color={items.color}
