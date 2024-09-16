@@ -8,7 +8,7 @@ import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useState } from "react";
 
-export default function FoundItemForm() {
+export default function FoundItemForm({ toggleContainer }) {
   const [registerFoundItems, { isLoading }] = useRegisterFoundItemsMutation();
   const {
     register,
@@ -21,6 +21,9 @@ export default function FoundItemForm() {
     console.log(data);
     try {
       const response = await registerFoundItems(data).unwrap();
+      setTimeout(() => {
+        toggleContainer;
+      }, 2000);
       console.log(response);
       console.log(data);
     } catch (err) {

@@ -8,7 +8,7 @@ import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useState } from "react";
 
-export default function LostItemForm() {
+export default function LostItemForm({ toggleContainer }) {
   const [registerLostItems, { isLoading }] = useRegisterLostItemsMutation();
   const {
     register,
@@ -21,6 +21,9 @@ export default function LostItemForm() {
     console.log(data);
     try {
       const response = await registerLostItems(data).unwrap();
+      setTimeout(() => {
+        toggleContainer;
+      }, 2000);
       console.log(response);
       console.log(data);
     } catch (err) {

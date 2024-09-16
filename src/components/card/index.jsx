@@ -15,14 +15,14 @@ export default function Card({
   category,
   uniqueIdentifier,
   description,
-  foundDate,
+  date,
   location,
   title,
   id,
   color,
   itemBrand,
 }) {
-  const decodedDate = foundDate.split("T")[0];
+  const decodedDate = date.split("T")[0];
   const [claimFoundItem, { isLoading: loadingFoundClaim }] =
     useClaimFoundItemMutation();
   const [claimLostItem, { isLoading: loadingLostClaim }] =
@@ -81,7 +81,7 @@ export default function Card({
         </div>
       </div>
       {isVisible ? (
-        <div className="text-lost-blue text-xs lg:text-sm">
+        <div className="text-lost-blue w-full text-xs px-2 lg:text-sm">
           <p className="">{description}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
