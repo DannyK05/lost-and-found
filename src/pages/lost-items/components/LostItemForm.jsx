@@ -8,7 +8,7 @@ import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useState } from "react";
 
-export default function LostItemForm() {
+export default function LostItemForm({ toggleContainer }) {
   const [registerLostItems, { isLoading }] = useRegisterLostItemsMutation();
   const {
     register,
@@ -18,9 +18,21 @@ export default function LostItemForm() {
   const [errorMessage, setErrorMessage] = useState();
 
   const SubmitForm = async (data) => {
-    console.log(data);
     try {
-      const response = await registerLostItems(data).unwrap();
+      const formData = new FormData();
+      formData.append("image", data.image[0]);
+      formData.append("title", data.title);
+      formData.append("lostAt", data.lostAt);
+      formData.append("uniqueIdentifier", data.uniqueIdentifier);
+      formData.append("itemBrand", data.itemBrand);
+      formData.append("color", data.color);
+      formData.append("lostDate", data.lostDate);
+      formData.append("category", data.category);
+      formData.append("description", data.description);
+      const response = await registerLostItems(formData).unwrap();
+      setTimeout(() => {
+        toggleContainer();
+      }, 800);
       console.log(response);
       console.log(data);
     } catch (err) {
@@ -57,7 +69,7 @@ export default function LostItemForm() {
           className="border-inherit text-sm active:border-lost-blue w-full border-2 p-2"
           alt="submit"
           type="file"
-          {...register("image", { required: true })}
+          {...register("image")}
         />
       </label>
       <FormInput

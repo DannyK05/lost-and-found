@@ -1,6 +1,5 @@
 import Layout from "../../layout";
 import Card from "../../components/card";
-import Phone from "../../assets/images/phone.jpg";
 import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
 import { SideContainer } from "../../components/side-container";
@@ -11,7 +10,6 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
 export default function LostItemsPage() {
   const { data: lostItems, isLoading } = useGetAllLostItemsQuery();
-  console.log(lostItems);
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -31,7 +29,7 @@ export default function LostItemsPage() {
           {isLoading ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">
               <div className="flex flex-col items-center space-y-2">
-                <span>
+                <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
                 </span>
                 <p className="text-sm">Loading found items</p>
@@ -40,6 +38,7 @@ export default function LostItemsPage() {
           ) : lostItems ? (
             lostItems.data.allLostItemData.map((item) => (
               <Card
+                key={item.id}
                 id={item.id}
                 type={"lost"}
                 image={item.imageUrl}
@@ -48,7 +47,7 @@ export default function LostItemsPage() {
                 category={item.category}
                 location={item.lostAt}
                 uniqueIdentifier={item.uniqueIdentifier}
-                foundDate={item.lostDate}
+                date={item.lostDate}
                 color={item.color}
                 itemBrand={item.itemBrand}
               />
@@ -86,7 +85,7 @@ export default function LostItemsPage() {
           isVisible={isSidebarVisible}
           toggleContainer={toggleSidebarVisibility}
         >
-          <LostItemForm />
+          <LostItemForm toggleContainer={toggleSidebarVisibility} />
         </SideContainer>
       </Layout>
     </>

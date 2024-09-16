@@ -7,106 +7,7 @@ import FoundItemForm from "./components/FoundItemForm";
 import { useGetAllFoundItemsQuery } from "../../store/api/found";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 import NoItems from "../../assets/images/no-items.png";
-import Phone from "../../assets/images/phone.jpg";
 
-// const foundItems = [
-//   {
-//     id: 1,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 2,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 3,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 4,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 5,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 6,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 7,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-//   {
-//     id: 8,
-//     image: Phone,
-//     name: "A Tecno Phone",
-//     category: "Electronics",
-//     description: "A black tecno camon with brown pouch",
-//     foundAt: "Odlt",
-//     uniqueIdentifier: "Demonslayer Wallpaper",
-//     foundDate: "02/09/2024",
-//     color: "Brown",
-//     itemBrand: "Tecno",
-//   },
-// ];
 export default function ViewItemsPage() {
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
@@ -125,7 +26,7 @@ export default function ViewItemsPage() {
           {isLoading ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">
               <div className="flex flex-col items-center space-y-2">
-                <span>
+                <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
                 </span>
                 <p className="text-sm">Loading found items</p>
@@ -134,6 +35,7 @@ export default function ViewItemsPage() {
           ) : foundItems ? (
             foundItems.data.allFoundItemData.map((item) => (
               <Card
+                key={item.id}
                 id={item.id}
                 type={"found"}
                 image={item.imageUrl}
@@ -142,7 +44,7 @@ export default function ViewItemsPage() {
                 category={item.category}
                 location={item.foundAt}
                 uniqueIdentifier={item.uniqueIdentifier}
-                foundDate={item.foundDate}
+                date={item.foundDate}
                 color={item.color}
                 itemBrand={item.itemBrand}
               />
@@ -180,7 +82,7 @@ export default function ViewItemsPage() {
           isVisible={isSidebarVisible}
           toggleContainer={toggleSidebarVisibility}
         >
-          <FoundItemForm />
+          <FoundItemForm toggleContainer={toggleSidebarVisibility} />
         </SideContainer>
       </Layout>
     </>

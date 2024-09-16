@@ -18,7 +18,7 @@ export const baseQuery = fetchBaseQuery({
     const token =
       selectCurrentUserToken(getState()) ||
       getFromLocalStorage(LOST_AND_FOUND_TOKEN);
-    console.log("Token:", token);
+    // console.log("Token:", token);
     if (token) {
       headers.set("Authorization", `Bearer ${token}`);
     }

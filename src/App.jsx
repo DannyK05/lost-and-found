@@ -42,7 +42,7 @@ function App() {
       loader: LoadingPage,
     },
     {
-      path: "/view-items",
+      path: "/found-items",
       element: <ViewItemsPage />,
       errorElement: <ErrorPage />,
       loader: LoadingPage,

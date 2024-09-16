@@ -15,14 +15,14 @@ export default function UserItemCard({
   category,
   uniqueIdentifier,
   description,
-  foundDate,
+  date,
   location,
   title,
   id,
   color,
   itemBrand,
 }) {
-  const decodedDate = foundDate.split("T")[0];
+  const decodedDate = date.split("T")[0];
   const [isVisible, setIsVisible] = useState(false);
   const toggleDetails = () => {
     setIsVisible(!isVisible);
@@ -35,12 +35,16 @@ export default function UserItemCard({
   const handleDeleteFoundItems = async (id) => {
     try {
       const response = await deleteFoundItem(id);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleDeleteLostItems = async (id) => {
     try {
       const response = await deleteLostItem(id);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -81,7 +85,7 @@ export default function UserItemCard({
         </div>
       </div>
       {isVisible ? (
-        <div className="text-lost-blue text-xs lg:text-sm">
+        <div className="text-lost-blue text-xs w-full px-2 lg:text-sm">
           <p className="">{description}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
@@ -134,13 +138,15 @@ export default function UserItemCard({
           </span>
         </button>{" "}
         <button
-          onClick={
-            type === "found" ? handleDeleteFoundItems : handleDeleteLostItems
-          }
+          onClick={() => {
+            type === "found"
+              ? handleDeleteFoundItems(id)
+              : handleDeleteLostItems(id);
+          }}
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
           {isLoading ? (
-            <span className="fill-white w-full flex items-center justify-center">
+            <span className="fill-white w-full flex items-center py-2 justify-center">
               <FormLoadingSpinner />
             </span>
           ) : (
