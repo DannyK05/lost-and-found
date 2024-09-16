@@ -1,6 +1,5 @@
 import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import UserItemCard from "./UserItemCard";
-import Phone from "../../../assets/images/phone.jpg";
 import NoItems from "../../../assets/images/no-items.png";
 
 const matchedItems = [];

@@ -35,12 +35,16 @@ export default function UserItemCard({
   const handleDeleteFoundItems = async (id) => {
     try {
       const response = await deleteFoundItem(id);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleDeleteLostItems = async (id) => {
     try {
       const response = await deleteLostItem(id);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

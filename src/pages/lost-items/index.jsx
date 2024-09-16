@@ -10,7 +10,6 @@ import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
 export default function LostItemsPage() {
   const { data: lostItems, isLoading } = useGetAllLostItemsQuery();
-  console.log(lostItems);
   const [isTagVisible, setIsTagVisible] = useState(false);
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
@@ -39,6 +38,7 @@ export default function LostItemsPage() {
           ) : lostItems ? (
             lostItems.data.allLostItemData.map((item) => (
               <Card
+                key={item.id}
                 id={item.id}
                 type={"lost"}
                 image={item.imageUrl}

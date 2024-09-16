@@ -35,13 +35,17 @@ export default function Card({
     try {
       const response = await claimFoundItem(id);
       console.log(response);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleLostClaim = async () => {
     try {
       const response = await claimLostItem(id);
       console.log(response);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
   const handleClaim = type === "found" ? handleFoundClaim : handleLostClaim;
   const isLoading = type === "found" ? loadingFoundClaim : loadingLostClaim;
@@ -138,7 +142,7 @@ export default function Card({
           className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
         >
           {isLoading ? (
-            <span className="fill-white w-full flex items-center justify-center">
+            <span className="fill-white w-full flex items-center py-2 justify-center">
               <LoadingSpinner />
             </span>
           ) : (

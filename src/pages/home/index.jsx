@@ -1,13 +1,10 @@
 import Layout from "../../layout";
 import "./index.css";
-
 import Bell from "../../assets/images/bell.webp";
 import MagnifyingGlass from "../../assets/images/magnifying-glass.png";
 import Megaphone from "../../assets/images/megaphone.webp";
-
 import Statistics from "../../assets/images/statistics.webp";
-
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
@@ -31,52 +28,60 @@ export default function HomePage() {
             <div className="outer">
               <div className="each">
                 <div className="img-div">
-                  <img
-                    src={Megaphone}
-                    alt="A picture of a megaphone representing report an item"
-                    className="img"
-                    width={82}
-                    height={82}
-                  />
+                  <Link to={"/lost-items"}>
+                    <img
+                      src={Megaphone}
+                      alt="A picture of a megaphone representing report an item"
+                      className="img"
+                      width={82}
+                      height={82}
+                    />
+                  </Link>
                 </div>
                 <p className="e-text">Report an Item</p>
               </div>
 
               <div className="each">
                 <div className="img-div">
-                  <img
-                    src={MagnifyingGlass}
-                    alt="A picture of a megaphone representing report an item"
-                    className="img"
-                    width={82}
-                    height={82}
-                  />
+                  <Link to={"/found-items"}>
+                    <img
+                      src={MagnifyingGlass}
+                      alt="A picture of a megaphone representing report an item"
+                      className="img"
+                      width={82}
+                      height={82}
+                    />
+                  </Link>
                 </div>
                 <p className="e-text">Found Item</p>
               </div>
 
               <div className="each">
                 <div className="img-div">
-                  <img
-                    src={Bell}
-                    alt="A picture of a megaphone representing report an item"
-                    className="img"
-                    width={82}
-                    height={82}
-                  />
+                  <Link to={"/records"}>
+                    <img
+                      src={Bell}
+                      alt="A picture of a megaphone representing report an item"
+                      className="img"
+                      width={82}
+                      height={82}
+                    />
+                  </Link>
                 </div>
                 <p className="e-text">Notify owner</p>
               </div>
 
               <div className="each">
                 <div className="img-div">
-                  <img
-                    src={Statistics}
-                    alt="A picture of a megaphone representing report an item"
-                    className="img"
-                    width={82}
-                    height={82}
-                  />
+                  <Link to={"/records"}>
+                    <img
+                      src={Statistics}
+                      alt="A picture of a megaphone representing report an item"
+                      className="img"
+                      width={82}
+                      height={82}
+                    />
+                  </Link>
                 </div>
                 <p className="e-text">Manage Reports</p>
               </div>
@@ -322,7 +327,7 @@ export default function HomePage() {
             </div>
             <div className="button-div">
               <button id="button">
-                <NavLink to={"/lost-items"}> Your Item</NavLink>
+                <Link to={"/lost-items"}> Your Item</Link>
               </button>
             </div>
           </div>

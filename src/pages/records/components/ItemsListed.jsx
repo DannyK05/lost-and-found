@@ -2,16 +2,13 @@ import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useGetAllUserFoundItemsQuery } from "../../../store/api/found";
 import { useGetAllUserLostItemsQuery } from "../../../store/api/lost";
 import UserItemCard from "./UserItemCard";
-import Phone from "../../../assets/images/phone.jpg";
 import NoItems from "../../../assets/images/no-items.png";
 
 export default function ItemsListed() {
   const { data: lostItems, isLoading: loadingLostItems } =
     useGetAllUserLostItemsQuery();
-  console.log(lostItems);
   const { data: foundItems, isLoading: loadingFoundItems } =
     useGetAllUserFoundItemsQuery();
-  console.log(foundItems);
 
   return (
     <div className="w-full border-b-1 border-lost-blue">

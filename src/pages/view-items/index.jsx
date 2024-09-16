@@ -35,6 +35,7 @@ export default function ViewItemsPage() {
           ) : foundItems ? (
             foundItems.data.allFoundItemData.map((item) => (
               <Card
+                key={item.id}
                 id={item.id}
                 type={"found"}
                 image={item.imageUrl}
