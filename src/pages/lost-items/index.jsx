@@ -32,7 +32,7 @@ export default function LostItemsPage() {
                 <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
                 </span>
-                <p className="text-sm">Loading found items</p>
+                <p className="text-sm">Loading lost items</p>
               </div>
             </div>
           ) : lostItems ? (
