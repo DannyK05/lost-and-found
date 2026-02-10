@@ -6,7 +6,7 @@ export const ErrorPage = () => {
         <p className="text-xl text-lost-accent-dark">🚫Page NOT FOUND 🔎</p>
         <p className="text-xl text-lost-accent-dark">
           Something went wrong, <br />
-          Try running the site again
+          Try reloading the site again
         </p>
       </div>
     </div>

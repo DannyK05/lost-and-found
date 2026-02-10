@@ -17,22 +17,28 @@ import { setCredentials } from "../../../store/features/authSlice";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import InfoIcon from "../../../assets/icons/InfoIcon";
 import { useState } from "react";
+
 export const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [login, { isLoading }] = useLoginMutation({});
+  const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
+
+  const [errorMessage, setErrorMessage] = useState();
+
   const selectedSchema = type == "signup" ? signupFormSchema : loginFormSchema;
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(selectedSchema) });
-  const [errorMessage, setErrorMessage] = useState();
-  const [login, { isLoading }] = useLoginMutation({});
-  const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
 
   const handleSignup = async (data) => {
     try {
       const response = await signup(data).unwrap();
+
       const token = response.data.accessToken;
       const user = response.data.user;
 
@@ -40,6 +46,7 @@ export const AuthForm = ({ type }) => {
       setToLocalStorage(LOST_AND_FOUND_USER, user);
 
       dispatch(setCredentials({ token, user }));
+
       setTimeout(() => {
         navigate("/home");
       }, 500);
@@ -64,14 +71,18 @@ export const AuthForm = ({ type }) => {
 
       setToLocalStorage(LOST_AND_FOUND_TOKEN, token);
       setToLocalStorage(LOST_AND_FOUND_USER, user);
+
       dispatch(setCredentials({ token, user }));
+
       setTimeout(() => {
         navigate("/home");
       }, 500);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
+
         setErrorMessage(error);
+
         setTimeout(() => {
           setErrorMessage(null);
         }, 2000);
@@ -162,30 +173,35 @@ export const AuthForm = ({ type }) => {
               onSubmit={handleSubmit(handleSignup)}
               className="flex w-[60%] flex-col items-center space-y-4"
             >
-              <div className="flex w-full flex-col items-center space-y-4">
-                <div className=" flex flex-col md:flex-row lg:flex-row items-center w-full space-y-4 md:space-x-4 lg:space-y-0 md:space-y-0 lg:space-x-4">
-                  <FormInput
-                    containerClassName="w-full md:w-[45%] lg:w-[45%]"
-                    {...register("firstName")}
-                    placeholder={"First Name"}
-                  />
-                  {errors.firstName?.message && (
-                    <span className="text-red-500 text-xs">
-                      {errors.firstName.message}
-                    </span>
-                  )}
-                  <FormInput
-                    containerClassName="w-full md:w-[45%] lg:w-[45%]"
-                    {...register("lastName")}
-                    placeholder={"Last Name"}
-                  />
-                  {errors.lastName?.message && (
-                    <span className="text-red-500 text-xs">
-                      {errors.lastName.message}
-                    </span>
-                  )}
+              <div className="flex w-full flex-col items-start space-y-4">
+                <div className=" flex flex-col md:flex-row lg:flex-row items-start w-full space-y-4 md:space-x-4 lg:space-y-0 md:space-y-0 lg:space-x-4">
+                  <div className="w-full flex flex-col items-start">
+                    <FormInput
+                      containerClassName=""
+                      {...register("firstName")}
+                      placeholder={"First Name"}
+                    />
+                    {errors.firstName?.message && (
+                      <span className="text-red-500 text-xs">
+                        {errors.firstName.message}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="w-full flex flex-col items-start">
+                    <FormInput
+                      containerClassName=""
+                      {...register("lastName")}
+                      placeholder={"Last Name"}
+                    />
+                    {errors.lastName?.message && (
+                      <span className="text-red-500 text-xs">
+                        {errors.lastName.message}
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div className="w-full flex flex-col items-center space-y-1">
+                <div className="w-full flex flex-col items-start space-y-1">
                   <FormInput
                     containerClassName="w-full"
                     {...register("email")}
@@ -197,7 +213,7 @@ export const AuthForm = ({ type }) => {
                     </span>
                   )}
                 </div>
-                <div className="w-full flex flex-col items-center space-y-1">
+                <div className="w-full flex flex-col items-start space-y-1">
                   <FormInput
                     containerClassName="w-full"
                     {...register("phoneNumber")}
@@ -209,7 +225,7 @@ export const AuthForm = ({ type }) => {
                     </span>
                   )}
                 </div>
-                <div className="w-full flex flex-col items-center space-y-1">
+                <div className="w-full flex flex-col items-start space-y-1">
                   <FormInput
                     containerClassName="w-full"
                     {...register("password")}
@@ -222,7 +238,7 @@ export const AuthForm = ({ type }) => {
                     </span>
                   )}
                 </div>
-                <div className="w-full flex flex-col items-center space-y-1">
+                <div className="w-full flex flex-col items-start space-y-1">
                   <FormInput
                     containerClassName="w-full"
                     {...register("confirmPassword")}
@@ -269,11 +285,11 @@ export const AuthForm = ({ type }) => {
             </h1>
             <form
               onSubmit={handleSubmit(handleLogin)}
-              className="flex w-full flex-col items-center mb-10 space-y-10"
+              className="flex w-3/5 flex-col items-center mb-10 space-y-10"
             >
-              <div className="flex w-full flex-col items-center space-y-4">
+              <div className="flex w-full flex-col items-start space-y-4">
                 <FormInput
-                  containerClassName="w-full md:w-[60%] lg:w-[60%]"
+                  containerClassName="w-full"
                   {...register("email")}
                   type="email"
                   placeholder={"Email Address"}
@@ -284,7 +300,7 @@ export const AuthForm = ({ type }) => {
                   </span>
                 )}
                 <FormInput
-                  containerClassName="w-full md:w-[60%] lg:w-[60%]"
+                  containerClassName="w-full"
                   {...register("password")}
                   type="password"
                   placeholder={"Password"}

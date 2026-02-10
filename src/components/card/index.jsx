@@ -89,7 +89,7 @@ export default function Card({
       </div>
 
       {isVisible ? (
-        <div className="text-lost-blue w-full text-xs px-2 lg:text-sm">
+        <div className="text-lost-blue capitalize w-full text-xs px-2 lg:text-sm">
           <p className="">{description}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
@@ -100,7 +100,7 @@ export default function Card({
             <span className="text-lost-blue">
               <BagIcon />
             </span>
-            <p className="text-xs lg:text-sm text-lost-blue font-semi-bold">
+            <p className="text-xs capitalize lg:text-sm text-lost-blue font-semi-bold">
               {category}
             </p>
           </div>
@@ -109,7 +109,7 @@ export default function Card({
             <span className="text-lost-blue">
               <KeyIcon />
             </span>
-            <p className="text-xs lg:text-sm text-lost-blue font-semi-bold">
+            <p className="text-xs capitalize lg:text-sm text-lost-blue font-semi-bold">
               {uniqueIdentifier}
             </p>
           </div>

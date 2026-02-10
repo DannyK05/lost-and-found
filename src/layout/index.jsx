@@ -1,30 +1,33 @@
 import { useState } from "react";
-import ProfileIcon from "../assets/icons/ProfileIcon";
 import { NavLink, useNavigate } from "react-router-dom";
-import MenuIcon from "../assets/icons/MenuIcon";
-import CloseXIcon from "../assets/icons/CloseXIcon";
-import { removeFromLocalStorage } from "../utilities/storage";
+import { useDispatch, useSelector } from "react-redux";
 import {
   LOST_AND_FOUND_TOKEN,
   LOST_AND_FOUND_USER,
 } from "../utilities/constant";
-import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentUser, selectCurrentUserToken } from "../store/selector";
-import { RouteGuard } from "../components/route-guard/RouteGuard";
+import { removeFromLocalStorage } from "../utilities/storage";
 import { removeCredentials } from "../store/features/authSlice";
+import { selectCurrentUser } from "../store/selector";
+import ProfileIcon from "../assets/icons/ProfileIcon";
+import MenuIcon from "../assets/icons/MenuIcon";
+import CloseXIcon from "../assets/icons/CloseXIcon";
+import { RouteGuard } from "../components/route-guard/RouteGuard";
 
 export default function Layout({ children }) {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+
   const firstName = currentUser ? currentUser.firstName : "Shawn";
   const lastName = currentUser ? currentUser.lastName : "Carter";
 
   const name = firstName + " " + lastName;
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
+
   const handleLogout = () => {
     removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
     removeFromLocalStorage(LOST_AND_FOUND_USER);
@@ -34,6 +37,7 @@ export default function Layout({ children }) {
       navigate("/");
     }, 500);
   };
+
   return (
     <RouteGuard>
       <main className="w-full h-[100vh]">
@@ -149,6 +153,7 @@ export default function Layout({ children }) {
               </span>
             </div>
           </ul>
+          
           <div className=" hidden flex  items-center md:w-1/5 lg:w-1/5 md:flex-row lg:flex-row md:flex lg:flex  lg:space-x-4 md:space-x-2">
             <div className=" md:flex lg:flex items-center text-white hover:text-lost-accent-light hover:fill-lost-accent-light text-sm space-x-2">
               <span className="cursor-pointer fill-white">
@@ -156,6 +161,7 @@ export default function Layout({ children }) {
               </span>
               <p>{name}</p>
             </div>
+
             <span
               onClick={handleLogout}
               className="text-lost-accent-light text-sm cursor-pointer active:underline"
@@ -171,6 +177,7 @@ export default function Layout({ children }) {
             <MenuIcon />{" "}
           </span>
         </nav>
+
         <div className="pt-[75px] lg:pt-[90px] md:pt-[110px]">{children}</div>
       </main>
     </RouteGuard>

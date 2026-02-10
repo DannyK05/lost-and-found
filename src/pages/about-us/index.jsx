@@ -9,6 +9,7 @@ import Ownerbg from "../../assets/images/ownerbg.svg";
 import Owner from "../../assets/images/owner.svg";
 import People from "../../assets/images/people.webp";
 import Arrow from "../../assets/images/arrow.svg";
+
 export default function AboutUsPage() {
   return (
     <>

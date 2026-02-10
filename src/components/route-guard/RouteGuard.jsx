@@ -10,9 +10,11 @@ import { removeCredentials } from "../../store/features/authSlice";
 export function RouteGuard({ children }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [Authorised, setAuthorised] = useState(false);
+  
   const currentUser = useSelector(selectCurrentUser);
   const authToken = useSelector(selectCurrentUserToken);
+
+  const [Authorised, setAuthorised] = useState(false);
 
   const AuthCheck = useCallback(() => {
     if (authToken) {
