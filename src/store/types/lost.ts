@@ -15,6 +15,7 @@ export type TRegisterLostItemsDto = {
 export type TGetAllLostItemsResponse = TApiResponse<{
   allLostItemData: TLostItemResponse[];
 }>;
+
 export type TGetAllUserLostItemsResponse = TApiResponse<{
   lostItems: TLostItemResponse[];
 }>;

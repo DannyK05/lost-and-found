@@ -1,17 +1,20 @@
 import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
-import UserItemCard from "./UserItemCard";
 import NoItems from "../../../assets/images/no-items.png";
 
+import { UserItemCard } from "./UserItemCard";
+
 const matchedItems = [];
-export default function ItemsMatch() {
+
+export const ItemsMatch = () => {
   const loadingMatchedItems = false;
+
   return (
     <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
       <h1 className="underline font-bold text-lost-blue">
         Here are your matches
       </h1>
-      <div className="flex w-full items-center flex-wrap space-x-2">
-        {" "}
+
+      <div className="flex w-full items-center justify-center flex-wrap space-x-2">
         {loadingMatchedItems ? (
           <div className=" w-full pt-[10%] flex items-center justify-center">
             <div className="flex w-full flex-col items-center space-y-2">
@@ -50,4 +53,4 @@ export default function ItemsMatch() {
       </div>
     </div>
   );
-}
+};

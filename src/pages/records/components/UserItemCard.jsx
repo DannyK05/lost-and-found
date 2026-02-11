@@ -1,4 +1,9 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+import { useDeleteFoundItemByIdMutation } from "../../../store/api/found";
+import { useDeleteLostItemByIdMutation } from "../../../store/api/lost";
+
 import BagIcon from "../../../assets/icons/BagIcon";
 import CalendarIcon from "../../../assets/icons/CalendarIcon";
 import CheckIcon from "../../../assets/icons/CheckIcon";
@@ -6,10 +11,10 @@ import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import InfoIcon from "../../../assets/icons/InfoIcon";
 import KeyIcon from "../../../assets/icons/KeyIcon";
 import LocationIcon from "../../../assets/icons/LocationIcon";
-import { useDeleteFoundItemByIdMutation } from "../../../store/api/found";
-import { useDeleteLostItemByIdMutation } from "../../../store/api/lost";
 
-export default function UserItemCard({
+import PlaceholderImage from "../../../assets/images/image-placeholder.webp";
+
+export const UserItemCard = ({
   type,
   image,
   category,
@@ -21,17 +26,20 @@ export default function UserItemCard({
   id,
   color,
   itemBrand,
-}) {
-  const decodedDate = date.split("T")[0];
-  const [isVisible, setIsVisible] = useState(false);
-  const toggleDetails = () => {
-    setIsVisible(!isVisible);
-  };
+}) => {
   const [deleteFoundItem, { isLoading: loadingDeleteFound }] =
     useDeleteFoundItemByIdMutation();
   const [deleteLostItem, { isLoading: loadingDeleteLost }] =
     useDeleteLostItemByIdMutation();
+
+  const decodedDate = date.split("T")[0];
+  const [isVisible, setIsVisible] = useState(false);
   const isLoading = type === "found" ? loadingDeleteFound : loadingDeleteLost;
+
+  const toggleDetails = () => {
+    setIsVisible(!isVisible);
+  };
+
   const handleDeleteFoundItems = async (id) => {
     try {
       const response = await deleteFoundItem(id);
@@ -39,6 +47,7 @@ export default function UserItemCard({
       console.log(err);
     }
   };
+
   const handleDeleteLostItems = async (id) => {
     try {
       const response = await deleteLostItem(id);
@@ -61,29 +70,33 @@ export default function UserItemCard({
         <span
           className={` ${
             type === "lost" ? "px-4" : ""
-          } absolute rotate-[-40deg] uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+          } absolute rotate-[-40deg] capitalize uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50]  rounded-lg py-1 px-2`}
         >
-          {type === "lost" ? "Lost" : "Found"}
+          {type}
         </span>
       )}
+
       <img
-        className="rounded-lg"
-        src={image}
+        className="rounded-lg object-cover size-[300px]"
+        src={image ?? PlaceholderImage}
         alt={title}
         width={299}
         height={168}
       />
+
       <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
-        <h1 className="text-sm text-center lg:text-lg font-bold text-lost-blue">
+        <h1 className="text-sm text-center capitalize lg:text-lg font-bold text-lost-blue">
           {title}
         </h1>
+
         <div className="flex items-center text-xs lg:text-sm text-lost-blue space-x-2">
-          <span className="">
+          <span>
             <LocationIcon />
           </span>
-          <span>{location}</span>
+          <span className="capitalize">{location}</span>
         </div>
       </div>
+
       {isVisible ? (
         <div className="text-lost-blue text-xs w-full px-2 lg:text-sm">
           <p className="">{description}</p>
@@ -100,6 +113,7 @@ export default function UserItemCard({
               {category}
             </p>
           </div>
+
           <div className="flex items-center space-x-2">
             <span className="text-lost-blue">
               <KeyIcon />
@@ -108,6 +122,7 @@ export default function UserItemCard({
               {uniqueIdentifier}
             </p>
           </div>
+
           <div className="flex items-center space-x-2">
             <span className="text-lost-blue">
               <CalendarIcon />
@@ -163,4 +178,18 @@ export default function UserItemCard({
       </div>
     </div>
   );
-}
+};
+
+UserItemCard.propTypes = {
+  type: PropTypes.oneOf(["lost", "found"]),
+  image: PropTypes.string,
+  category: PropTypes.string,
+  uniqueIdentifier: PropTypes.string,
+  description: PropTypes.string,
+  date: PropTypes.string,
+  location: PropTypes.string,
+  title: PropTypes.string,
+  id: PropTypes.string,
+  color: PropTypes.string,
+  itemBrand: PropTypes.string,
+};

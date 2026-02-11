@@ -1,30 +1,35 @@
 import { useState } from "react";
-import ProfileIcon from "../assets/icons/ProfileIcon";
 import { NavLink, useNavigate } from "react-router-dom";
-import MenuIcon from "../assets/icons/MenuIcon";
-import CloseXIcon from "../assets/icons/CloseXIcon";
-import { removeFromLocalStorage } from "../utilities/storage";
-import {
-  LOST_AND_FOUND_TOKEN,
-  LOST_AND_FOUND_USER,
-} from "../utilities/constant";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCurrentUser, selectCurrentUserToken } from "../store/selector";
-import { RouteGuard } from "../components/route-guard/RouteGuard";
-import { removeCredentials } from "../store/features/authSlice";
+import PropTypes from "prop-types";
 
-export default function Layout({ children }) {
+import { LOST_AND_FOUND_TOKEN, LOST_AND_FOUND_USER } from "../../lib/constant";
+
+import { removeFromLocalStorage } from "../../lib/storage";
+import { removeCredentials } from "../../store/features/authSlice";
+import { selectCurrentUser } from "../../store/selector";
+
+import ProfileIcon from "../../assets/icons/ProfileIcon";
+import MenuIcon from "../../assets/icons/MenuIcon";
+import CloseXIcon from "../../assets/icons/CloseXIcon";
+
+import RouteGuard from "../route-guard/RouteGuard";
+
+const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
+
   const firstName = currentUser ? currentUser.firstName : "Shawn";
   const lastName = currentUser ? currentUser.lastName : "Carter";
 
   const name = firstName + " " + lastName;
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
+
   const handleLogout = () => {
     removeFromLocalStorage(LOST_AND_FOUND_TOKEN);
     removeFromLocalStorage(LOST_AND_FOUND_USER);
@@ -34,6 +39,7 @@ export default function Layout({ children }) {
       navigate("/");
     }, 500);
   };
+
   return (
     <RouteGuard>
       <main className="w-full h-[100vh]">
@@ -41,11 +47,11 @@ export default function Layout({ children }) {
           <h1 className="text-md w-1/2 md:w-auto lg:text-2xl lg:w-1/4 text-white font-bold">
             Lost<span className="text-lost-accent-light">&</span>Found Hub
           </h1>
-          <hr className=" hidden  lg:block border-lost-accent-light border-[1px] absolute  z-[10000] top-11 left-[19%] w-[15%]" />
+          <hr className=" hidden  lg:block border-lost-accent-light border absolute  z-[10000] top-11 left-[19%] w-[15%]" />
           <ul
             className={`${
               isVisible ? "z-[100000] border-0" : "hidden"
-            } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[43%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
+            } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[43%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
           >
             <span
               onClick={toggleVisibility}
@@ -149,6 +155,7 @@ export default function Layout({ children }) {
               </span>
             </div>
           </ul>
+
           <div className=" hidden flex  items-center md:w-1/5 lg:w-1/5 md:flex-row lg:flex-row md:flex lg:flex  lg:space-x-4 md:space-x-2">
             <div className=" md:flex lg:flex items-center text-white hover:text-lost-accent-light hover:fill-lost-accent-light text-sm space-x-2">
               <span className="cursor-pointer fill-white">
@@ -156,6 +163,7 @@ export default function Layout({ children }) {
               </span>
               <p>{name}</p>
             </div>
+
             <span
               onClick={handleLogout}
               className="text-lost-accent-light text-sm cursor-pointer active:underline"
@@ -171,8 +179,13 @@ export default function Layout({ children }) {
             <MenuIcon />{" "}
           </span>
         </nav>
+
         <div className="pt-[75px] lg:pt-[90px] md:pt-[110px]">{children}</div>
       </main>
     </RouteGuard>
   );
-}
+};
+
+Layout.propTypes = { children: PropTypes.node };
+
+export default Layout;

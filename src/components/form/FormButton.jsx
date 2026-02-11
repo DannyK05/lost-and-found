@@ -1,4 +1,6 @@
-export const FormButton = ({ children, className = "", disabled }) => {
+import PropTypes from "prop-types";
+
+const FormButton = ({ children, className, disabled }) => {
   return (
     <button
       disabled={disabled}
@@ -11,3 +13,11 @@ export const FormButton = ({ children, className = "", disabled }) => {
     </button>
   );
 };
+
+FormButton.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+};
+
+export default FormButton;

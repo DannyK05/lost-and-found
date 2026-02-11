@@ -1,10 +1,12 @@
-import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import { useGetAllUserFoundItemsQuery } from "../../../store/api/found";
 import { useGetAllUserLostItemsQuery } from "../../../store/api/lost";
-import UserItemCard from "./UserItemCard";
+
+import LoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 import NoItems from "../../../assets/images/no-items.png";
 
-export default function ItemsListed() {
+import { UserItemCard } from "./UserItemCard";
+
+export const ItemsListed = () => {
   const { data: lostItems, isLoading: loadingLostItems } =
     useGetAllUserLostItemsQuery();
   const { data: foundItems, isLoading: loadingFoundItems } =
@@ -14,9 +16,10 @@ export default function ItemsListed() {
     <div className="w-full border-b-1 border-lost-blue">
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Found Items</h1>
-        <div className="flex w-full items-center pb-4 flex-wrap space-x-2">
+
+        <div className="flex w-full items-center justify-center pb-4 flex-wrap space-x-2">
           {loadingFoundItems ? (
-            <div className=" w-full  flex items-center justify-center">
+            <div className=" w-full flex items-center justify-center">
               <div className="flex w-full flex-col items-center space-y-2">
                 <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
@@ -53,6 +56,7 @@ export default function ItemsListed() {
           )}
         </div>
       </div>
+
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Lost Items</h1>
         <div className="flex w-full items-center flex-wrap pb-4 space-x-2">
@@ -97,4 +101,4 @@ export default function ItemsListed() {
       </div>
     </div>
   );
-}
+};

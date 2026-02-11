@@ -1,18 +1,22 @@
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import {
   selectCurrentUser,
   selectCurrentUserToken,
 } from "../../store/selector";
 import { removeCredentials } from "../../store/features/authSlice";
 
-export function RouteGuard({ children }) {
+const RouteGuard = ({ children }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [Authorised, setAuthorised] = useState(false);
+
   const currentUser = useSelector(selectCurrentUser);
   const authToken = useSelector(selectCurrentUserToken);
+
+  const [Authorised, setAuthorised] = useState(false);
 
   const AuthCheck = useCallback(() => {
     if (authToken) {
@@ -39,4 +43,10 @@ export function RouteGuard({ children }) {
   }, [AuthCheck]);
 
   return Authorised ? children : null;
-}
+};
+
+RouteGuard.propTypes = {
+  children: PropTypes.node,
+};
+
+export default RouteGuard;

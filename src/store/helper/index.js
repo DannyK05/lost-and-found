@@ -1,14 +1,8 @@
 import { fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { selectCurrentUserToken } from "../selector";
 import { Mutex } from "async-mutex";
-import {
-  getFromLocalStorage,
-  removeFromLocalStorage,
-} from "../../utilities/storage";
-import {
-  LOST_AND_FOUND_TOKEN,
-  LOST_AND_FOUND_USER,
-} from "../../utilities/constant";
+import { getFromLocalStorage, removeFromLocalStorage } from "../../lib/storage";
+import { LOST_AND_FOUND_TOKEN, LOST_AND_FOUND_USER } from "../../lib/constant";
 
 // create a new mutex
 const mutex = new Mutex();

@@ -1,4 +1,4 @@
-export const ErrorPage = () => {
+const ErrorPage = () => {
   return (
     <div className="flex bg-lost-white items-center justify-center h-full ">
       <div className="flex  items-center bg-lost-white space-y-4 flex-col">
@@ -6,9 +6,11 @@ export const ErrorPage = () => {
         <p className="text-xl text-lost-accent-dark">🚫Page NOT FOUND 🔎</p>
         <p className="text-xl text-lost-accent-dark">
           Something went wrong, <br />
-          Try running the site again
+          Try reloading the site again
         </p>
       </div>
     </div>
   );
 };
+
+export default ErrorPage;

@@ -1,13 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./pages/auth/login";
-import { Signup } from "./pages/auth/signup";
-import { ErrorPage } from "./components/route-handling/ErrorPage";
-import { LoadingPage } from "./components/route-handling/LoadingPage";
+
+import ErrorPage from "./components/route-handling/ErrorPage";
+import LoadingPage from "./components/route-handling/LoadingPage";
+
+import Login from "./pages/auth/login";
+import Signup from "./pages/auth/signup";
 import HomePage from "./pages/home";
 import LostItemsPage from "./pages/lost-items";
 import ViewItemsPage from "./pages/view-items";
-import AboutUsPage from "./pages/about-us";
 import Records from "./pages/records";
+import AboutUsPage from "./pages/about-us";
 
 function App() {
   const router = createBrowserRouter([

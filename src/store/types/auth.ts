@@ -27,6 +27,7 @@ export type TRegisterResponse = TApiResponse<{
     updatedAt: string;
   };
 }>;
+
 export type TLoginResponse = TApiResponse<{
   accessToken: string;
   user: {

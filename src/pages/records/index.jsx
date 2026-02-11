@@ -1,6 +1,7 @@
-import Layout from "../../layout";
-import ItemsListed from "./components/ItemsListed";
-import ItemsMatch from "./components/ItemsMatch";
+import Layout from "../../components/layout";
+
+import { ItemsListed } from "./components/ItemsListed";
+import { ItemsMatch } from "./components/ItemsMatch";
 
 export default function Records() {
   return (
