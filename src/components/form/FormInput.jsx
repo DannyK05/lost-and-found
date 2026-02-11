@@ -1,15 +1,6 @@
 import { forwardRef, useState } from "react";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
-
 import PropTypes from "prop-types";
-
-FormInput.propTypes = {
-  containerClassName: PropTypes.string,
-  className: PropTypes.string,
-  type: PropTypes.string,
-  errorMessage: PropTypes.string,
-  placeholder: PropTypes.string,
-};
 
 export const FormInput = forwardRef(
   (
@@ -70,5 +61,13 @@ export const FormInput = forwardRef(
     );
   },
 );
+
+FormInput.propTypes = {
+  containerClassName: PropTypes.string,
+  className: PropTypes.string,
+  type: PropTypes.string,
+  errorMessage: PropTypes.string,
+  placeholder: PropTypes.string,
+};
 
 FormInput.displayName = "FormInput";

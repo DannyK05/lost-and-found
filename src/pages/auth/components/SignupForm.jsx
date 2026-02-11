@@ -21,10 +21,6 @@ import { FormButton } from "../../../components/form/FormButton";
 
 import { signupFormSchema } from "../../../data/formSchema";
 
-SignupForm.propTypes = {
-  handleErrorMessage: PropTypes.func,
-};
-
 export const SignupForm = ({ handleErrorMessage }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -148,4 +144,8 @@ export const SignupForm = ({ handleErrorMessage }) => {
       </form>
     </>
   );
+};
+
+SignupForm.propTypes = {
+  handleErrorMessage: PropTypes.func,
 };

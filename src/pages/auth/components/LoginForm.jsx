@@ -21,10 +21,6 @@ import { FormButton } from "../../../components/form/FormButton";
 
 import { loginFormSchema } from "../../../data/formSchema";
 
-LoginForm.propTypes = {
-  handleErrorMessage: PropTypes.func,
-};
-
 export const LoginForm = ({ handleErrorMessage }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -86,7 +82,7 @@ export const LoginForm = ({ handleErrorMessage }) => {
             {...register("email")}
             type="email"
             placeholder={"Email Address"}
-            errorMessage={errors.email.message}
+            errorMessage={errors.email?.message}
           />
 
           <FormInput
@@ -94,7 +90,7 @@ export const LoginForm = ({ handleErrorMessage }) => {
             {...register("password")}
             type="password"
             placeholder={"Password"}
-            errorMessage={errors.password.message}
+            errorMessage={errors.password?.message}
           />
         </div>
 
@@ -120,4 +116,8 @@ export const LoginForm = ({ handleErrorMessage }) => {
       </span>
     </>
   );
-}
+};
+
+LoginForm.propTypes = {
+  handleErrorMessage: PropTypes.func,
+};

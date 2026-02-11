@@ -9,9 +9,7 @@ import InfoIcon from "../../../assets/icons/InfoIcon";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 
-AuthPage.propTypes = {
-  type: PropTypes.oneOf(["signup", "login"]),
-};
+
 
 export const AuthPage = ({ type }) => {
   const [errorMessage, setErrorMessage] = useState();
@@ -91,4 +89,8 @@ export const AuthPage = ({ type }) => {
       </div>
     </div>
   );
+};
+
+AuthPage.propTypes = {
+  type: PropTypes.oneOf(["signup", "login"]),
 };
