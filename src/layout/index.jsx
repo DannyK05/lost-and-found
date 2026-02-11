@@ -45,11 +45,11 @@ export default function Layout({ children }) {
           <h1 className="text-md w-1/2 md:w-auto lg:text-2xl lg:w-1/4 text-white font-bold">
             Lost<span className="text-lost-accent-light">&</span>Found Hub
           </h1>
-          <hr className=" hidden  lg:block border-lost-accent-light border-[1px] absolute  z-[10000] top-11 left-[19%] w-[15%]" />
+          <hr className=" hidden  lg:block border-lost-accent-light border absolute  z-[10000] top-11 left-[19%] w-[15%]" />
           <ul
             className={`${
               isVisible ? "z-[100000] border-0" : "hidden"
-            } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border-[1px] lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[43%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
+            } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[43%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
           >
             <span
               onClick={toggleVisibility}
@@ -153,7 +153,7 @@ export default function Layout({ children }) {
               </span>
             </div>
           </ul>
-          
+
           <div className=" hidden flex  items-center md:w-1/5 lg:w-1/5 md:flex-row lg:flex-row md:flex lg:flex  lg:space-x-4 md:space-x-2">
             <div className=" md:flex lg:flex items-center text-white hover:text-lost-accent-light hover:fill-lost-accent-light text-sm space-x-2">
               <span className="cursor-pointer fill-white">

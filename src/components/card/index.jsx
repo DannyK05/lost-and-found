@@ -63,7 +63,7 @@ export default function Card({
       <span
         className={` ${
           type === "lost" ? "px-4" : ""
-        } absolute rotate-[-40deg] capitalize uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border-[1px] bg-[#FFCD50]  rounded-lg py-1 px-2`}
+        } absolute rotate-[-40deg] capitalize uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50]  rounded-lg py-1 px-2`}
       >
         {type}
       </span>

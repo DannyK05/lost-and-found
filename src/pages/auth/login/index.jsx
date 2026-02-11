@@ -1,6 +1,6 @@
-import { AuthForm } from "../components/AuthForm";
+import { AuthPage } from "../components/AuthPage";
 
-export const Login = () => {
+const Login = () => {
   return (
     <>
       <div className="pl-2 pt-2 mb-0 hidden md:block lg:block fixed">
@@ -9,8 +9,10 @@ export const Login = () => {
         </h1>
       </div>
       <div className="md:flex lg:flex flex-col h-full items-center justify-center">
-        <AuthForm type={"login"} />{" "}
+        <AuthPage type="login" />
       </div>
     </>
   );
 };
+
+export default Login;
