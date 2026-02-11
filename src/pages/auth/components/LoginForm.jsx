@@ -31,7 +31,13 @@ export const LoginForm = ({ handleErrorMessage }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: zodResolver(loginFormSchema) });
+  } = useForm({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      email: "testuser@student.oauife.edu.ng",
+      password: "test123",
+    },
+  });
 
   const handleLogin = async (data) => {
     try {
