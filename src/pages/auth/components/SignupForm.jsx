@@ -81,14 +81,14 @@ export const SignupForm = ({ handleErrorMessage }) => {
               containerClassName=""
               {...register("firstName")}
               placeholder={"First Name"}
-              errorMessage={errors.firstName.message}
+              errorMessage={errors.firstName?.message}
             />
 
             <FormInput
               containerClassName=""
               {...register("lastName")}
               placeholder={"Last Name"}
-              errorMessage={errors.lastName.message}
+              errorMessage={errors.lastName?.message}
             />
           </div>
 
@@ -96,14 +96,14 @@ export const SignupForm = ({ handleErrorMessage }) => {
             containerClassName="w-full"
             {...register("email")}
             placeholder={"Email Address"}
-            errorMessage={errors.email.message}
+            errorMessage={errors.email?.message}
           />
 
           <FormInput
             containerClassName="w-full"
             {...register("phoneNumber")}
             placeholder={"Phone Number"}
-            errorMessage={errors.phoneNumber.message}
+            errorMessage={errors.phoneNumber?.message}
           />
 
           <FormInput
@@ -111,7 +111,7 @@ export const SignupForm = ({ handleErrorMessage }) => {
             {...register("password")}
             type="password"
             placeholder={"Password"}
-            errorMessage={errors.password.message}
+            errorMessage={errors.password?.message}
           />
 
           <FormInput
@@ -119,7 +119,7 @@ export const SignupForm = ({ handleErrorMessage }) => {
             {...register("confirmPassword")}
             type="password"
             placeholder={"Confirm Password"}
-            errorMessage={errors.confirmPassword.message}
+            errorMessage={errors.confirmPassword?.message}
           />
         </div>
 
