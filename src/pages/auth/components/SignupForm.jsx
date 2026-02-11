@@ -4,27 +4,28 @@ import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { setCredentials } from "../../../store/features/authSlice";
-import { setToLocalStorage } from "../../../utilities/storage";
-import { useRegisterMutation } from "../../../store/api/auth";
-
 import {
   LOST_AND_FOUND_TOKEN,
   LOST_AND_FOUND_USER,
-} from "../../../utilities/constant";
+} from "../../../lib/constant";
+
+import { setCredentials } from "../../../store/features/authSlice";
+import { setToLocalStorage } from "../../../lib/storage";
+import { useRegisterMutation } from "../../../store/api/auth";
 
 import SignupIllustration from "../../../assets/images/signup.png";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 
-import { FormInput } from "../../../components/form/FormInput";
-import { FormButton } from "../../../components/form/FormButton";
+import FormInput from "../../../components/form/FormInput";
+import FormButton from "../../../components/form/FormButton";
 
-import { signupFormSchema } from "../../../data/formSchema";
+import { signupFormSchema } from "../formSchema";
 
 export const SignupForm = ({ handleErrorMessage }) => {
+  const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
 
   const {
     register,

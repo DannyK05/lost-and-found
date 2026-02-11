@@ -15,6 +15,7 @@ export type TRegisterFoundItemsDto = {
 export type TGetAllFoundItemsResponse = TApiResponse<{
   allFoundItemData: TFoundItemResponse[];
 }>;
+
 export type TGetAllUserFoundItemsResponse = TApiResponse<{
   foundItems: TFoundItemResponse[];
 }>;

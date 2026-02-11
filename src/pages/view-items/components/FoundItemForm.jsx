@@ -1,24 +1,30 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormButton } from "../../../components/form/FormButton";
-import { FormInput } from "../../../components/form/FormInput";
-import { useRegisterFoundItemsMutation } from "../../../store/api/found";
+import PropTypes from "prop-types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FoundItemFormSchema } from "../../../data/formSchema";
+
+import { useRegisterFoundItemsMutation } from "../../../store/api/found";
+
 import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
-import { useState } from "react";
 
-export default function FoundItemForm({ toggleContainer }) {
+import FormButton from "../../../components/form/FormButton";
+import FormInput from "../../../components/form/FormInput";
+
+import { FoundItemFormSchema } from "../formSchema";
+
+export const FoundItemForm = ({ toggleContainer }) => {
   const [registerFoundItems, { isLoading }] = useRegisterFoundItemsMutation();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(FoundItemFormSchema) });
+
   const [errorMessage, setErrorMessage] = useState();
 
-  const SubmitForm = async (data) => {
-    console.log(data);
+  const submitForm = async (data) => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
     formData.append("title", data.title);
@@ -29,16 +35,20 @@ export default function FoundItemForm({ toggleContainer }) {
     formData.append("foundDate", data.foundDate);
     formData.append("category", data.category);
     formData.append("description", data.description);
+
     try {
       const response = await registerFoundItems(formData).unwrap();
+
       setTimeout(() => {
         toggleContainer();
       }, 800);
+
+      setErrorMessage(response.message);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
-        console.log(err.data);
         setErrorMessage(error);
+
         setTimeout(() => {
           setErrorMessage(null);
         }, 2000);
@@ -47,9 +57,10 @@ export default function FoundItemForm({ toggleContainer }) {
       }
     }
   };
+
   return (
     <form
-      onSubmit={handleSubmit(SubmitForm)}
+      onSubmit={handleSubmit(submitForm)}
       className="flex flex-col items-center space-y-4 py-2"
     >
       {errorMessage && (
@@ -60,6 +71,7 @@ export default function FoundItemForm({ toggleContainer }) {
           <span>{errorMessage}</span>
         </div>
       )}
+
       <label className="w-4/5">
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
@@ -69,44 +81,44 @@ export default function FoundItemForm({ toggleContainer }) {
           type="file"
         />
       </label>
-      <FormInput
-        containerClassName="w-4/5"
-        {...register("title")}
-        placeholder="Item Name"
-      />
-      {errors.title?.message && (
-        <span className="text-red-500 text-xs">{errors.title.message}</span>
-      )}
-      <FormInput
-        containerClassName="w-4/5"
-        {...register("foundAt")}
-        placeholder="Location"
-      />
-      {errors.foundAt?.message && (
-        <span className="text-red-500 text-xs">{errors.foundAt.message}</span>
-      )}
-      <FormInput
-        containerClassName="w-4/5"
-        {...register("uniqueIdentifier")}
-        placeholder="Unique Identifier"
-      />
-      {errors.uniqueIdentifier?.message && (
-        <span className="text-red-500 text-xs">
-          {errors.uniqueIndentifier.message}
-        </span>
-      )}
+
+      <div className="w-4/5 flex flex-col items-center space-y-4">
+        <FormInput
+          containerClassName="w-full"
+          {...register("title")}
+          placeholder="Item Name"
+          errorMessage={errors.title?.message}
+        />
+
+        <FormInput
+          containerClassName="w-full"
+          {...register("foundAt")}
+          placeholder="Location"
+          errorMessage={errors.foundAt?.message}
+        />
+
+        <FormInput
+          containerClassName="w-full"
+          {...register("uniqueIdentifier")}
+          placeholder="Unique Identifier"
+          errorMessage={errors.uniqueIdentifier?.message}
+        />
+      </div>
+
       <div className="flex w-4/5 items-center justify-between">
         <FormInput
           containerClassName="w-2/5"
           {...register("itemBrand")}
           placeholder="Item Brand (Optional)"
         />
+
         <FormInput
           containerClassName="w-2/5"
           {...register("color")}
           placeholder="Color"
         />
       </div>
+
       <div className="flex w-4/5 items-center justify-between">
         <label>
           <span className="text-lost-blue text-sm">Date found:</span>
@@ -122,6 +134,7 @@ export default function FoundItemForm({ toggleContainer }) {
             </span>
           )}
         </label>
+
         <label>
           <span className="text-lost-blue text-sm">Category:</span>
           <select
@@ -134,6 +147,7 @@ export default function FoundItemForm({ toggleContainer }) {
             <option value="Identification Cards">Identification Cards</option>
             <option value="Others">Others</option>
           </select>
+
           {errors.category?.message && (
             <span className="text-red-500 text-xs">
               {errors.category.message}
@@ -142,17 +156,21 @@ export default function FoundItemForm({ toggleContainer }) {
         </label>
       </div>
 
-      <textarea
-        {...register("description")}
-        className="w-4/5 p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
-        placeholder="Add description"
-        maxLength={112}
-      ></textarea>
-      {errors.description?.message && (
-        <span className="text-red-500 text-xs">
-          {errors.description.message}
-        </span>
-      )}
+      <label className="w-4/5 flex flex-col items-start">
+        <span className="text-lost-blue text-sm">Category:</span>
+        <textarea
+          {...register("description")}
+          className="w-full h-20 p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+          placeholder="Add description"
+          maxLength={112}
+        ></textarea>
+        {errors.description?.message && (
+          <span className="text-red-500 text-xs">
+            {errors.description.message}
+          </span>
+        )}
+      </label>
+
       <FormButton className="w-4/5">
         {" "}
         {isLoading ? (
@@ -165,4 +183,6 @@ export default function FoundItemForm({ toggleContainer }) {
       </FormButton>
     </form>
   );
-}
+};
+
+FoundItemForm.propTypes = { toggleContainer: PropTypes.func };

@@ -1,6 +1,8 @@
+import PropTypes from "prop-types";
+
 import BackIcon from "../../assets/icons/BackIcon";
 
-export function SideContainer({ type, children, isVisible, toggleContainer }) {
+const SideContainer = ({ type, children, isVisible, toggleContainer }) => {
   return (
     <div
       className={`${
@@ -21,4 +23,13 @@ export function SideContainer({ type, children, isVisible, toggleContainer }) {
       <div>{children}</div>
     </div>
   );
-}
+};
+
+SideContainer.propTypes = {
+  type: PropTypes.oneOf(["lost", "found"]),
+  children: PropTypes.node,
+  isVisible: PropTypes.bool,
+  toggleContainer: PropTypes.func,
+};
+
+export default SideContainer;

@@ -1,4 +1,4 @@
-export const ErrorPage = () => {
+const ErrorPage = () => {
   return (
     <div className="flex bg-lost-white items-center justify-center h-full ">
       <div className="flex  items-center bg-lost-white space-y-4 flex-col">
@@ -12,3 +12,5 @@ export const ErrorPage = () => {
     </div>
   );
 };
+
+export default ErrorPage;

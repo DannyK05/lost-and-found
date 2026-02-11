@@ -2,7 +2,7 @@ import { forwardRef, useState } from "react";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
 import PropTypes from "prop-types";
 
-export const FormInput = forwardRef(
+const FormInput = forwardRef(
   (
     {
       containerClassName = "",
@@ -71,3 +71,5 @@ FormInput.propTypes = {
 };
 
 FormInput.displayName = "FormInput";
+
+export default FormInput;

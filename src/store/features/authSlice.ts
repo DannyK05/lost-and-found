@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  LOST_AND_FOUND_TOKEN,
-  LOST_AND_FOUND_USER,
-} from "../../utilities/constant";
-import { getFromLocalStorage } from "../../utilities/storage";
+
+import { LOST_AND_FOUND_TOKEN, LOST_AND_FOUND_USER } from "../../lib/constant";
+
+import { getFromLocalStorage } from "../../lib/storage";
+
 import { TUser } from "../types/auth";
 
 type TAuthState = {

@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  LOST_AND_FOUND_TOKEN,
-  LOST_AND_FOUND_USER,
-} from "../utilities/constant";
-import { removeFromLocalStorage } from "../utilities/storage";
-import { removeCredentials } from "../store/features/authSlice";
-import { selectCurrentUser } from "../store/selector";
-import ProfileIcon from "../assets/icons/ProfileIcon";
-import MenuIcon from "../assets/icons/MenuIcon";
-import CloseXIcon from "../assets/icons/CloseXIcon";
-import { RouteGuard } from "../components/route-guard/RouteGuard";
+import PropTypes from "prop-types";
 
-export default function Layout({ children }) {
+import { LOST_AND_FOUND_TOKEN, LOST_AND_FOUND_USER } from "../../lib/constant";
+
+import { removeFromLocalStorage } from "../../lib/storage";
+import { removeCredentials } from "../../store/features/authSlice";
+import { selectCurrentUser } from "../../store/selector";
+
+import ProfileIcon from "../../assets/icons/ProfileIcon";
+import MenuIcon from "../../assets/icons/MenuIcon";
+import CloseXIcon from "../../assets/icons/CloseXIcon";
+
+import RouteGuard from "../route-guard/RouteGuard";
+
+const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
 
@@ -182,4 +184,8 @@ export default function Layout({ children }) {
       </main>
     </RouteGuard>
   );
-}
+};
+
+Layout.propTypes = { children: PropTypes.node };
+
+export default Layout;

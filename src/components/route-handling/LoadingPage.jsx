@@ -1,6 +1,6 @@
 import { Audio } from "react-loader-spinner";
 
-export const LoadingPage = () => {
+const LoadingPage = () => {
   return (
     <div className="flex items-center bg-lost-white w-full justify-center">
       <Audio
@@ -15,3 +15,5 @@ export const LoadingPage = () => {
     </div>
   );
 };
+
+export default LoadingPage;

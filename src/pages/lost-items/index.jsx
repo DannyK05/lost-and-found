@@ -1,21 +1,26 @@
-import Layout from "../../layout";
-import Card from "../../components/card";
-import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { useState } from "react";
-import { SideContainer } from "../../components/side-container";
-import LostItemForm from "./components/LostItemForm";
 import { useGetAllLostItemsQuery } from "../../store/api/lost";
+
+import CloseXIcon from "../../assets/icons/CloseXIcon";
 import NoItems from "../../assets/images/no-items.png";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
-export default function LostItemsPage() {
+import SideContainer from "../../components/side-container";
+import Layout from "../../components/layout";
+import Card from "../../components/card";
+
+import { LostItemForm } from "./components/LostItemForm";
+
+const LostItemsPage = () => {
   const { data: lostItems, isLoading } = useGetAllLostItemsQuery();
+
   const [isTagVisible, setIsTagVisible] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
   };
 
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
@@ -25,6 +30,7 @@ export default function LostItemsPage() {
         <h1 className="text-center text-lg lg:text-xl mt-4 text-[#010066]">
           Lost Items
         </h1>
+
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
           {isLoading ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">
@@ -59,6 +65,7 @@ export default function LostItemsPage() {
             </div>
           )}
         </div>
+
         <button
           aria-label="List lost item"
           role="toggle form"
@@ -80,6 +87,7 @@ export default function LostItemsPage() {
             List a lost item
           </p>
         </button>
+
         <SideContainer
           type={"lost"}
           isVisible={isSidebarVisible}
@@ -90,4 +98,6 @@ export default function LostItemsPage() {
       </Layout>
     </>
   );
-}
+};
+
+export default LostItemsPage;

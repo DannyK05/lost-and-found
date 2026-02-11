@@ -1,5 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQuery, baseQueryWithReauth } from "./helper";
+
+import { baseQueryWithReauth } from "../helper";
+
 import {
   TLoginDto,
   TLoginResponse,

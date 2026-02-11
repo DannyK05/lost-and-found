@@ -1,20 +1,27 @@
-import Card from "../../components/card";
-import Layout from "../../layout";
-import CloseXIcon from "../../assets/icons/CloseXIcon";
-import { useEffect, useState } from "react";
-import { SideContainer } from "../../components/side-container";
-import FoundItemForm from "./components/FoundItemForm";
+import { useState } from "react";
+
 import { useGetAllFoundItemsQuery } from "../../store/api/found";
+
+import CloseXIcon from "../../assets/icons/CloseXIcon";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 import NoItems from "../../assets/images/no-items.png";
 
-export default function ViewItemsPage() {
+import Card from "../../components/card";
+import Layout from "../../components/layout";
+import SideContainer from "../../components/side-container";
+
+import { FoundItemForm } from "./components/FoundItemForm";
+
+const ViewItemsPage = () => {
+  const { data: foundItems, isLoading } = useGetAllFoundItemsQuery();
+
   const [isTagVisible, setIsTagVisible] = useState(false);
+  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
   const toggleTagVisibility = () => {
     setIsTagVisible(!isTagVisible);
   };
-  const { data: foundItems, isLoading } = useGetAllFoundItemsQuery();
-  const [isSidebarVisible, setIsSidebarVisible] = useState(false);
+
   const toggleSidebarVisibility = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
@@ -22,6 +29,7 @@ export default function ViewItemsPage() {
     <>
       <Layout>
         <h1 className="text-center text-lg text-[#010066] mt-4">Found Items</h1>
+
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
           {isLoading ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">
@@ -50,12 +58,13 @@ export default function ViewItemsPage() {
               />
             ))
           ) : (
-            <div className=" w-full flex flex-col items-center ">
+            <div className="w-full flex flex-col items-center ">
               <p className="text-2xl">No items found</p>
               <img src={NoItems} alt="No items found" />
             </div>
           )}
         </div>
+
         <button
           aria-label="List found item"
           role="toggle form"
@@ -77,6 +86,7 @@ export default function ViewItemsPage() {
             List a found item
           </p>
         </button>
+
         <SideContainer
           type={"found"}
           isVisible={isSidebarVisible}
@@ -87,4 +97,6 @@ export default function ViewItemsPage() {
       </Layout>
     </>
   );
-}
+};
+
+export default ViewItemsPage;

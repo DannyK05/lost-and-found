@@ -1,4 +1,9 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
+
+import { useClaimFoundItemMutation } from "../../store/api/found";
+import { useClaimLostItemMutation } from "../../store/api/lost";
+
 import LocationIcon from "../../assets/icons/LocationIcon";
 import KeyIcon from "../../assets/icons/KeyIcon";
 import CalendarIcon from "../../assets/icons/CalendarIcon";
@@ -6,11 +11,9 @@ import CheckIcon from "../../assets/icons/CheckIcon";
 import InfoIcon from "../../assets/icons/InfoIcon";
 import BagIcon from "../../assets/icons/BagIcon";
 import PlaceholderImage from "../../assets/images/image-placeholder.webp";
-import { useClaimFoundItemMutation } from "../../store/api/found";
-import { useClaimLostItemMutation } from "../../store/api/lost";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
-export default function Card({
+const Card = ({
   type,
   image,
   category,
@@ -22,7 +25,7 @@ export default function Card({
   id,
   color,
   itemBrand,
-}) {
+}) => {
   const decodedDate = date.split("T")[0];
   const [claimFoundItem, { isLoading: loadingFoundClaim }] =
     useClaimFoundItemMutation();
@@ -168,4 +171,22 @@ export default function Card({
       </div>
     </div>
   );
-}
+};
+
+
+Card.propTypes = {
+  type: PropTypes.oneOf(["lost", "found"]),
+  image: PropTypes.string,
+  category: PropTypes.string,
+  uniqueIdentifier: PropTypes.string,
+  description: PropTypes.string,
+  date: PropTypes.string,
+  location: PropTypes.string,
+  title: PropTypes.string,
+  id: PropTypes.string,
+  color: PropTypes.string,
+  itemBrand: PropTypes.string,
+};
+
+
+export default Card;
