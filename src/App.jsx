@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { ApiMessageContextProvider } from "./components/message-banner/context";
 import ErrorPage from "./components/route-handling/ErrorPage";
 import LoadingPage from "./components/route-handling/LoadingPage";
 
@@ -58,7 +59,9 @@ function App() {
   ]);
   return (
     <>
-      <RouterProvider router={router} />
+      <ApiMessageContextProvider>
+        <RouterProvider router={router} />
+      </ApiMessageContextProvider>
     </>
   );
 }

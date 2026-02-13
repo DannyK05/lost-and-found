@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import PropTypes from "prop-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useRegisterFoundItemsMutation } from "../../../store/api/found";
 
-import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 
 import FormButton from "../../../components/form/FormButton";
 import FormInput from "../../../components/form/FormInput";
 
 import { FoundItemFormSchema } from "../formSchema";
+import { useHandleApiMessage } from "../../../components/message-banner/hooks";
 
 export const FoundItemForm = ({ toggleContainer }) => {
   const [registerFoundItems, { isLoading }] = useRegisterFoundItemsMutation();
@@ -19,10 +18,11 @@ export const FoundItemForm = ({ toggleContainer }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(FoundItemFormSchema) });
 
-  const [errorMessage, setErrorMessage] = useState();
+  const { handleApiMessage } = useHandleApiMessage();
 
   const submitForm = async (data) => {
     const formData = new FormData();
@@ -38,22 +38,16 @@ export const FoundItemForm = ({ toggleContainer }) => {
 
     try {
       const response = await registerFoundItems(formData).unwrap();
+      handleApiMessage(response.message);
 
       setTimeout(() => {
         toggleContainer();
+        reset();
       }, 800);
-
-      setErrorMessage(response.message);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
-        setErrorMessage(error);
-
-        setTimeout(() => {
-          setErrorMessage(null);
-        }, 2000);
-      } else {
-        setErrorMessage(null);
+        handleApiMessage(error, true);
       }
     }
   };
@@ -63,15 +57,6 @@ export const FoundItemForm = ({ toggleContainer }) => {
       onSubmit={handleSubmit(submitForm)}
       className="flex flex-col items-center space-y-4 py-2"
     >
-      {errorMessage && (
-        <div className="absolute py-2  text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
-          <span>
-            <InfoIcon />{" "}
-          </span>{" "}
-          <span>{errorMessage}</span>
-        </div>
-      )}
-
       <label className="w-4/5">
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
@@ -105,15 +90,15 @@ export const FoundItemForm = ({ toggleContainer }) => {
         />
       </div>
 
-      <div className="flex w-4/5 items-center justify-between">
+      <div className="flex w-4/5 items-center space-x-2">
         <FormInput
-          containerClassName="w-2/5"
+          containerClassName="w-full"
           {...register("itemBrand")}
           placeholder="Item Brand (Optional)"
         />
 
         <FormInput
-          containerClassName="w-2/5"
+          containerClassName="w-full"
           {...register("color")}
           placeholder="Color"
         />

@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import PropTypes from "prop-types";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
@@ -20,12 +19,15 @@ import FormInput from "../../../components/form/FormInput";
 import FormButton from "../../../components/form/FormButton";
 
 import { loginFormSchema } from "../formSchema";
+import { useHandleApiMessage } from "../../../components/message-banner/hooks";
 
-export const LoginForm = ({ handleErrorMessage }) => {
+export const LoginForm = () => {
   const [login, { isLoading }] = useLoginMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { handleApiMessage } = useHandleApiMessage();
 
   const {
     register,
@@ -50,20 +52,15 @@ export const LoginForm = ({ handleErrorMessage }) => {
 
       dispatch(setCredentials({ token, user }));
 
+      handleApiMessage(response.message);
+
       setTimeout(() => {
         navigate("/home");
-      }, 500);
+      }, 1500);
     } catch (err) {
-      if (err && err.data.message) {
-        const error = err.data.message;
-
-        handleErrorMessage(error);
-
-        setTimeout(() => {
-          handleErrorMessage(null);
-        }, 2000);
-      } else {
-        handleErrorMessage(null);
+      if (err && err.data?.message) {
+        const error = err.data?.message;
+        handleApiMessage(error, true);
       }
     }
   };
@@ -122,8 +119,4 @@ export const LoginForm = ({ handleErrorMessage }) => {
       </span>
     </>
   );
-};
-
-LoginForm.propTypes = {
-  handleErrorMessage: PropTypes.func,
 };

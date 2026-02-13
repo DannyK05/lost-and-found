@@ -1,34 +1,22 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import LoginIllustration from "../../../assets/images/login.png";
 import SignupIllustration from "../../../assets/images/signup.png";
-import InfoIcon from "../../../assets/icons/InfoIcon";
+
+import { MessageBanner } from "../../../components/message-banner";
 
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 
-
-
 export const AuthPage = ({ type }) => {
-  const [errorMessage, setErrorMessage] = useState();
-
-  const handleErrorMessage = (message) => setErrorMessage(message);
   return (
     <div
       className={`${
         type === "signup" ? "flex-row-reverse" : ""
       } flex relative w-full h-full items-center shadow-md md:w-full md:h-3/5 lg:w-3/4 lg:h-4/5`}
     >
-      {errorMessage && (
-        <div className="absolute py-2 text-xs flex items-center space-x-2 w-full bg-[#CA1C2D] text-white right-0 top-0 md:w-1/2 lg:w-1/2">
-          <span>
-            <InfoIcon />{" "}
-          </span>{" "}
-          <span>{errorMessage}</span>
-        </div>
-      )}
+      <MessageBanner />
       <div className="w-2/5 hidden md:block lg:block h-full rounded-l-lg flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue">
         {type === "signup" ? (
           // Sign up page render
@@ -81,11 +69,7 @@ export const AuthPage = ({ type }) => {
       </div>
 
       <div className="w-full h-full flex flex-col items-center py-10 space-y-6 rounded-r-lg p-5 bg-lost-white md:w-3/5 lg:w-3/5">
-        {type === "signup" ? (
-          <SignupForm handleErrorMessage={handleErrorMessage} />
-        ) : (
-          <LoginForm handleErrorMessage={handleErrorMessage} />
-        )}
+        {type === "signup" ? <SignupForm /> : <LoginForm />}
       </div>
     </div>
   );

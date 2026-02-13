@@ -12,6 +12,7 @@ import InfoIcon from "../../assets/icons/InfoIcon";
 import BagIcon from "../../assets/icons/BagIcon";
 import PlaceholderImage from "../../assets/images/image-placeholder.webp";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
+import { useHandleApiMessage } from "../message-banner/hooks";
 
 const Card = ({
   type,
@@ -31,34 +32,42 @@ const Card = ({
     useClaimFoundItemMutation();
   const [claimLostItem, { isLoading: loadingLostClaim }] =
     useClaimLostItemMutation();
+
+  const { handleApiMessage } = useHandleApiMessage();
+
   const [isVisible, setIsVisible] = useState(false);
-  const toggleDetails = () => {
+
+  const toggleDetailsVisibility = () => {
     setIsVisible(!isVisible);
   };
+
   const handleFoundClaim = async () => {
     try {
       const response = await claimFoundItem(id);
-      console.log(response);
+      handleApiMessage(response.message);
     } catch (err) {
-      console.log(err);
+      handleApiMessage(err.data?.message);
     }
   };
+
   const handleLostClaim = async () => {
     try {
       const response = await claimLostItem(id);
-      console.log(response);
+      handleApiMessage(response.message);
     } catch (err) {
-      console.log(err);
+      handleApiMessage(err.data?.message);
     }
   };
+
   const handleClaim = type === "found" ? handleFoundClaim : handleLostClaim;
   const isLoading = type === "found" ? loadingFoundClaim : loadingLostClaim;
+
   return (
     <div
       key={id}
       onMouseLeave={() => {
         if (isVisible === true) {
-          toggleDetails();
+          toggleDetailsVisibility();
         }
       }}
       className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
@@ -130,7 +139,7 @@ const Card = ({
 
       <div className="w-full flex lg:flex-row lg:space-y-0 md:flex-row md:space-y-0 items-center lg:justify-between md:justify-between">
         <button
-          onClick={toggleDetails}
+          onClick={toggleDetailsVisibility}
           className={`${
             isVisible ? "bg-lost-blue " : ""
           } w-2/5 flex items-center justify-center space-x-2 md:w-[45%] lg:w-2/5  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 py-2`}
@@ -173,7 +182,6 @@ const Card = ({
   );
 };
 
-
 Card.propTypes = {
   type: PropTypes.oneOf(["lost", "found"]),
   image: PropTypes.string,
@@ -183,10 +191,9 @@ Card.propTypes = {
   date: PropTypes.string,
   location: PropTypes.string,
   title: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
   color: PropTypes.string,
   itemBrand: PropTypes.string,
 };
-
 
 export default Card;

@@ -20,12 +20,15 @@ import FormInput from "../../../components/form/FormInput";
 import FormButton from "../../../components/form/FormButton";
 
 import { signupFormSchema } from "../formSchema";
+import { useHandleApiMessage } from "../../../components/message-banner/hooks";
 
-export const SignupForm = ({ handleErrorMessage }) => {
+export const SignupForm = () => {
   const [signup, { isLoading: isLoadingRegister }] = useRegisterMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { handleApiMessage } = useHandleApiMessage();
 
   const {
     register,
@@ -45,19 +48,15 @@ export const SignupForm = ({ handleErrorMessage }) => {
 
       dispatch(setCredentials({ token, user }));
 
+      handleApiMessage(response.message);
+
       setTimeout(() => {
         navigate("/home");
-      }, 500);
+      }, 1500);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
-        handleErrorMessage(error);
-
-        setTimeout(() => {
-          handleErrorMessage(null);
-        }, 2000);
-      } else {
-        handleErrorMessage(null);
+        handleApiMessage(error, true);
       }
     }
   };

@@ -62,7 +62,7 @@ export default function AboutUsPage() {
         </section>
 
         <section className="story-topdiv">
-          <div className="each-story-topdiv">
+          <div className="each-story-topdiv gap-2">
             {stories.map((story, index) => (
               <div
                 key={story.title}
