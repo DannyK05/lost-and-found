@@ -13,6 +13,7 @@ import ProfileIcon from "../../assets/icons/ProfileIcon";
 import MenuIcon from "../../assets/icons/MenuIcon";
 import CloseXIcon from "../../assets/icons/CloseXIcon";
 
+import { MessageBanner } from "../message-banner";
 import RouteGuard from "../route-guard/RouteGuard";
 
 const Layout = ({ children }) => {
@@ -43,7 +44,8 @@ const Layout = ({ children }) => {
   return (
     <RouteGuard>
       <main className="w-full h-[100vh]">
-        <nav className="z-[1000] flex items-center fixed w-full bg-[#010066] pt-4 pb-6 px-4 justify-between md:justify-between lg:justify-between">
+        <MessageBanner />
+        <nav className="z-[100] flex items-center fixed w-full bg-[#010066] pt-4 pb-6 px-4 justify-between md:justify-between lg:justify-between">
           <h1 className="text-md w-1/2 md:w-auto lg:text-2xl lg:w-1/4 text-white font-bold">
             Lost<span className="text-lost-accent-light">&</span>Found Hub
           </h1>

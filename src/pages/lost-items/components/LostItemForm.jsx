@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import PropTypes from "prop-types";
 
-import InfoIcon from "../../../assets/icons/InfoIcon";
 import FormLoadingSpinner from "../../../assets/icons/FormLoadingSpinner";
 
 import FormButton from "../../../components/form/FormButton";
@@ -12,15 +10,17 @@ import FormInput from "../../../components/form/FormInput";
 import { useRegisterLostItemsMutation } from "../../../store/api/lost";
 
 import { LostItemFormSchema } from "../formSchema";
+import { useHandleApiMessage } from "../../../components/message-banner/hooks";
 
 export const LostItemForm = ({ toggleContainer }) => {
   const [registerLostItems, { isLoading }] = useRegisterLostItemsMutation();
 
-  const [errorMessage, setErrorMessage] = useState();
+  const { handleApiMessage } = useHandleApiMessage();
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({ resolver: zodResolver(LostItemFormSchema) });
 
@@ -38,22 +38,16 @@ export const LostItemForm = ({ toggleContainer }) => {
       formData.append("description", data.description);
 
       const response = await registerLostItems(formData).unwrap();
+      handleApiMessage(response.message);
 
       setTimeout(() => {
         toggleContainer();
+        reset();
       }, 800);
-
-      setErrorMessage(response.message);
     } catch (err) {
       if (err && err.data.message) {
         const error = err.data.message;
-        setErrorMessage(error);
-
-        setTimeout(() => {
-          setErrorMessage(null);
-        }, 2000);
-      } else {
-        setErrorMessage(null);
+        handleApiMessage(error, true);
       }
     }
   };
@@ -62,15 +56,6 @@ export const LostItemForm = ({ toggleContainer }) => {
       onSubmit={handleSubmit(submitForm)}
       className="flex flex-col items-center space-y-4 py-2"
     >
-      {errorMessage && (
-        <div className="absolute text-xs py-2 flex items-center space-x-2 w-full bg-[#CA1C2D] text-white md:w-1/2 lg:w-1/2 right-0 top-0">
-          <span>
-            <InfoIcon />{" "}
-          </span>{" "}
-          <span>{errorMessage}</span>
-        </div>
-      )}
-
       <label className="w-4/5">
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
@@ -156,7 +141,7 @@ export const LostItemForm = ({ toggleContainer }) => {
       </div>
 
       <label className="w-4/5 flex flex-col items-start">
-        <span className="text-lost-blue text-sm">Category:</span>
+        <span className="text-lost-blue text-sm">Description:</span>
         <textarea
           {...register("description")}
           className="w-full h-20 p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"

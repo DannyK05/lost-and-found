@@ -13,6 +13,7 @@ import KeyIcon from "../../../assets/icons/KeyIcon";
 import LocationIcon from "../../../assets/icons/LocationIcon";
 
 import PlaceholderImage from "../../../assets/images/image-placeholder.webp";
+import { useHandleApiMessage } from "../../../components/message-banner/hooks";
 
 export const UserItemCard = ({
   type,
@@ -32,6 +33,8 @@ export const UserItemCard = ({
   const [deleteLostItem, { isLoading: loadingDeleteLost }] =
     useDeleteLostItemByIdMutation();
 
+  const { handleApiMessage } = useHandleApiMessage();
+
   const decodedDate = date.split("T")[0];
   const [isVisible, setIsVisible] = useState(false);
   const isLoading = type === "found" ? loadingDeleteFound : loadingDeleteLost;
@@ -43,16 +46,24 @@ export const UserItemCard = ({
   const handleDeleteFoundItems = async (id) => {
     try {
       const response = await deleteFoundItem(id);
+      handleApiMessage(response.message);
     } catch (err) {
-      console.log(err);
+      if (err && err.data.message) {
+        const error = err.data.message;
+        handleApiMessage(error, true);
+      }
     }
   };
 
   const handleDeleteLostItems = async (id) => {
     try {
       const response = await deleteLostItem(id);
+      handleApiMessage(response.message);
     } catch (err) {
-      console.log(err);
+      if (err && err.data.message) {
+        const error = err.data.message;
+        handleApiMessage(error, true);
+      }
     }
   };
 
@@ -189,7 +200,7 @@ UserItemCard.propTypes = {
   date: PropTypes.string,
   location: PropTypes.string,
   title: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
   color: PropTypes.string,
   itemBrand: PropTypes.string,
 };
