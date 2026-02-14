@@ -607,7 +607,7 @@
 
 @media (min-width: 481px) and (max-width: 1024px) {
   .each-story-div {
-    height: 12vh;
+    height: 170px;
   }
   .arrow-div {
     top: 14.49vw;

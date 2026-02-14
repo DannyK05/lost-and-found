@@ -67,7 +67,7 @@ export const LoginForm = () => {
   return (
     <>
       <img
-        className="md:hidden lg:hidden w-1/3"
+        className="lg:hidden w-1/3"
         src={LoginIllustration}
         attributeName="Image by storyset on Freepik"
       />
@@ -97,7 +97,7 @@ export const LoginForm = () => {
           />
         </div>
 
-        <FormButton disabled={isLoading} className="w-full md:w-1/3 lg:w-1/3">
+        <FormButton disabled={isLoading} className="w-full lg:w-1/3">
           {isLoading ? (
             <span className="fill-white w-full flex items-center justify-center">
               <FormLoadingSpinner />
@@ -108,7 +108,7 @@ export const LoginForm = () => {
         </FormButton>
 
         <Link to={"/signup"}>
-          <button className="text-lost-blue text-sm md:hidden lg:hidden">
+          <button className="text-lost-blue text-sm lg:hidden">
             Don &apos;t have an account? Sign up
           </button>
         </Link>

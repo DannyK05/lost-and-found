@@ -16,8 +16,6 @@ import BagIcon from "../../assets/icons/BagIcon";
 import PlaceholderImage from "../../assets/images/image-placeholder.webp";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
 
-
-
 const Card = ({
   type,
   image,
@@ -74,7 +72,7 @@ const Card = ({
           toggleDetailsVisibility();
         }
       }}
-      className="card min-h-[310px] w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
+      className="min-h-[310px] relative p-2 bg-white border shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
       <span
         className={` ${

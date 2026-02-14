@@ -40,7 +40,3 @@ ul li a.active-nav {
   transition: 500ms;
   padding-bottom: 1px;
 }
-.card_container .card:first-of-type {
-  margin-left: 8px;
-  margin-top: 8px;
-}

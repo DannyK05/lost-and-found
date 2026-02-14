@@ -11,16 +11,16 @@ import { SignupForm } from "./components/SignupForm";
 
 const AuthPage = ({ type }) => {
   return (
-    <div className="md:flex lg:flex flex-col h-full items-center justify-center lg:py-10">
+    <div className=" lg:flex flex-col h-full items-center justify-center lg:py-10">
       <div
         className={`${
           type === "signup" ? "flex-row-reverse" : ""
-        } flex relative w-full h-full items-center justify-center shadow-md md:w-full md:h-[600px] lg:w-3/4 lg:h-[600px]`}
+        } flex relative w-full h-full items-center justify-center shadow-md  lg:w-3/4 lg:h-[600px]`}
       >
         <MessageBanner />
-        
+
         <div
-          className={`${type === "signup" ? "rounded-r-lg" : "rounded-l-lg"} w-2/5 hidden md:block lg:block h-full flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue`}
+          className={`${type === "signup" ? "rounded-r-lg" : "rounded-l-lg"} w-2/5 hidden  lg:block h-full flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue`}
         >
           {type === "signup" ? (
             // Sign up page render
@@ -40,7 +40,7 @@ const AuthPage = ({ type }) => {
                 />
               </div>
               <Link to={"/"}>
-                <button className="w-1/3 duration-50 border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#DBDBDB] md:w-1/2">
+                <button className="w-2/5 duration-50 border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#DBDBDB]">
                   Sign in
                 </button>
               </Link>
@@ -63,7 +63,7 @@ const AuthPage = ({ type }) => {
                 />
               </div>
               <Link to={"/signup"}>
-                <button className="w-1/3 duration-50  border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#C4C4C4] md:w-1/2">
+                <button className="w-2/5 duration-50  border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#C4C4C4]">
                   {" "}
                   Sign Up
                 </button>
@@ -73,7 +73,7 @@ const AuthPage = ({ type }) => {
         </div>
 
         <div
-          className={`${type === "signup" ? "rounded-l-lg" : "rounded-r-lg"} w-full flex flex-col items-center py-10 space-y-6 p-5 bg-lost-white md:w-3/5 lg:w-3/5 lg:h-full`}
+          className={`${type === "signup" ? "rounded-l-lg" : "rounded-r-lg"} w-full flex flex-col items-center py-10 space-y-6 p-5 bg-lost-white lg:w-3/5 lg:h-full`}
         >
           {type === "signup" ? <SignupForm /> : <LoginForm />}
         </div>
