@@ -20,7 +20,9 @@ const SideContainer = ({ type, children, isVisible, toggleContainer }) => {
           {type === "found" ? "List a found item" : "Report a lost item"}
         </h1>
       </div>
-      <div>{children}</div>
+      <div className="h-[90%] pb-4 w-full overflow-x-hidden overflow-y-auto lg:pb-0">
+        {children}
+      </div>
     </div>
   );
 };

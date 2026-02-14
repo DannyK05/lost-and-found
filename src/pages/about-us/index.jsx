@@ -139,12 +139,9 @@ export default function AboutUsPage() {
         <section>
           <div className="axa">Our team</div>
           <div className="oxo">
-            <ul className="flex py-2 md:p-2 lg:px-2 lg:py-4 items-center flex-wrap space-x-5 space-y-4">
+            <ul className="grid grid-cols-2 gap-2 p-2 lg:grid-cols-4">
               {teamMembers.map((member) => (
-                <li
-                  key={member}
-                  className="w-[41%] lg:w-[23%] md:w-[23%] text-lg lg:text-2xl md:text-2xl"
-                >
+                <li key={member} className="text-sm lg:text-2xl md:text-2xl">
                   {member}
                 </li>
               ))}

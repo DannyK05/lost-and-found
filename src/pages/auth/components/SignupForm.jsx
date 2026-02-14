@@ -73,19 +73,19 @@ export const SignupForm = () => {
       </h1>
       <form
         onSubmit={handleSubmit(handleSignup)}
-        className="flex w-3/5 flex-col items-center space-y-4"
+        className="flex w-full flex-col items-center space-y-4 md:w-3/5 lg:w-3/5"
       >
         <div className="flex w-full flex-col items-start space-y-4">
           <div className=" flex flex-col md:flex-row lg:flex-row items-start w-full space-y-4 md:space-x-4 lg:space-y-0 md:space-y-0 lg:space-x-4">
             <FormInput
-              containerClassName=""
+              containerClassName="w-full"
               {...register("firstName")}
               placeholder={"First Name"}
               errorMessage={errors.firstName?.message}
             />
 
             <FormInput
-              containerClassName=""
+              containerClassName="w-full"
               {...register("lastName")}
               placeholder={"Last Name"}
               errorMessage={errors.lastName?.message}

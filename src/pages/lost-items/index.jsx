@@ -33,7 +33,7 @@ const LostItemsPage = () => {
 
         <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
           {isLoading ? (
-            <div className=" w-full pt-[10%] flex items-center justify-center">
+            <div className=" w-full h-screen pt-[10%] flex items-center justify-center">
               <div className="flex flex-col items-center space-y-2">
                 <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />

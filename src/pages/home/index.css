@@ -407,7 +407,8 @@
     padding: 0.4rem;
     border-radius: 10px;
     margin-bottom: 4px;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    box-shadow:
+      0 10px 15px -3px rgb(0 0 0 / 0.1),
       0 4px 6px -4px rgb(0 0 0 / 0.1);
   }
 
@@ -556,9 +557,17 @@
     right: 28%;
   }
 
+  .each-top-div {
+    flex-direction: column;
+  }
+
+  .each-top-div div {
+    margin-bottom: 12px;
+  }
+
   .how-details {
     font-size: 0.55rem;
-    width: 100%;
+    width: 50%;
   }
 
   .register-topdiv {

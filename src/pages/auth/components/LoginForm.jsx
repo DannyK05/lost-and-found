@@ -77,7 +77,7 @@ export const LoginForm = () => {
       </h1>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="flex w-3/5 flex-col items-center mb-10 space-y-10"
+        className="flex w-full flex-col items-center mb-10 space-y-10 lg:w-3/5"
       >
         <div className="flex w-full flex-col items-start space-y-4">
           <FormInput
