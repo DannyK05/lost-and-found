@@ -30,14 +30,15 @@ const ViewItemsPage = () => {
       <Layout>
         <h1 className="text-center text-lg text-[#010066] mt-4">Found Items</h1>
 
-        <div className="card_container flex w-full flex-wrap items-center space-x-3 space-y-2 px-2 py-4 ">
+        <div className="w-full grid grid-cols-2 gap-x-2 gap-y-3 py-4 px-2 lg:grid-cols-4">
+          {" "}
           {isLoading ? (
-            <div className=" w-full pt-[10%] flex items-center justify-center">
+            <div className="w-full h-[calc(100vh-300px)] pt-[10%] col-span-2 flex items-center justify-center lg:col-span-4">
               <div className="flex flex-col items-center space-y-2">
                 <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
                 </span>
-                <p className="text-sm">Loading found items</p>
+                <p className="text-sm text-lost-blue">Fetching found items</p>
               </div>
             </div>
           ) : foundItems ? (
@@ -59,7 +60,7 @@ const ViewItemsPage = () => {
             ))
           ) : (
             <div className="w-full flex flex-col items-center ">
-              <p className="text-2xl">No items found</p>
+              <p className="text-2xl text-lost-blue">No items found</p>
               <img src={NoItems} alt="No items found" />
             </div>
           )}

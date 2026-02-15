@@ -1,6 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+import { shortenString } from "../../utils";
+import { useHandleApiMessage } from "../message-banner/hooks";
+
 import { useClaimFoundItemMutation } from "../../store/api/found";
 import { useClaimLostItemMutation } from "../../store/api/lost";
 
@@ -12,7 +15,6 @@ import InfoIcon from "../../assets/icons/InfoIcon";
 import BagIcon from "../../assets/icons/BagIcon";
 import PlaceholderImage from "../../assets/images/image-placeholder.webp";
 import LoadingSpinner from "../../assets/icons/FormLoadingSpinner";
-import { useHandleApiMessage } from "../message-banner/hooks";
 
 const Card = ({
   type,
@@ -70,18 +72,18 @@ const Card = ({
           toggleDetailsVisibility();
         }
       }}
-      className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
+      className="min-h-[310px] relative p-2 bg-white border shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
       <span
         className={` ${
           type === "lost" ? "px-4" : ""
-        } absolute rotate-[-40deg] capitalize uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50]  rounded-lg py-1 px-2`}
+        } absolute rotate-[-40deg] capitalize uppercase text-xs lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50] rounded-lg py-1 px-2`}
       >
         {type}
       </span>
 
       <img
-        className="rounded-lg object-cover size-[300px]"
+        className="size-[100px] rounded-lg object-cover md:size-[200px] lg:size-[200px]"
         src={image ?? PlaceholderImage}
         alt={title}
         width={299}
@@ -90,19 +92,22 @@ const Card = ({
 
       <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
         <h1 className="text-sm text-center capitalize lg:text-lg font-bold text-lost-blue">
-          {title}
+          {shortenString(title, 10)}
         </h1>
         <div className="flex items-center text-xs lg:text-sm text-lost-blue space-x-2">
           <span className="">
             <LocationIcon />
           </span>
-          <span className="capitalize">{location}</span>
+          <span className="capitalize text-xs">
+            {" "}
+            {shortenString(location, 8)}
+          </span>
         </div>
       </div>
 
       {isVisible ? (
         <div className="text-lost-blue capitalize w-full text-xs px-2 lg:text-sm">
-          <p className="">{description}</p>
+          <p>{shortenString(description, 27)}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
         </div>

@@ -4,8 +4,7 @@ import { ApiMessageContextProvider } from "./components/message-banner/context";
 import ErrorPage from "./components/route-handling/ErrorPage";
 import LoadingPage from "./components/route-handling/LoadingPage";
 
-import Login from "./pages/auth/login";
-import Signup from "./pages/auth/signup";
+import AuthPage from "./pages/auth";
 import HomePage from "./pages/home";
 import LostItemsPage from "./pages/lost-items";
 import ViewItemsPage from "./pages/view-items";
@@ -16,13 +15,13 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Login />,
+      element: <AuthPage type="login" />,
       errorElement: <ErrorPage />,
       loader: LoadingPage,
     },
     {
       path: "/signup",
-      element: <Signup />,
+      element: <AuthPage type="signup" />,
       errorElement: <ErrorPage />,
       loader: LoadingPage,
     },

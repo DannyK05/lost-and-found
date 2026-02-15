@@ -16,6 +16,8 @@ import CloseXIcon from "../../assets/icons/CloseXIcon";
 import { MessageBanner } from "../message-banner";
 import RouteGuard from "../route-guard/RouteGuard";
 
+import { navbarLinks } from "./data";
+
 const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
@@ -45,15 +47,16 @@ const Layout = ({ children }) => {
     <RouteGuard>
       <main className="w-full h-[100vh]">
         <MessageBanner />
+
         <nav className="z-[100] flex items-center fixed w-full bg-[#010066] pt-4 pb-6 px-4 justify-between md:justify-between lg:justify-between">
           <h1 className="text-md w-1/2 md:w-auto lg:text-2xl lg:w-1/4 text-white font-bold">
             Lost<span className="text-lost-accent-light">&</span>Found Hub
           </h1>
-          <hr className=" hidden  lg:block border-lost-accent-light border absolute  z-[10000] top-11 left-[19%] w-[15%]" />
+          <hr className=" hidden  lg:block border-lost-accent-light border absolute  z-[10000] top-11 left-[19%] w-[150px]" />
           <ul
             className={`${
               isVisible ? "z-[100000] border-0" : "hidden"
-            } px-6 w-1/2 py-4 z-10  md:pl-4 md:w-1/2 md:flex border-lost-accent-light border lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-[43%] lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
+            } px-6 w-1/2 py-4 z-10 md:w-3/5 md:flex border-lost-accent-light border lg:flex flex lg:space-x-12 md:space-x-8 flex-col absolute h-[100vh] md:h-auto lg:h-auto  lg:w-1/2 lg:flex-row md:flex-row md:static lg:static md:rounded-lg lg:rounded-lg md:shadow-lg lg:shadow-lg bg-lost-blue top-0 right-0 space-y-10 md:space-y-0 lg:space-y-0 text-white md:items-center lg:items-center  md:text-sm`}
           >
             <span
               onClick={toggleVisibility}
@@ -62,84 +65,25 @@ const Layout = ({ children }) => {
               <CloseXIcon />
             </span>
 
-            <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
-              <NavLink
-                to={"/home"}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-lost-accent-light active-nav text-sm lg:text-lg"
-                      : ""
-                  }`
-                }
+            {navbarLinks.map(({ name, url }, id) => (
+              <li
+                key={id}
+                className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light"
               >
-                {" "}
-                Home
-              </NavLink>
-            </li>
-
-            <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
-              <NavLink
-                to={"/lost-items"}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-lost-accent-light active-nav text-sm lg:text-lg"
-                      : ""
-                  }`
-                }
-              >
-                Lost Items
-              </NavLink>
-            </li>
-
-            <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
-              <NavLink
-                to={"/found-items"}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-lost-accent-light active-nav text-sm lg:text-lg"
-                      : ""
-                  }`
-                }
-              >
-                {" "}
-                Found Items
-              </NavLink>
-            </li>
-
-            <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
-              <NavLink
-                to={"/records"}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-lost-accent-light active-nav text-sm lg:text-lg"
-                      : ""
-                  }`
-                }
-              >
-                {" "}
-                Records
-              </NavLink>
-            </li>
-
-            <li className="active:text-lost-accent-light text-xs md:text-sm lg:text-sm lg:hover:text-lost-accent-light">
-              <NavLink
-                to={"/about-us"}
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "text-lost-accent-light active-nav text-sm lg:text-lg"
-                      : ""
-                  }`
-                }
-              >
-                {" "}
-                About Us
-              </NavLink>
-            </li>
+                <NavLink
+                  to={url}
+                  className={({ isActive }) =>
+                    `${
+                      isActive
+                        ? "text-lost-accent-light active-nav text-sm lg:text-md"
+                        : ""
+                    }`
+                  }
+                >
+                  {name}
+                </NavLink>
+              </li>
+            ))}
 
             {/* The profile box in mobile */}
             <div className="md:hidden lg:hidden flex-col flex space-y-4 items-start text-white active:text-lost-accent-light active:fill-lost-accent-light lg:hover:text-lost-accent-light lg:hover:fill-lost-accent-light">
@@ -147,7 +91,7 @@ const Layout = ({ children }) => {
                 <span className="cursor-pointer  fill-white">
                   <ProfileIcon />{" "}
                 </span>
-                <p className="cursor-pointer text-xs ">{name}</p>
+                <p className="cursor-pointer text-xs">{name}</p>
               </div>
               <span
                 onClick={handleLogout}

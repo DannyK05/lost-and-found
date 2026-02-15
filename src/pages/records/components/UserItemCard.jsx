@@ -14,6 +14,7 @@ import LocationIcon from "../../../assets/icons/LocationIcon";
 
 import PlaceholderImage from "../../../assets/images/image-placeholder.webp";
 import { useHandleApiMessage } from "../../../components/message-banner/hooks";
+import { shortenString } from "../../../utils";
 
 export const UserItemCard = ({
   type,
@@ -75,20 +76,18 @@ export const UserItemCard = ({
           toggleDetails();
         }
       }}
-      className="card w-[46%] lg:w-[24%] md:w-[23%] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
+      className="min-h-[310px] relative p-2 bg-white shadow-sm rounded-lg flex flex-col items-center space-y-4"
     >
-      {type && (
-        <span
-          className={` ${
-            type === "lost" ? "px-4" : ""
-          } absolute rotate-[-40deg] capitalize uppercase text-sm lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50]  rounded-lg py-1 px-2`}
-        >
-          {type}
-        </span>
-      )}
+      <span
+        className={` ${
+          type === "lost" ? "px-4" : ""
+        } absolute rotate-[-40deg] capitalize uppercase text-xs lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50] rounded-lg py-1 px-2`}
+      >
+        {type}
+      </span>
 
       <img
-        className="rounded-lg object-cover size-[300px]"
+        className="size-[100px] rounded-lg object-cover md:size-[200px] lg:size-[200px]"
         src={image ?? PlaceholderImage}
         alt={title}
         width={299}
@@ -97,20 +96,21 @@ export const UserItemCard = ({
 
       <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
         <h1 className="text-sm text-center capitalize lg:text-lg font-bold text-lost-blue">
-          {title}
+          {shortenString(title, 10)}
         </h1>
-
         <div className="flex items-center text-xs lg:text-sm text-lost-blue space-x-2">
-          <span>
+          <span className="">
             <LocationIcon />
           </span>
-          <span className="capitalize">{location}</span>
+          <span className="capitalize text-xs">
+            {shortenString(location, 8)}
+          </span>
         </div>
       </div>
 
       {isVisible ? (
         <div className="text-lost-blue text-xs w-full px-2 lg:text-sm">
-          <p className="">{description}</p>
+          <p>{shortenString(description, 27)}</p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
         </div>

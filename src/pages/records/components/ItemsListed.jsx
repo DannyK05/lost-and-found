@@ -17,7 +17,7 @@ export const ItemsListed = () => {
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Found Items</h1>
 
-        <div className="flex w-full items-center justify-center pb-4 flex-wrap gap-2">
+        <div className="grid grid-cols-2 w-full pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
           {loadingFoundItems ? (
             <div className=" w-full flex items-center justify-center">
               <div className="flex w-full flex-col items-center space-y-2">
@@ -59,8 +59,7 @@ export const ItemsListed = () => {
 
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Lost Items</h1>
-        <div className="flex w-full items-center justify-center flex-wrap pb-4 gap-2">
-          {" "}
+        <div className="grid grid-cols-2 w-full pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
           {loadingLostItems ? (
             <div className=" w-full pt-[10%] flex items-center justify-center">
               <div className="flex w-full flex-col items-center space-y-2">
@@ -70,7 +69,7 @@ export const ItemsListed = () => {
                 <p className="text-sm">Loading lost items</p>
               </div>
             </div>
-          ) : lostItems && lostItems.data.lostItemslength !== 0 ? (
+          ) : lostItems && lostItems.data.lostItems.length !== 0 ? (
             lostItems.data.lostItems.map((items) => {
               return (
                 <UserItemCard
