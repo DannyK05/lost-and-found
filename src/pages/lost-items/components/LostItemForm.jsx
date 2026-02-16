@@ -59,7 +59,7 @@ export const LostItemForm = ({ toggleContainer }) => {
       <label className="w-4/5">
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
-          className="border-inherit text-sm active:border-lost-blue w-full border-2 p-2"
+          className="w-full p-2 border-2 text-sm active:border-lost-blue focus:border-lost-blue lg:hover:border-lost-blue"
           alt="submit"
           type="file"
           {...register("image")}
@@ -89,7 +89,7 @@ export const LostItemForm = ({ toggleContainer }) => {
         />
       </div>
 
-      <div className="flex w-4/5 items-center space-x-2">
+      <div className="w-4/5 flex items-center space-x-4">
         <FormInput
           containerClassName="w-full"
           {...register("itemBrand")}
@@ -103,13 +103,13 @@ export const LostItemForm = ({ toggleContainer }) => {
         />
       </div>
 
-      <div className="flex w-4/5 items-center justify-between">
+      <div className="w-4/5 flex items-center justify-between">
         <label>
           <span className="text-lost-blue text-sm">Date lost:</span>
 
           <input
             {...register("lostDate")}
-            className="w-full p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+            className="w-full p-2 outline-0 border-2 text-sm focus:border-lost-blue lg:hover:border-lost-blue"
             type="date"
           />
           {errors.lostDate?.message && (
@@ -123,7 +123,7 @@ export const LostItemForm = ({ toggleContainer }) => {
           <span className="text-lost-blue text-sm">Category:</span>
           <select
             {...register("category")}
-            className="w-full p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+            className="w-full p-2 outline-0 border-2 text-sm focus:border-lost-blue lg:hover:border-lost-blue"
           >
             <option value="Electronics/Gadgets">Electronics/Gadgets</option>
             <option value="Clothings">Clothings</option>
@@ -144,7 +144,7 @@ export const LostItemForm = ({ toggleContainer }) => {
         <span className="text-lost-blue text-sm">Description:</span>
         <textarea
           {...register("description")}
-          className="w-full h-20 p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+          className="w-full h-20 p-2 outline-0 border-2 text-sm focus:border-lost-blue lg:hover:border-lost-blue"
           placeholder="Add description"
           maxLength={112}
         ></textarea>
@@ -157,7 +157,7 @@ export const LostItemForm = ({ toggleContainer }) => {
 
       <FormButton className="w-4/5">
         {isLoading ? (
-          <span className="fill-white w-full flex items-center justify-center">
+          <span className="w-full flex items-center justify-center fill-white">
             <FormLoadingSpinner />
           </span>
         ) : (

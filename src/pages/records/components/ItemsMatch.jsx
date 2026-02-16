@@ -9,16 +9,16 @@ export const ItemsMatch = () => {
   const loadingMatchedItems = false;
 
   return (
-    <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
+    <div className="w-full flex flex-col items-center space-y-1 border-b-1 border-lost-blue">
       <h1 className="underline font-bold text-lost-blue">
         Here are your matches
       </h1>
 
-      <div className="flex w-full items-center justify-center flex-wrap space-x-2">
+      <div className="w-full grid grid-cols-2 pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
         {loadingMatchedItems ? (
-          <div className=" w-full pt-[10%] flex items-center justify-center">
+          <div className="w-full flex items-center justify-center col-span-2 pt-8 lg:col-span-4">
             <div className="flex w-full flex-col items-center space-y-2">
-              <span className="bg-lost-blue p-2 rounded-full">
+              <span className="p-2 rounded-full bg-lost-blue">
                 <LoadingSpinner />
               </span>
               <p className="text-sm">Loading lost items</p>
@@ -43,7 +43,7 @@ export const ItemsMatch = () => {
             );
           })
         ) : (
-          <div className=" w-full py-2 flex items-center justify-center">
+          <div className=" w-full flex items-center justify-center col-span-2 lg:col-span-4">
             <div className="w-full flex items-center flex-col space-y-1">
               <p>No Match Found</p>
               <img className="w-1/5" src={NoItems} alt="No Match found" />

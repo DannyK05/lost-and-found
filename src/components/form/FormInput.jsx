@@ -24,12 +24,12 @@ const FormInput = forwardRef(
       <div className="w-full flex flex-col items-start">
         {type == "password" ? (
           <div
-            className={`${containerClassName} flex items-center space-x-2 border-b-2 border-[#C4CAC8] pb-0  h-12 overflow-hidden hover:border-lost-blue focus-within:border-lost-blue p-0`}
+            className={`${containerClassName} h-12 flex items-center space-x-2 p-0 border-b-2 border-[#C4CAC8] overflow-hidden hover:border-lost-blue focus-within:border-lost-blue`}
           >
             <input
               {...rest}
               ref={forwardedRef}
-              className={`${className} outline-none text-sm w-full h-full placeholder:text-xs bg-lost-white py-1 mb-0 px-2 focus:outline-none`}
+              className={`${className} w-full h-full bg-lost-white outline-none text-sm py-1 mb-0 px-2 placeholder:text-xs focus:outline-none`}
               type={isPasswordVisible ? "text" : "password"}
               placeholder={placeholder}
             />
@@ -42,12 +42,12 @@ const FormInput = forwardRef(
           </div>
         ) : (
           <div
-            className={`${containerClassName} border-b-2 border-[#C4CAC8] pb-0  h-12 overflow-hidden hover:border-lost-blue focus-within:border-lost-blue p-0`}
+            className={`${containerClassName} h-12 flex items-center space-x-2 p-0 border-b-2 border-[#C4CAC8] overflow-hidden hover:border-lost-blue focus-within:border-lost-blue`}
           >
             <input
               {...rest}
               ref={forwardedRef}
-              className={`${className} outline-none text-sm w-full h-full placeholder:text-xs bg-lost-white py-1 mb-0 px-2 focus:outline-none`}
+              className={`${className} w-full h-full bg-lost-white outline-none text-sm py-1 mb-0 px-2 placeholder:text-xs focus:outline-none`}
               type={type}
               placeholder={placeholder}
             />

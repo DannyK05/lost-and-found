@@ -28,12 +28,14 @@ const ViewItemsPage = () => {
   return (
     <>
       <Layout>
-        <h1 className="text-center text-lg text-[#010066] mt-4">Found Items</h1>
+        <h1 className="orbitron mt-4 text-center text-lg text-lost-blue font-semibold lg:text-xl">
+          Found Items
+        </h1>
 
         <div className="w-full grid grid-cols-2 gap-x-2 gap-y-3 py-4 px-2 lg:grid-cols-4">
           {" "}
           {isLoading ? (
-            <div className="w-full h-[calc(100vh-300px)] pt-[10%] col-span-2 flex items-center justify-center lg:col-span-4">
+            <div className="w-full h-[calc(100vh-300px)] flex items-center justify-center pt-[10%] col-span-2 lg:col-span-4">
               <div className="flex flex-col items-center space-y-2">
                 <span className="bg-lost-blue p-2 rounded-full">
                   <LoadingSpinner />
@@ -59,7 +61,7 @@ const ViewItemsPage = () => {
               />
             ))
           ) : (
-            <div className="w-full flex flex-col items-center ">
+            <div className="w-full flex flex-col items-center col-span-2 lg:col-span-4">
               <p className="text-2xl text-lost-blue">No items found</p>
               <img src={NoItems} alt="No items found" />
             </div>
@@ -72,9 +74,9 @@ const ViewItemsPage = () => {
           onClick={toggleSidebarVisibility}
           onMouseEnter={toggleTagVisibility}
           onMouseLeave={toggleTagVisibility}
-          className={`flex ${
+          className={`${
             isTagVisible ? "bg-lost-blue" : ""
-          } items-center space-x-2 transition-50 p-2 fixed z-[100] right-0 bottom-[120px] `}
+          } fixed z-[100] right-0 bottom-[120px] flex items-center space-x-2 p-2 transition-50`}
         >
           <span className="text-white p-2 bg-lost-blue rounded-full rotate-45 ">
             <CloseXIcon />

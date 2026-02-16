@@ -2,7 +2,7 @@ import { Audio } from "react-loader-spinner";
 
 const LoadingPage = () => {
   return (
-    <div className="flex items-center bg-lost-white w-full justify-center">
+    <div className="w-full flex items-center justify-center bg-lost-white">
       <Audio
         height="80"
         width="80"

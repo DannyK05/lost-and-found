@@ -77,9 +77,9 @@ export const LoginForm = () => {
       </h1>
       <form
         onSubmit={handleSubmit(handleLogin)}
-        className="flex w-full flex-col items-center mb-10 space-y-10 lg:w-3/5"
+        className="flex w-full flex-col items-center space-y-10 mb-10 lg:w-3/5"
       >
-        <div className="flex w-full flex-col items-start space-y-4">
+        <div className="w-full flex flex-col items-start space-y-4">
           <FormInput
             containerClassName="w-full"
             {...register("email")}
@@ -99,7 +99,7 @@ export const LoginForm = () => {
 
         <FormButton disabled={isLoading} className="w-full lg:w-1/3">
           {isLoading ? (
-            <span className="fill-white w-full flex items-center justify-center">
+            <span className="w-full flex items-center justify-center fill-white">
               <FormLoadingSpinner />
             </span>
           ) : (

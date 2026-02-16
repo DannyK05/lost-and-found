@@ -11,21 +11,21 @@ import { SignupForm } from "./components/SignupForm";
 
 const AuthPage = ({ type }) => {
   return (
-    <div className=" lg:flex flex-col h-full items-center justify-center lg:py-10">
+    <div className="h-full flex-col items-center justify-center lg:flex lg:py-10">
       <div
         className={`${
           type === "signup" ? "flex-row-reverse" : ""
-        } flex relative w-full h-full items-center justify-center shadow-md  lg:w-3/4 lg:h-[600px]`}
+        } w-full h-full relative flex items-center justify-center shadow-md lg:w-3/4 lg:h-[600px]`}
       >
         <MessageBanner />
 
         <div
-          className={`${type === "signup" ? "rounded-r-lg" : "rounded-l-lg"} w-2/5 hidden  lg:block h-full flex items-center flex-col space-y-10 text-center text-lost-white p-10 bg-lost-blue`}
+          className={`${type === "signup" ? "rounded-r-lg" : "rounded-l-lg"} hidden w-2/5 h-full flex flex-col items-center space-y-10 text-center text-lost-white bg-lost-blue p-10 lg:block`}
         >
           {type === "signup" ? (
             // Sign up page render
             <>
-              <div className="flex flex-col items-center text-lost-white space-y-4">
+              <div className="flex flex-col items-center space-y-4 text-lost-white">
                 <span className="text-lost-accent-light text-sm">
                   Already have an account?
                 </span>
@@ -40,7 +40,7 @@ const AuthPage = ({ type }) => {
                 />
               </div>
               <Link to={"/"}>
-                <button className="w-2/5 duration-50 border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#DBDBDB]">
+                <button className="w-2/5 border border-lost-white text-lost-white rounded-lg py-2 px-3 duration-50 active:bg-[#DBDBDB]">
                   Sign in
                 </button>
               </Link>
@@ -63,8 +63,7 @@ const AuthPage = ({ type }) => {
                 />
               </div>
               <Link to={"/signup"}>
-                <button className="w-2/5 duration-50  border-lost-white border rounded-lg py-2 px-3 text-lost-white active:bg-[#C4C4C4]">
-                  {" "}
+                <button className="w-2/5 border border-lost-white text-lost-white rounded-lg py-2 px-3 duration-50 active:bg-[#DBDBDB]">
                   Sign Up
                 </button>
               </Link>
@@ -73,7 +72,7 @@ const AuthPage = ({ type }) => {
         </div>
 
         <div
-          className={`${type === "signup" ? "rounded-l-lg" : "rounded-r-lg"} w-full flex flex-col items-center py-10 space-y-6 p-5 bg-lost-white lg:w-3/5 lg:h-full`}
+          className={`${type === "signup" ? "rounded-l-lg" : "rounded-r-lg"} w-full flex flex-col items-center space-y-6 bg-lost-white py-10 p-5 lg:w-3/5 lg:h-full`}
         >
           {type === "signup" ? <SignupForm /> : <LoginForm />}
         </div>

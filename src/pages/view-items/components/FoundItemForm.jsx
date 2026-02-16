@@ -61,7 +61,7 @@ export const FoundItemForm = ({ toggleContainer }) => {
         <span className="text-lost-blue text-sm">Item Image:</span>
         <input
           {...register("image")}
-          className="border-inherit text-sm active:border-lost-blue w-full border-2 p-2"
+          className="w-full p-2 border-2 text-sm active:border-lost-blue lg:hover:border-lost-blue"
           alt="submit"
           type="file"
         />
@@ -90,7 +90,7 @@ export const FoundItemForm = ({ toggleContainer }) => {
         />
       </div>
 
-      <div className="flex w-4/5 items-center space-x-2">
+      <div className="w-4/5 flex flex-col items-center space-y-4 lg:flex-row lg:space-x-4">
         <FormInput
           containerClassName="w-full"
           {...register("itemBrand")}
@@ -104,13 +104,13 @@ export const FoundItemForm = ({ toggleContainer }) => {
         />
       </div>
 
-      <div className="flex w-4/5 items-center justify-between">
-        <label>
+      <div className="w-4/5 flex flex-col items-center justify-between lg:flex-row">
+        <label className="w-full">
           <span className="text-lost-blue text-sm">Date found:</span>
 
           <input
             {...register("foundDate")}
-            className="w-full p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+            className="w-full p-2 outline-0 border-2 text-sm focus:border-lost-blue lg:hover:border-lost-blue"
             type="date"
           />
           {errors.foundDate?.message && (
@@ -120,11 +120,11 @@ export const FoundItemForm = ({ toggleContainer }) => {
           )}
         </label>
 
-        <label>
+        <label className="w-full">
           <span className="text-lost-blue text-sm">Category:</span>
           <select
             {...register("category")}
-            className="w-full p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+            className="w-full p-2 outline-0 border-2 text-sm focus:border-lost-blue lg:hover:border-lost-blue"
           >
             <option value="Electronics/Gadgets">Electronics/Gadgets</option>
             <option value="Clothings">Clothings</option>
@@ -142,10 +142,10 @@ export const FoundItemForm = ({ toggleContainer }) => {
       </div>
 
       <label className="w-4/5 flex flex-col items-start">
-        <span className="text-lost-blue text-sm">Category:</span>
+        <span className="text-lost-blue text-sm">Description:</span>
         <textarea
           {...register("description")}
-          className="w-full h-20 p-2 border-inherit text-sm outline-0 focus:border-lost-blue border-2"
+          className="w-full h-20 p-2 text-sm outline-0 border-2 focus:border-lost-blue lg:hover:border-lost-blue"
           placeholder="Add description"
           maxLength={112}
         ></textarea>
@@ -159,7 +159,7 @@ export const FoundItemForm = ({ toggleContainer }) => {
       <FormButton className="w-4/5">
         {" "}
         {isLoading ? (
-          <span className="fill-white w-full flex items-center justify-center">
+          <span className="w-full flex items-center justify-center fill-white">
             <FormLoadingSpinner />
           </span>
         ) : (

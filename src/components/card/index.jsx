@@ -29,11 +29,12 @@ const Card = ({
   color,
   itemBrand,
 }) => {
-  const decodedDate = date.split("T")[0];
   const [claimFoundItem, { isLoading: loadingFoundClaim }] =
     useClaimFoundItemMutation();
   const [claimLostItem, { isLoading: loadingLostClaim }] =
     useClaimLostItemMutation();
+
+  const decodedDate = date.split("T")[0];
 
   const { handleApiMessage } = useHandleApiMessage();
 
@@ -72,12 +73,12 @@ const Card = ({
           toggleDetailsVisibility();
         }
       }}
-      className="min-h-[310px] relative p-2 bg-white border shadow-sm rounded-lg flex flex-col items-center space-y-4"
+      className="min-h-[310px] relative flex flex-col items-center space-y-4 p-2 bg-white border shadow-sm rounded-lg"
     >
       <span
         className={` ${
-          type === "lost" ? "px-4" : ""
-        } absolute rotate-[-40deg] capitalize uppercase text-xs lg:text-lg top-6 left-0 text-lost-blue border-[#A48433] border bg-[#FFCD50] rounded-lg py-1 px-2`}
+          type === "lost" ? "px-6" : "px-4"
+        } absolute top-6 left-0 rotate-[-40deg] py-1 capitalize bg-lost-accent-light text-xs text-lost-blue border border-lost-accent-dark-2 rounded-lg lg:text-lg`}
       >
         {type}
       </span>
@@ -90,11 +91,11 @@ const Card = ({
         height={168}
       />
 
-      <div className="w-full flex flex-col md:flex-row lg:flex-row items-start lg:items-center md:items-center justify-between">
-        <h1 className="text-sm text-center capitalize lg:text-lg font-bold text-lost-blue">
+      <div className="w-full flex flex-col items-start justify-between md:flex-row md:items-center lg:items-center lg:flex-row">
+        <h1 className="text-sm text-lost-blue text-center capitalize font-bold lg:text-lg">
           {shortenString(title, 10)}
         </h1>
-        <div className="flex items-center text-xs lg:text-sm text-lost-blue space-x-2">
+        <div className="flex items-center space-x-2 text-xs text-lost-blue lg:text-sm">
           <span className="">
             <LocationIcon />
           </span>
@@ -106,8 +107,11 @@ const Card = ({
       </div>
 
       {isVisible ? (
-        <div className="text-lost-blue capitalize w-full text-xs px-2 lg:text-sm">
-          <p>{shortenString(description, 27)}</p>
+        <div className="w-full px-2 text-lost-blue text-xs capitalize lg:text-sm">
+          <p>
+            Description: <br />
+            {description}
+          </p>
           {color && <p>Color: {color}</p>}
           {itemBrand && <p>Brand: {itemBrand}</p>}
         </div>
@@ -117,7 +121,7 @@ const Card = ({
             <span className="text-lost-blue">
               <BagIcon />
             </span>
-            <p className="text-xs capitalize lg:text-sm text-lost-blue font-semi-bold">
+            <p className="text-xs text-lost-blue capitalize font-semibold lg:text-sm ">
               {category}
             </p>
           </div>
@@ -126,7 +130,7 @@ const Card = ({
             <span className="text-lost-blue">
               <KeyIcon />
             </span>
-            <p className="text-xs capitalize lg:text-sm text-lost-blue font-semi-bold">
+            <p className="text-xs text-lost-blue capitalize font-semibold lg:text-sm">
               {uniqueIdentifier}
             </p>
           </div>
@@ -135,24 +139,24 @@ const Card = ({
             <span className="text-lost-blue">
               <CalendarIcon />
             </span>
-            <p className="text-xs lg:text-sm fill-lost-blue text-lost-blue font-semi-bold">
+            <p className="text-xs text-lost-blue font-semibold lg:text-sm">
               {decodedDate}
             </p>
           </div>
         </div>
       )}
 
-      <div className="w-full flex lg:flex-row lg:space-y-0 md:flex-row md:space-y-0 items-center lg:justify-between md:justify-between">
+      <div className="w-full flex items-center md:flex-row md:space-y-0 md:justify-between lg:flex-row lg:space-y-0 lg:justify-between">
         <button
           onClick={toggleDetailsVisibility}
           className={`${
             isVisible ? "bg-lost-blue " : ""
-          } w-2/5 flex items-center justify-center space-x-2 md:w-[45%] lg:w-2/5  border-lost-blue text-lost-blue shadow-sm border-2 rounded-lg px-4 py-2`}
+          } w-2/5 flex items-center justify-center space-x-2 px-4 py-2 border-2 border-lost-blue shadow-sm rounded-lg text-lost-blue md:w-[45%] lg:w-2/5`}
         >
           <p
             className={`${
               isVisible ? "text-white" : ""
-            } hidden md:block lg:block text-xs lg:text-sm`}
+            } hidden text-xs md:block lg:block lg:text-sm`}
           >
             Details
           </p>
@@ -163,10 +167,10 @@ const Card = ({
 
         <button
           onClick={handleClaim}
-          className="flex items-center justify-center w-4/5 active:bg-white active:text-lost-blue md:w-[45%] lg:w-[45%] md:px-1 bg-lost-blue text-white border-2 shadow-lg rounded-lg lg:py-0 py-2"
+          className="w-4/5 flex items-center justify-center py-2 border-2 bg-lost-blue shadow-lg rounded-lg text-white active:bg-white active:text-lost-blue md:px-1 md:w-[45%] lg:w-[45%] lg:py-0"
         >
           {isLoading ? (
-            <span className="fill-white w-full flex items-center py-2 justify-center">
+            <span className="w-full flex items-center justify-center py-2 fill-white">
               <LoadingSpinner />
             </span>
           ) : (

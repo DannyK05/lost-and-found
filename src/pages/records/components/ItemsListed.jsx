@@ -17,11 +17,11 @@ export const ItemsListed = () => {
       <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
         <h1 className="underline font-bold text-lost-blue">Your Found Items</h1>
 
-        <div className="grid grid-cols-2 w-full pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
+        <div className="w-full grid grid-cols-2 pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
           {loadingFoundItems ? (
-            <div className=" w-full flex items-center justify-center">
-              <div className="flex w-full flex-col items-center space-y-2">
-                <span className="bg-lost-blue p-2 rounded-full">
+            <div className="w-full flex items-center justify-center col-span-2 lg:col-span-4">
+              <div className="w-full flex flex-col items-center space-y-2">
+                <span className="p-2 rounded-full bg-lost-blue">
                   <LoadingSpinner />
                 </span>
                 <p className="text-sm">Loading found items</p>
@@ -47,7 +47,7 @@ export const ItemsListed = () => {
               );
             })
           ) : (
-            <div className=" w-full flex items-center justify-center">
+            <div className="w-full flex items-center justify-center col-span-2 lg:col-span-4">
               <div className="w-full flex items-center flex-col space-y-1">
                 <p>No items have been listed</p>
                 <img className="w-1/5" src={NoItems} alt="No items found" />
@@ -57,13 +57,13 @@ export const ItemsListed = () => {
         </div>
       </div>
 
-      <div className="w-full flex-col flex items-center space-y-1 border-b-1 border-lost-blue">
-        <h1 className="underline font-bold text-lost-blue">Your Lost Items</h1>
-        <div className="grid grid-cols-2 w-full pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
+      <div className="w-full flex flex-col items-center space-y-1 border-b-1 border-lost-blue">
+        <h1 className="text-lost-blue font-bold underline ">Your Lost Items</h1>
+        <div className="w-full grid grid-cols-2 pb-4 gap-x-2 gap-y-4 lg:grid-cols-4">
           {loadingLostItems ? (
-            <div className=" w-full pt-[10%] flex items-center justify-center">
-              <div className="flex w-full flex-col items-center space-y-2">
-                <span className="bg-lost-blue p-2 rounded-full">
+            <div className="w-full flex items-center justify-center col-span-2 pt-8 lg:col-span-4">
+              <div className="w-full flex flex-col items-center space-y-2">
+                <span className="p-2 bg-lost-blue rounded-full">
                   <LoadingSpinner />
                 </span>
                 <p className="text-sm">Loading lost items</p>
@@ -89,7 +89,7 @@ export const ItemsListed = () => {
               );
             })
           ) : (
-            <div className=" w-full flex items-center justify-center">
+            <div className=" w-full flex items-center justify-center col-span-2 lg:col-span-4">
               <div className="w-full flex items-center flex-col space-y-1">
                 <p>No items have been listed</p>
                 <img className="w-1/5" src={NoItems} alt="No items found" />

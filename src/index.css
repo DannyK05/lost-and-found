@@ -40,3 +40,7 @@ ul li a.active-nav {
   transition: 500ms;
   padding-bottom: 1px;
 }
+
+.orbitron {
+  font-family: "Orbitron";
+}

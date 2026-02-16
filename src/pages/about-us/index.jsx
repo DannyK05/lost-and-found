@@ -141,7 +141,7 @@ export default function AboutUsPage() {
           <div className="oxo">
             <ul className="grid grid-cols-2 gap-2 p-2 lg:grid-cols-4">
               {teamMembers.map((member) => (
-                <li key={member} className="text-sm lg:text-2xl md:text-2xl">
+                <li key={member} className="text-sm lg:text-lg md:text-lg">
                   {member}
                 </li>
               ))}

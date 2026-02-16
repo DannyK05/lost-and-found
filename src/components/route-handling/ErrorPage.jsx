@@ -1,7 +1,7 @@
 const ErrorPage = () => {
   return (
-    <div className="flex bg-lost-white items-center justify-center h-full ">
-      <div className="flex  items-center bg-lost-white space-y-4 flex-col">
+    <div className="h-full flex items-center justify-center bg-lost-white">
+      <div className="flex flex-col items-center space-y-4 bg-lost-white">
         <h1 className="text-2xl font-bold text-lost-blue">Oops!</h1>
         <p className="text-xl text-lost-accent-dark">🚫Page NOT FOUND 🔎</p>
         <p className="text-xl text-lost-accent-dark">

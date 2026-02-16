@@ -20,13 +20,7 @@
   font-weight: bold;
   border-radius: 10px;
 }
-.oxo ul li {
-  font-family: "Matemaise";
-}
-.oxo ul li:first-of-type {
-  margin-left: 16px;
-  margin-top: 8px;
-}
+
 .footerNav ul li a {
   text-decoration: none;
   color: rgb(25, 25, 112);
